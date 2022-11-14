@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/ScreenWrap.gd" type="Script" id=1]
+[ext_resource path="res://sprites/crate.png" type="Texture" id=2]
+
+[sub_resource type="PhysicsMaterial" id=16]
+rough = true
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 15, 15 )
+
+[node name="Crate" type="RigidBody2D"]
+position = Vector2( 207, 445 )
+mass = 2.0
+physics_material_override = SubResource( 16 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 15 )
