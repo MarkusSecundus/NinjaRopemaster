@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rope_piece.png-6647cc628cc0826cf938340743a57892.stex"
+path="res://.import/gBot_body.png-f0ec63f1f77b87fb915194cb29cd7f3a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/rope_piece.png"
-dest_files=[ "res://.import/rope_piece.png-6647cc628cc0826cf938340743a57892.stex" ]
+source_file="res://sprites/characters/gbot/gBot_body.png"
+dest_files=[ "res://.import/gBot_body.png-f0ec63f1f77b87fb915194cb29cd7f3a.stex" ]
 
 [params]
 

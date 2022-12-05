@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player_stand.png-fe405594ca820a91e4724db40f5be40a.stex"
+path="res://.import/gBot_forearm_l.png-5ec00e77b36705396f0c126e2368fc02.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/player_stand.png"
-dest_files=[ "res://.import/player_stand.png-fe405594ca820a91e4724db40f5be40a.stex" ]
+source_file="res://sprites/characters/gbot/gBot_forearm_l.png"
+dest_files=[ "res://.import/gBot_forearm_l.png-5ec00e77b36705396f0c126e2368fc02.stex" ]
 
 [params]
 
@@ -28,7 +28,6 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
-process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

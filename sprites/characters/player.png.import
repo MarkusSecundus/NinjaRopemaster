@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rope_piece.png-6647cc628cc0826cf938340743a57892.stex"
+path="res://.import/player.png-a5a4f318f3817028340c13e0589d0e77.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/rope_piece.png"
-dest_files=[ "res://.import/rope_piece.png-6647cc628cc0826cf938340743a57892.stex" ]
+source_file="res://sprites/characters/player.png"
+dest_files=[ "res://.import/player.png-a5a4f318f3817028340c13e0589d0e77.stex" ]
 
 [params]
 
