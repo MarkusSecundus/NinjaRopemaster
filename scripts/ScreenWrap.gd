@@ -1,24 +1,17 @@
-extends RigidBody2D
+extends Node
 
 
-export(bool) var wrap_x = true
-export(bool) var wrap_y = false
-onready var screen_size = get_viewport_rect().size
+func wrap_x_cbody(body: CharacterBody2D):
+	var screen_size = body.get_viewport_rect().size
+	if body.position.x > screen_size.x:
+		body.position.x = 0
+	if body.position.x < 0:
+		body.position.x = screen_size.x
 
 
-func _integrate_forces(state):
-	screen_wrap(state)
-	
-func screen_wrap(state):
-	var xform = state.get_transform()
-	if wrap_x:
-		if xform.origin.x > screen_size.x:
-			xform.origin.x = 0
-		if xform.origin.x < 0:
-			xform.origin.x = screen_size.x
-	if wrap_y:
-		if xform.origin.y > screen_size.y:
-			xform.origin.y = 0
-		if xform.origin.y < 0:
-			xform.origin.y = screen_size.y
-	state.set_transform(xform)
+func wrap_x_state(state: PhysicsDirectBodyState2D, any_node: Node):
+	var screen_size = any_node.get_viewport_rect().size
+	if state.transform.origin.x > screen_size.x:
+		state.transform.origin.x = 0
+	if state.transform.origin.x < 0:
+		state.transform.origin.x = screen_size.x

@@ -1,38 +1,43 @@
 # Simple movement and jump
 # Wrapping around the edges of the screen
 
-extends "res://scripts/ScreenWrap.gd"  # the player can wrap around the edges of the screen
+extends CharacterBody2D
 
-export(int) var speed = 400
-export(int) var jump_force = 750
+@export var speed: int = 400
+@export var jump_force: int = 750
 
-	
-# Correct way of changing RigidBody's position or velocity is in the _integrate_forces method
-#	- changing directly the physics state
-func _integrate_forces(state):
+# Set the gravity from project settings to be synced with RigidBody nodes
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") * 2
+
+
+func _physics_process(delta):
+	if not is_on_floor():
+		velocity.y += gravity * delta
+
 	if Input.is_action_pressed("Left"):
-		move_left(state)
+		move_left()
 	elif Input.is_action_pressed("Right"):
-		move_right(state)
+		move_right()
 	else:
-		move_stop(state)
+		move_stop()
 		
 	if Input.is_action_just_pressed("Jump"):
-		jump(state)
-		
-	screen_wrap(state)
+		jump()
+	
+	move_and_slide()
+	ScreenWrap.wrap_x_cbody(self)
 		
 
-func move_left(state):
-	state.linear_velocity.x = -speed
-	$Sprite.flip_h = true  # face left
+func move_left():
+	velocity.x = -speed
+	$Sprite2D.flip_h = true  # face left
 	
-func move_right(state):
-	state.linear_velocity.x = speed
-	$Sprite.flip_h = false  # face right
+func move_right():
+	velocity.x = speed
+	$Sprite2D.flip_h = false  # face right
 	
-func move_stop(state):
-	state.linear_velocity.x = 0
+func move_stop():
+	velocity.x = 0
 	
-func jump(state):
-	state.linear_velocity.y = -jump_force
+func jump():
+	velocity.y = -jump_force
