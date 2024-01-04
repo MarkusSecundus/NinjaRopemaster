@@ -14,7 +14,7 @@ var target_property_name;
 var ease_type : Callable;
 var _on_finish_callback := Callable();
 
-func _init(target_obj, target_property_name, start_value, end_value, duration, ease_type:Callable, on_finish_callback : Callable):
+func _init(target_obj, target_property_name, start_value, end_value, duration, ease_type:Callable, on_finish_callback : Callable)->void:
 	self.t = BEGIN
 	self.tween_speed = (TARGET-BEGIN)/duration
 	self.start_value = start_value
@@ -24,8 +24,10 @@ func _init(target_obj, target_property_name, start_value, end_value, duration, e
 	self.ease_type = ease_type
 	self.add_on_finished_callback(on_finish_callback);
 
+func stop()->void:
+	_is_done = true;
 
-func update(delta: float):
+func update(delta: float)->void:
 	if _is_done: return 
 	
 	t = min(TARGET, t + delta*tween_speed);
