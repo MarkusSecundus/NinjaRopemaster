@@ -1,45 +1,45 @@
 class_name EaseType
 
-static var LINEAR 			: Callable = _FunctionImplementations.linear;
-static var EASE_IN_QUAD 	: Callable = _FunctionImplementations.ease_in_quad;
-static var EASE_OUT_QUAD 	: Callable = _FunctionImplementations.ease_out_quad;
-static var EASE_IN_OUT_QUAD : Callable = _FunctionImplementations.ease_in_out_quad;
+static var LINEAR 				: Callable = _FunctionImplementations.linear;
+static var EASE_IN_QUAD 		: Callable = _FunctionImplementations.ease_in_quad;
+static var EASE_OUT_QUAD 		: Callable = _FunctionImplementations.ease_out_quad;
+static var EASE_IN_OUT_QUAD 	: Callable = _FunctionImplementations.ease_in_out_quad;
 
-static var EASE_IN_SINE 	: Callable = _FunctionImplementations.ease_in_sine;
-static var EASE_OUT_SINE 	: Callable = _FunctionImplementations.ease_out_sine;
-static var EASE_IN_OUT_SINE : Callable = _FunctionImplementations.ease_in_out_sine;
+static var EASE_IN_SINE 		: Callable = _FunctionImplementations.ease_in_sine;
+static var EASE_OUT_SINE 		: Callable = _FunctionImplementations.ease_out_sine;
+static var EASE_IN_OUT_SINE 	: Callable = _FunctionImplementations.ease_in_out_sine;
 
-static var EASE_IN_CUBIC 	: Callable = _FunctionImplementations.ease_in_cubic
-static var EASE_OUT_CUBIC 	: Callable = _FunctionImplementations.ease_out_cubic
-static var EASE_IN_OUT_CUBIC: Callable = _FunctionImplementations.ease_in_out_cubic
+static var EASE_IN_CUBIC 		: Callable = _FunctionImplementations.ease_in_cubic
+static var EASE_OUT_CUBIC 		: Callable = _FunctionImplementations.ease_out_cubic
+static var EASE_IN_OUT_CUBIC	: Callable = _FunctionImplementations.ease_in_out_cubic
 
-static var EASE_IN_QUINT 	: Callable = _FunctionImplementations.ease_in_quint
-static var EASE_OUT_QUINT 	: Callable = _FunctionImplementations.ease_out_quint
-static var EASE_IN_OUT_QUINT: Callable = _FunctionImplementations.ease_in_out_quint
+static var EASE_IN_QUINT 		: Callable = _FunctionImplementations.ease_in_quint
+static var EASE_OUT_QUINT 		: Callable = _FunctionImplementations.ease_out_quint
+static var EASE_IN_OUT_QUINT	: Callable = _FunctionImplementations.ease_in_out_quint
 
-static var EASE_IN_CIRC 	: Callable = _FunctionImplementations.ease_in_circ
-static var EASE_OUT_CIRC 	: Callable = _FunctionImplementations.ease_out_circ
-static var EASE_IN_OUT_CIRC : Callable = _FunctionImplementations.ease_in_out_circ
+static var EASE_IN_CIRC 		: Callable = _FunctionImplementations.ease_in_circ
+static var EASE_OUT_CIRC 		: Callable = _FunctionImplementations.ease_out_circ
+static var EASE_IN_OUT_CIRC 	: Callable = _FunctionImplementations.ease_in_out_circ
 
 static var EASE_IN_ELASTIC	 	: Callable = _FunctionImplementations.ease_in_elastic
 static var EASE_OUT_ELASTIC 	: Callable = _FunctionImplementations.ease_out_elastic
 static var EASE_IN_OUT_ELASTIC 	: Callable = _FunctionImplementations.ease_in_out_elastic
 
-static var EASE_IN_QUART 	: Callable = _FunctionImplementations.ease_in_quart
-static var EASE_OUT_QUART 	: Callable = _FunctionImplementations.ease_out_quart
-static var EASE_IN_OUT_QUART : Callable = _FunctionImplementations.ease_in_out_quart
+static var EASE_IN_QUART 		: Callable = _FunctionImplementations.ease_in_quart
+static var EASE_OUT_QUART 		: Callable = _FunctionImplementations.ease_out_quart
+static var EASE_IN_OUT_QUART	: Callable = _FunctionImplementations.ease_in_out_quart
 
-static var EASE_IN_EXPO 	: Callable = _FunctionImplementations.ease_in_expo
-static var EASE_OUT_EXPO 	: Callable = _FunctionImplementations.ease_out_expo
-static var EASE_IN_OUT_EXPO : Callable = _FunctionImplementations.ease_in_out_expo
+static var EASE_IN_EXPO 		: Callable = _FunctionImplementations.ease_in_expo
+static var EASE_OUT_EXPO 		: Callable = _FunctionImplementations.ease_out_expo
+static var EASE_IN_OUT_EXPO	 	: Callable = _FunctionImplementations.ease_in_out_expo
 
-static var EASE_IN_BACK 	: Callable = _FunctionImplementations.ease_in_back
-static var EASE_OUT_BACK 	: Callable = _FunctionImplementations.ease_out_back
-static var EASE_IN_OUT_BACK : Callable = _FunctionImplementations.ease_in_out_back
+static var EASE_IN_BACK 		: Callable = _FunctionImplementations.ease_in_back
+static var EASE_OUT_BACK 		: Callable = _FunctionImplementations.ease_out_back
+static var EASE_IN_OUT_BACK 	: Callable = _FunctionImplementations.ease_in_out_back
 
-static var EASE_IN_BOUNCE 	: Callable = _FunctionImplementations.ease_in_bounce
-static var EASE_OUT_BOUNCE 	: Callable = _FunctionImplementations.ease_out_bounce
-static var EASE_IN_OUT_BOUNCE : Callable = _FunctionImplementations.ease_in_out_bounce
+static var EASE_IN_BOUNCE 		: Callable = _FunctionImplementations.ease_in_bounce
+static var EASE_OUT_BOUNCE 		: Callable = _FunctionImplementations.ease_out_bounce
+static var EASE_IN_OUT_BOUNCE 	: Callable = _FunctionImplementations.ease_in_out_bounce
 
 class _FunctionImplementations:
 	static var Num:=433
