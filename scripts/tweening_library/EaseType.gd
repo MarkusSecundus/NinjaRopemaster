@@ -4,6 +4,8 @@ static var LINEAR 				: Callable = _FunctionImplementations.linear;
 static var EASE_IN_QUAD 		: Callable = _FunctionImplementations.ease_in_quad;
 static var EASE_OUT_QUAD 		: Callable = _FunctionImplementations.ease_out_quad;
 static var EASE_IN_OUT_QUAD 	: Callable = _FunctionImplementations.ease_in_out_quad;
+static var SMOOTHSTEP3 	: Callable:
+	get: return EASE_IN_OUT_QUAD
 
 static var EASE_IN_SINE 		: Callable = _FunctionImplementations.ease_in_sine;
 static var EASE_OUT_SINE 		: Callable = _FunctionImplementations.ease_out_sine;
