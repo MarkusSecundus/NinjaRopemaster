@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dk1ctt8lufi7j"]
+[gd_scene load_steps=7 format=3 uid="uid://dk1ctt8lufi7j"]
 
 [ext_resource type="PackedScene" uid="uid://fhk26kw5alwx" path="res://prefabs/Environment.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://urydr0rqxuxr" path="res://prefabs/Player.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://o6guho11r4et" path="res://prefabs/Crate.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://ck4lhl14781ud" path="res://prefabs/rope/RopePiece.tscn" id="4_r3t7a"]
+[ext_resource type="PackedScene" uid="uid://dv5h81qov6qq0" path="res://prefabs/rope/Rope.tscn" id="5_frwya"]
+[ext_resource type="Texture2D" uid="uid://b0vhuf0ephu81" path="res://sprites/crate.png" id="6_1yilr"]
 
 [node name="Scene" type="Node2D"]
 
@@ -15,7 +17,7 @@ position = Vector2(572, 271)
 [node name="Crate" parent="." instance=ExtResource("3")]
 
 [node name="Rope" type="Node2D" parent="."]
-position = Vector2(540, 256)
+position = Vector2(937, 69)
 
 [node name="RopeAnchor" type="StaticBody2D" parent="Rope"]
 
@@ -43,7 +45,23 @@ collision_layer = 4
 position = Vector2(0, -1)
 node_b = NodePath("../../RopePiece2")
 
+[node name="Rope2" parent="." instance=ExtResource("5_frwya")]
+position = Vector2(408, 174)
+
+[node name="Crate2" type="Sprite2D" parent="Rope2/AnchorBody" index="0"]
+scale = Vector2(0.435, 0.435)
+texture = ExtResource("6_1yilr")
+
+[node name="EndPointMarker" parent="Rope2" index="1"]
+position = Vector2(52, 161)
+
+[node name="Crate2" type="Sprite2D" parent="Rope2/EndPointMarker" index="0"]
+self_modulate = Color(0.298039, 0.772549, 0.835294, 1)
+scale = Vector2(0.435, 0.435)
+texture = ExtResource("6_1yilr")
+
 [editable path="Player"]
 [editable path="Rope/RopePiece"]
 [editable path="Rope/RopePiece2"]
 [editable path="Rope/RopePiece3"]
+[editable path="Rope2"]

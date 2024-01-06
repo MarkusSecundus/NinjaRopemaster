@@ -3,21 +3,21 @@
 [ext_resource type="Texture2D" uid="uid://dberi77buuq7o" path="res://sprites/rope_piece.png" id="1_nyg8f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7a1o"]
-size = Vector2(7, 26)
+size = Vector2(6, 26)
 
 [node name="RopePiece" type="RigidBody2D"]
 
 [node name="RopeSprite" type="Sprite2D" parent="."]
-position = Vector2(0, 11)
+position = Vector2(0, 9.8)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_nyg8f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 11)
+position = Vector2(0, 9.8)
 shape = SubResource("RectangleShape2D_p7a1o")
 
 [node name="Joint" type="PinJoint2D" parent="."]
-position = Vector2(0, 22)
 node_a = NodePath("..")
 
 [node name="AnchorPointMarker" type="Node2D" parent="."]
+position = Vector2(0, 20)
