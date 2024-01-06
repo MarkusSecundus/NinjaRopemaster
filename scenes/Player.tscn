@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://urydr0rqxuxr"]
+[gd_scene load_steps=6 format=3 uid="uid://urydr0rqxuxr"]
 
 [ext_resource type="Script" path="res://scripts/Controller.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://4gma43mbbufu" path="res://sprites/characters/player_stand.png" id="2"]
+[ext_resource type="Script" path="res://scripts/movement/basics/GroundChecker.gd" id="3_hmru5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xhb0y"]
 size = Vector2(15.8099, 23.8324)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2hy72"]
+size = Vector2(30, 8)
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(517, 325)
@@ -20,3 +24,13 @@ position = Vector2(0.499939, 5.99997)
 rotation = -3.14159
 scale = Vector2(1.45478, -2.1819)
 shape = SubResource("RectangleShape2D_xhb0y")
+
+[node name="Feet" type="Area2D" parent="."]
+collision_mask = 2
+script = ExtResource("3_hmru5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Feet"]
+position = Vector2(1, 30)
+shape = SubResource("RectangleShape2D_2hy72")
+
+[connection signal="body_exited" from="Feet" to="Feet" method="_on_collision_leave"]

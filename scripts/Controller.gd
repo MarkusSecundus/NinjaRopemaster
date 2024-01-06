@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var speed: int = 400
 @export var jump_force: int = 750
 
+
 # Set the gravity from project settings to be synced with RigidBody nodes
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") * 2
 
@@ -40,4 +41,13 @@ func move_stop():
 	velocity.x = 0
 	
 func jump():
+	if ! is_grounded():
+		print("Cannot jump because not grounded!")
+		return
 	velocity.y = -jump_force
+
+
+@onready var _feet : GroundChecker = $Feet;
+
+func is_grounded()->bool:
+	return _feet.is_grounded()
