@@ -6,18 +6,20 @@
 size = Vector2(6, 26)
 
 [node name="RopePiece" type="RigidBody2D"]
+linear_damp = 0.1
 
 [node name="RopeSprite" type="Sprite2D" parent="."]
-position = Vector2(0, 9.8)
+position = Vector2(0, 6.8)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_nyg8f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 9.8)
+position = Vector2(0, 6.8)
 shape = SubResource("RectangleShape2D_p7a1o")
 
 [node name="Joint" type="PinJoint2D" parent="."]
 node_a = NodePath("..")
+softness = 0.1
 
 [node name="AnchorPointMarker" type="Node2D" parent="."]
-position = Vector2(0, 20)
+position = Vector2(0, 13)

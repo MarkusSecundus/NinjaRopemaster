@@ -3,9 +3,10 @@
 [ext_resource type="Script" path="res://scripts/movement/rope/RopeController.gd" id="1_s5gg8"]
 [ext_resource type="PackedScene" uid="uid://ck4lhl14781ud" path="res://prefabs/rope/RopePiece.tscn" id="2_v5n7v"]
 
-[node name="Rope" type="Node2D"]
+[node name="Rope" type="Node2D" node_paths=PackedStringArray("end_point")]
 script = ExtResource("1_s5gg8")
 rope_segment = ExtResource("2_v5n7v")
+end_point = NodePath("EndPointMarker")
 
 [node name="AnchorBody" type="StaticBody2D" parent="."]
 

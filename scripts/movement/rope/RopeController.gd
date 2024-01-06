@@ -3,11 +3,11 @@ class_name RopeController
 
 @export var rope_segment : PackedScene
 
-
 @onready var anchor_point : StaticBody2D = $AnchorBody;
-@onready var end_point : Node2D = $EndPointMarker;
+@export var end_point : Node2D;
 
 func _unhandled_key_input(event):
+	return
 	if event.is_action_pressed("Jump"):
 		create_the_rope();
 
@@ -30,7 +30,7 @@ func create_the_rope()->void:
 		
 		new_segment.global_position =  last_point.global_position - joint.position
 		print("adding a segment at {0} ({1}) - segment size is {2}".format([new_segment.global_position, new_segment.position, segment_size]))
-		var to_rotate = GeometryUtils.look_at_rotation_rad(segment_size) - GeometryUtils.look_at_rotation_rad(direction) 
+		var to_rotate = -GeometryUtils.look_at_rotation_rad(direction) 
 		new_segment.rotation += to_rotate
 		
 		joint.node_b = last_body.get_path()
