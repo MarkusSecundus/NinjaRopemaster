@@ -52,6 +52,5 @@ func handle_jumping(jump_was_requested : bool)->void:
 
 
 @onready var _feet : GroundChecker = $Feet;
-
 func is_grounded()->bool:
 	return _feet.is_grounded()

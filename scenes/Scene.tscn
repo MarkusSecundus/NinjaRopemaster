@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dk1ctt8lufi7j"]
+[gd_scene load_steps=5 format=3 uid="uid://dk1ctt8lufi7j"]
 
-[ext_resource type="PackedScene" uid="uid://fhk26kw5alwx" path="res://scenes/Environment.tscn" id="1"]
-[ext_resource type="PackedScene" uid="uid://urydr0rqxuxr" path="res://scenes/Player.tscn" id="2"]
-[ext_resource type="PackedScene" uid="uid://o6guho11r4et" path="res://scenes/Crate.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://fhk26kw5alwx" path="res://prefabs/Environment.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://urydr0rqxuxr" path="res://prefabs/Player.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://o6guho11r4et" path="res://prefabs/Crate.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://ck4lhl14781ud" path="res://prefabs/rope/RopePiece.tscn" id="4_r3t7a"]
 
 [node name="Scene" type="Node2D"]
 
@@ -13,4 +14,36 @@ position = Vector2(572, 271)
 
 [node name="Crate" parent="." instance=ExtResource("3")]
 
+[node name="Rope" type="Node2D" parent="."]
+position = Vector2(540, 256)
+
+[node name="RopeAnchor" type="StaticBody2D" parent="Rope"]
+
+[node name="RopePiece" parent="Rope" instance=ExtResource("4_r3t7a")]
+position = Vector2(-8, -14)
+collision_layer = 4
+
+[node name="Joint" parent="Rope/RopePiece" index="2"]
+position = Vector2(0, -1)
+node_b = NodePath("../../RopeAnchor")
+
+[node name="RopePiece2" parent="Rope" instance=ExtResource("4_r3t7a")]
+position = Vector2(-8, 9)
+collision_layer = 4
+
+[node name="Joint" parent="Rope/RopePiece2" index="2"]
+position = Vector2(0, -1)
+node_b = NodePath("../../RopePiece")
+
+[node name="RopePiece3" parent="Rope" instance=ExtResource("4_r3t7a")]
+position = Vector2(-8, 31)
+collision_layer = 4
+
+[node name="Joint" parent="Rope/RopePiece3" index="2"]
+position = Vector2(0, -1)
+node_b = NodePath("../../RopePiece2")
+
 [editable path="Player"]
+[editable path="Rope/RopePiece"]
+[editable path="Rope/RopePiece2"]
+[editable path="Rope/RopePiece3"]
