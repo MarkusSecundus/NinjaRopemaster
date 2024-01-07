@@ -2,53 +2,51 @@ class_name BasicControlState
 extends PlayerController.IControlState
 
 
-@export var speed: int = 400
-@export var jump_force: int = 750
+@export var max_speed: int = 400
+@export var acceleration : float = 0.9
+@export var jump_force: Vector2 = Vector2(0,750)
 
 @export var jump_press_tolerance_seconds : float = 0.3
 
-var base : CharacterBody2D:
-	get: return base_controller as CharacterBody2D
+var base : RigidBody2D:
+	get: return base_controller as RigidBody2D
+
+func activate():
+	pass
 
 func physics_process(delta):
-	if not base.is_on_floor():
-		base.velocity.y += base.gravity * delta
-
+	#if not base.is_on_floor(): base.velocity.y += base.gravity * delta
 	if Input.is_action_pressed("Left"):
-		move_left()
+		move_direction(max_speed)
 	elif Input.is_action_pressed("Right"):
-		move_right()
+		move_direction(-max_speed)
 	else:
-		move_stop()
+		move_direction(0)
 		
 	handle_jumping(Input.is_action_just_pressed("Jump"))
 	
-	base.move_and_slide()
-	ScreenWrap.wrap_x_cbody(base)
+	#base.move_and_slide()
+	#ScreenWrap.wrap_x_cbody(base)
 		
 
-func move_left():
-	var p : PhysicsBody2D = null
-	base.velocity.x = -speed
-	base._sprite.flip_h = true  # face left
+func move_direction(direction: float)->void:
+	var velocity_direction = direction - base.linear_velocity.x
+	var to_apply = Vector2(velocity_direction * acceleration, 0)
+	print("applying force {0} - velocity is {1}".format([to_apply, base.linear_velocity]))
+	base.apply_force(to_apply)
 	
-func move_right():
-	base.velocity.x = speed
-	base._sprite.flip_h = false  # face right
-	
-func move_stop():
-	base.velocity.x = 0
+	if direction != 0: base._sprite.flip_h = (direction > 0)
 	
 var _last_jump_request_end : float = -INF
 func handle_jumping(jump_was_requested : bool)->void:
 	if is_grounded():
 		if jump_was_requested || (_last_jump_request_end > TimeUtils.seconds_elapsed):
 			_last_jump_request_end = -INF
-			base.velocity.y = -jump_force
+			base.apply_impulse(jump_force)
 	elif jump_was_requested:
 		_last_jump_request_end = TimeUtils.seconds_elapsed + jump_press_tolerance_seconds
 	
 
 
 func is_grounded()->bool:
-	return base._feet.is_grounded()
+	return base.is_grounded()

@@ -1,7 +1,7 @@
 # Simple movement and jump
 # Wrapping around the edges of the screen
 
-extends CharacterBody2D
+extends RigidBody2D
 class_name PlayerController
 
 # Set the gravity from project settings to be synced with RigidBody nodes
@@ -10,10 +10,10 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") * 2
 @onready var _feet : GroundChecker = $Feet;
 @onready var _sprite : Sprite2D = $Sprite2D
 
-@export var State_Basic : BasicControlState
-@export var State_ClimbingRope : ClimbingRopeControlState
+@export var state_basic : BasicControlState
+@export var state_climbingrope : ClimbingRopeControlState
 
-@onready var CurrentState : IControlState = self._change_state(State_Basic)
+@onready var current_state : IControlState = self.change_state(state_basic)
 
 class IControlState:
 	extends Resource
@@ -25,19 +25,18 @@ class IControlState:
 	func physics_process(delta: float)->void: InterfaceUtils.report_not_implemented_error(physics_process)
 
 
-func _change_state(new_state: IControlState)->IControlState:
-	print("changing state to {0} ({1}, {2})".format([new_state, State_Basic, State_ClimbingRope]))
-	if CurrentState:
-		CurrentState.deactivate()
-	CurrentState = new_state
-	if CurrentState:
-		CurrentState.base_controller = self
-		CurrentState.activate()
-	return CurrentState
+func change_state(new_state: IControlState)->IControlState:
+	if current_state:
+		current_state.deactivate()
+	current_state = new_state
+	if current_state:
+		current_state.base_controller = self
+		current_state.activate()
+	return current_state
 
 func _physics_process(delta):
-	if CurrentState:
-		CurrentState.physics_process(delta)
+	if current_state:
+		current_state.physics_process(delta)
 		
 		
 
