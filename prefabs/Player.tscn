@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://urydr0rqxuxr"]
 
-[ext_resource type="Script" path="res://scripts/movement/basics/Controller.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/movement/basics/PlayerController.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://4gma43mbbufu" path="res://sprites/characters/player_stand.png" id="2"]
 [ext_resource type="Script" path="res://scripts/movement/basics/BasicControlState.gd" id="2_evxp8"]
 [ext_resource type="Script" path="res://scripts/movement/basics/GroundChecker.gd" id="3_hmru5"]
