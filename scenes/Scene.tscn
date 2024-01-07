@@ -1,11 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://dk1ctt8lufi7j"]
+[gd_scene load_steps=9 format=3 uid="uid://dk1ctt8lufi7j"]
 
 [ext_resource type="PackedScene" uid="uid://fhk26kw5alwx" path="res://prefabs/Environment.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://urydr0rqxuxr" path="res://prefabs/Player.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://o6guho11r4et" path="res://prefabs/Crate.tscn" id="3"]
+[ext_resource type="Script" path="res://scripts/movement/basics/BasicControlState.gd" id="3_a38nh"]
 [ext_resource type="PackedScene" uid="uid://ck4lhl14781ud" path="res://prefabs/rope/RopePiece.tscn" id="4_r3t7a"]
 [ext_resource type="PackedScene" uid="uid://dv5h81qov6qq0" path="res://prefabs/rope/Rope.tscn" id="5_frwya"]
 [ext_resource type="Texture2D" uid="uid://b0vhuf0ephu81" path="res://sprites/crate.png" id="6_1yilr"]
+
+[sub_resource type="Resource" id="Resource_0186s"]
+resource_local_to_scene = true
+script = ExtResource("3_a38nh")
+speed = 400
+jump_force = 750
+jump_press_tolerance_seconds = 0.3
 
 [node name="Scene" type="Node2D"]
 
@@ -13,6 +21,7 @@
 
 [node name="Player" parent="." instance=ExtResource("2")]
 position = Vector2(583, 20)
+State_Basic = SubResource("Resource_0186s")
 
 [node name="Crate" parent="." instance=ExtResource("3")]
 
