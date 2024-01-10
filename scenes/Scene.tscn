@@ -16,7 +16,7 @@ rough = true
 [sub_resource type="Resource" id="Resource_rujf1"]
 script = ExtResource("3_a38nh")
 max_speed = 400
-acceleration = 1.7
+acceleration = 3.0
 jump_force = Vector2(0, -750)
 air_control_factor = 0.3
 jump_press_tolerance_seconds = 0.3

@@ -13,6 +13,7 @@ func _unhandled_key_input(event):
 
 var _already_created := false
 func create_the_rope()->void:
+	return
 	if _already_created: return
 	_already_created = true
 	print("starting rope creation!")
