@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dk1ctt8lufi7j"]
+[gd_scene load_steps=14 format=3 uid="uid://dk1ctt8lufi7j"]
 
 [ext_resource type="PackedScene" uid="uid://fhk26kw5alwx" path="res://prefabs/Environment.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://urydr0rqxuxr" path="res://prefabs/Player.tscn" id="2"]
@@ -9,15 +9,26 @@
 [ext_resource type="PackedScene" uid="uid://dv5h81qov6qq0" path="res://prefabs/rope/Rope.tscn" id="5_frwya"]
 [ext_resource type="Texture2D" uid="uid://b0vhuf0ephu81" path="res://sprites/crate.png" id="6_1yilr"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2fhxo"]
+friction = 0.0
+rough = true
+
 [sub_resource type="Resource" id="Resource_rujf1"]
 script = ExtResource("3_a38nh")
 max_speed = 400
-acceleration = 0.9
-jump_force = Vector2(0, 750)
+acceleration = 1.7
+jump_force = Vector2(0, -750)
+air_control_factor = 0.3
 jump_press_tolerance_seconds = 0.3
 
 [sub_resource type="Resource" id="Resource_2emx4"]
 script = ExtResource("4_5rw58")
+
+[sub_resource type="PhysicsMaterial" id="16"]
+friction = 0.31
+
+[sub_resource type="RectangleShape2D" id="15"]
+size = Vector2(188, 30)
 
 [node name="Scene" type="Node2D"]
 
@@ -25,11 +36,28 @@ script = ExtResource("4_5rw58")
 
 [node name="Player" parent="." instance=ExtResource("2")]
 position = Vector2(583, 20)
+physics_material_override = SubResource("PhysicsMaterial_2fhxo")
+can_sleep = false
 lock_rotation = true
+freeze_mode = 1
 state_basic = SubResource("Resource_rujf1")
 state_climbingrope = SubResource("Resource_2emx4")
 
-[node name="Crate" parent="." instance=ExtResource("3")]
+[node name="Crate" type="StaticBody2D" parent="."]
+position = Vector2(528, 94)
+collision_layer = 2
+collision_mask = 3
+physics_material_override = SubResource("16")
+
+[node name="Sprite2D" type="Sprite2D" parent="Crate"]
+scale = Vector2(4.21001, 0.65)
+texture = ExtResource("6_1yilr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Crate"]
+shape = SubResource("15")
+
+[node name="Crate2" parent="." instance=ExtResource("3")]
+position = Vector2(321, 433)
 
 [node name="Rope" type="Node2D" parent="."]
 position = Vector2(937, 69)

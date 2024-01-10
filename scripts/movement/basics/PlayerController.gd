@@ -22,7 +22,8 @@ class IControlState:
 
 	func activate()->void: pass
 	func deactivate()->void: pass
-	func physics_process(delta: float)->void: InterfaceUtils.report_not_implemented_error(physics_process)
+	func physics_process(delta: float)->void: pass #InterfaceUtils.report_not_implemented_error(physics_process)
+	func integrate_forces(state: PhysicsDirectBodyState2D)->void: pass#InterfaceUtils.report_not_implemented_error(integrate_forces)
 
 
 func change_state(new_state: IControlState)->IControlState:
@@ -34,10 +35,13 @@ func change_state(new_state: IControlState)->IControlState:
 		current_state.activate()
 	return current_state
 
-func _physics_process(delta):
+func _physics_process(delta: float)->void:
 	if current_state:
 		current_state.physics_process(delta)
 		
+func _integrate_forces(state: PhysicsDirectBodyState2D)->void:
+	if current_state:
+		current_state.integrate_forces(state)
 		
 
 func is_grounded()->bool:
