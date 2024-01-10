@@ -2,9 +2,9 @@ class_name BasicControlState
 extends PlayerController.IControlState
 
 
-@export var max_speed: int = 400
-@export var acceleration : float = 0.9
-@export var jump_force: Vector2 = Vector2(0,750)
+@export var max_speed: int = 450
+@export var acceleration : float = 3
+@export var jump_force: Vector2 = Vector2(0,-600)
 @export var air_control_factor : float = 0.3
 
 @export var jump_press_tolerance_seconds : float = 0.3

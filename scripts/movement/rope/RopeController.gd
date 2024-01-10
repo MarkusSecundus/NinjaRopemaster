@@ -13,10 +13,8 @@ func _unhandled_key_input(event):
 
 var _already_created := false
 func create_the_rope()->void:
-	return
 	if _already_created: return
 	_already_created = true
-	print("starting rope creation!")
 	var direction = end_point.global_position - anchor_point.global_position
 	var length_remaining = direction.length()
 	
@@ -39,6 +37,3 @@ func create_the_rope()->void:
 		length_remaining -= segment_size.length()
 		last_body = new_segment
 		last_point = anchor_point_marker
-		
-		
-	print("rope created")
