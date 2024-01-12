@@ -1,20 +1,21 @@
 [gd_scene load_steps=3 format=3 uid="uid://ck4lhl14781ud"]
 
-[ext_resource type="Texture2D" uid="uid://dberi77buuq7o" path="res://sprites/rope_piece.png" id="1_nyg8f"]
+[ext_resource type="Texture2D" uid="uid://8u53e1y0k2fj" path="res://sprites/characters/rope.png" id="2_3c6xd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7a1o"]
-size = Vector2(6, 26)
+size = Vector2(9, 28)
 
 [node name="RopePiece" type="RigidBody2D"]
 linear_damp = 0.1
 
-[node name="RopeSprite" type="Sprite2D" parent="."]
-position = Vector2(0, 6.8)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_nyg8f")
+[node name="RopeSprite2" type="Sprite2D" parent="."]
+position = Vector2(-0.253597, 9.01761)
+rotation = -0.19593
+scale = Vector2(0.154888, 0.154888)
+texture = ExtResource("2_3c6xd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6.8)
+position = Vector2(0.246403, 9.01761)
 shape = SubResource("RectangleShape2D_p7a1o")
 
 [node name="Joint" type="PinJoint2D" parent="."]
@@ -22,4 +23,4 @@ node_a = NodePath("..")
 softness = 0.1
 
 [node name="AnchorPointMarker" type="Node2D" parent="."]
-position = Vector2(0, 13)
+position = Vector2(-0.253597, 20.0176)

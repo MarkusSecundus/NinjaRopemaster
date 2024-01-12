@@ -13,6 +13,10 @@ rough = true
 
 [node name="Scene" type="Node2D"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(615, 301)
+zoom = Vector2(1.82, 1.82)
+
 [node name="Environment" parent="." instance=ExtResource("1")]
 
 [node name="Player" parent="." instance=ExtResource("2")]
