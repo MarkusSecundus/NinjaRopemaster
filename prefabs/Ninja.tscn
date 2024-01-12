@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c6c42jh8kb2h"]
+[gd_scene load_steps=20 format=3 uid="uid://c6c42jh8kb2h"]
 
 [ext_resource type="Texture2D" uid="uid://bhq06r05uke4o" path="res://sprites/characters/ninja/torso.png" id="1_0lpve"]
 [ext_resource type="Texture2D" uid="uid://dqrhjqt8tf7wl" path="res://sprites/characters/ninja/head.png" id="2_nktre"]
@@ -18,109 +18,180 @@
 [ext_resource type="Texture2D" uid="uid://c1ejmkb3xwixc" path="res://sprites/characters/ninja/hand_R.png" id="16_gfqd3"]
 [ext_resource type="Texture2D" uid="uid://cakekvvh3yrig" path="res://sprites/characters/ninja/handThumb_R.png" id="16_o3d40"]
 
+[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_ol2gw"]
+
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_mejrv"]
+enabled = true
+modification_count = 1
+modifications/0 = SubResource("SkeletonModification2DCCDIK_ol2gw")
+
 [node name="Ninja" type="Node2D"]
 
-[node name="Torso" type="Sprite2D" parent="."]
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+modification_stack = SubResource("SkeletonModificationStack2D_mejrv")
+
+[node name="TorsoBone2D" type="Bone2D" parent="Skeleton2D"]
 position = Vector2(77, 162)
+rest = Transform2D(1, 0, 0, 1, 77, 162)
+
+[node name="Torso" type="Sprite2D" parent="Skeleton2D/TorsoBone2D"]
+z_index = 20
+z_as_relative = false
 texture = ExtResource("1_0lpve")
 offset = Vector2(-77, -162)
 
-[node name="Head" type="Sprite2D" parent="Torso"]
-z_index = 1
+[node name="HeadBone2D" type="Bone2D" parent="Skeleton2D/TorsoBone2D"]
 position = Vector2(-58.8741, -469.949)
 rotation = 0.0191255
+rest = Transform2D(0.999817, 0.0191243, -0.0191243, 0.999817, -58.8741, -469.949)
+
+[node name="Head" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/HeadBone2D"]
+z_index = 22
+z_as_relative = false
 texture = ExtResource("2_nktre")
 offset = Vector2(-12.7325, -233.561)
 
-[node name="Eyes" type="Sprite2D" parent="Torso/Head"]
-z_index = 1
+[node name="EyesBone2D" type="Bone2D" parent="Skeleton2D/TorsoBone2D/HeadBone2D"]
 position = Vector2(30.3937, -246.505)
 rotation = 0.00429041
-scale = Vector2(1, 1)
+rest = Transform2D(0.999991, 0.0042904, -0.0042904, 0.999991, 30.3937, -246.505)
+
+[node name="Eyes" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/HeadBone2D/EyesBone2D"]
+z_index = 23
+z_as_relative = false
 texture = ExtResource("3_bugpi")
 
-[node name="LegHighL" type="Sprite2D" parent="Torso"]
-z_index = -2
+[node name="LegHighLBone2D" type="Bone2D" parent="Skeleton2D/TorsoBone2D"]
 position = Vector2(103.044, 168)
 scale = Vector2(1.14974, 0.981663)
+rest = Transform2D(1.14974, 0, 0, 0.981663, 103.044, 168)
+
+[node name="LegHighL" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/LegHighLBone2D"]
+z_index = 15
+z_as_relative = false
 texture = ExtResource("4_b0e85")
 offset = Vector2(17.8972, 153.566)
 
-[node name="LegLowL" type="Sprite2D" parent="Torso/LegHighL"]
-z_index = -1
+[node name="LegLowLBone2D" type="Bone2D" parent="Skeleton2D/TorsoBone2D/LegHighLBone2D"]
 position = Vector2(56.1836, 337.183)
+scale = Vector2(1, 1)
+rest = Transform2D(1, 0, 0, 1, 56.1836, 337.183)
+
+[node name="LegLowL" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/LegHighLBone2D/LegLowLBone2D"]
+z_index = 14
+z_as_relative = false
 texture = ExtResource("5_eu65y")
 offset = Vector2(14.499, 132.428)
 
-[node name="FootL" type="Sprite2D" parent="Torso/LegHighL/LegLowL"]
-z_index = -1
+[node name="FootLBone2D" type="Bone2D" parent="Skeleton2D/TorsoBone2D/LegHighLBone2D/LegLowLBone2D"]
 position = Vector2(38.9661, 281.156)
+rest = Transform2D(1, 0, 0, 1, 38.9661, 281.156)
+
+[node name="FootL" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/LegHighLBone2D/LegLowLBone2D/FootLBone2D"]
+z_index = 13
+z_as_relative = false
 texture = ExtResource("6_4vedb")
 offset = Vector2(66.1517, 91.6812)
 
-[node name="LegHighR" type="Sprite2D" parent="Torso"]
-z_index = -1
+[node name="LegHighRBone2D" type="Bone2D" parent="Skeleton2D/TorsoBone2D"]
 position = Vector2(-101.441, 114.619)
 scale = Vector2(1.09188, 1.02331)
+rest = Transform2D(1.09188, 0, 0, 1.02331, -101.441, 114.619)
+
+[node name="LegHighR" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/LegHighRBone2D"]
+z_index = 18
+z_as_relative = false
 texture = ExtResource("5_1jw8y")
 offset = Vector2(-5.77777, 187.033)
 
-[node name="LegLowR" type="Sprite2D" parent="Torso/LegHighR"]
-z_index = -1
+[node name="LegLowRBone2D" type="Bone2D" parent="Skeleton2D/TorsoBone2D/LegHighRBone2D"]
 position = Vector2(-7.25516, 369.217)
 scale = Vector2(0.982619, 1.00488)
+rest = Transform2D(0.982619, 0, 0, 1.00488, -7.25516, 369.217)
+
+[node name="LegLowR" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/LegHighRBone2D/LegLowRBone2D"]
+z_index = 17
 texture = ExtResource("7_0jvx5")
 offset = Vector2(8.00001, 111.47)
 
-[node name="FootR" type="Sprite2D" parent="Torso/LegHighR/LegLowR"]
-z_index = -1
+[node name="FootRBone2D" type="Bone2D" parent="Skeleton2D/TorsoBone2D/LegHighRBone2D/LegLowRBone2D"]
 position = Vector2(14.3192, 264.716)
 scale = Vector2(1.01286, 1.0567)
+rest = Transform2D(1.01286, 0, 0, 1.0567, 14.3192, 264.716)
+
+[node name="FootR" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/LegHighRBone2D/LegLowRBone2D/FootRBone2D"]
+z_index = 16
+z_as_relative = false
 texture = ExtResource("9_ay6m0")
 offset = Vector2(66.5926, 78.75)
 
-[node name="ArmHighL" type="Sprite2D" parent="Torso"]
-z_index = -3
+[node name="ArmHighLBone2D" type="Bone2D" parent="Skeleton2D/TorsoBone2D"]
 position = Vector2(115.545, -450.371)
+rest = Transform2D(1, 0, 0, 1, 115.545, -450.371)
+
+[node name="ArmHighL" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/ArmHighLBone2D"]
+z_index = 19
+z_as_relative = false
 texture = ExtResource("10_0cbh5")
 offset = Vector2(127.256, 117.892)
 
-[node name="ArmLowL" type="Sprite2D" parent="Torso/ArmHighL"]
-z_index = 5
+[node name="ArmLowLBone2D" type="Bone2D" parent="Skeleton2D/TorsoBone2D/ArmHighLBone2D"]
 position = Vector2(239.555, 232.522)
+rest = Transform2D(1, 0, 0, 1, 239.555, 232.522)
+
+[node name="ArmLowL" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/ArmHighLBone2D/ArmLowLBone2D"]
+z_index = 24
+z_as_relative = false
 texture = ExtResource("11_m3d12")
 offset = Vector2(-40.425, 100.09)
 
-[node name="HandL" type="Sprite2D" parent="Torso/ArmHighL/ArmLowL"]
-z_index = -1
+[node name="HandLBone2D" type="Bone2D" parent="Skeleton2D/TorsoBone2D/ArmHighLBone2D/ArmLowLBone2D"]
 position = Vector2(-74.3096, 249.628)
+rest = Transform2D(1, 0, 0, 1, -74.3096, 249.628)
+
+[node name="HandL" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/ArmHighLBone2D/ArmLowLBone2D/HandLBone2D"]
+z_index = 23
+z_as_relative = false
 texture = ExtResource("12_u212g")
 offset = Vector2(-14, 29)
 
-[node name="HandThumbL" type="Sprite2D" parent="Torso/ArmHighL/ArmLowL/HandL"]
-z_index = -1
+[node name="HandThumbL" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/ArmHighLBone2D/ArmLowLBone2D/HandLBone2D/HandL"]
+z_index = 22
+z_as_relative = false
 position = Vector2(-63, 23)
 texture = ExtResource("12_juueq")
 
-[node name="ArmHighR" type="Sprite2D" parent="Torso"]
+[node name="ArmHighRBone2D" type="Bone2D" parent="Skeleton2D/TorsoBone2D"]
 position = Vector2(-278.5, -432)
+rest = Transform2D(1, 0, 0, 1, -278.5, -432)
+
+[node name="ArmHighR" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/ArmHighRBone2D"]
+z_index = 21
 texture = ExtResource("11_s040l")
 offset = Vector2(-93, 153)
 
-[node name="ArmLowR" type="Sprite2D" parent="Torso/ArmHighR"]
-z_index = 5
+[node name="ArmLowRBone2D" type="Bone2D" parent="Skeleton2D/TorsoBone2D/ArmHighRBone2D"]
 position = Vector2(-176.546, 296.99)
+rest = Transform2D(1, 0, 0, 1, -176.546, 296.99)
+
+[node name="ArmLowR" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/ArmHighRBone2D/ArmLowRBone2D"]
+z_index = 25
 texture = ExtResource("15_42844")
 offset = Vector2(55.4397, 105.876)
 
-[node name="HandR" type="Sprite2D" parent="Torso/ArmHighR/ArmLowR"]
-z_index = -1
+[node name="HandRBone2D" type="Bone2D" parent="Skeleton2D/TorsoBone2D/ArmHighRBone2D/ArmLowRBone2D"]
 position = Vector2(144.634, 235.08)
 rotation = -0.000792657
+rest = Transform2D(1, -0.000792657, 0.000792657, 1, 144.634, 235.08)
+
+[node name="HandR" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/ArmHighRBone2D/ArmLowRBone2D/HandRBone2D"]
+z_index = 24
+z_as_relative = false
 texture = ExtResource("16_gfqd3")
 offset = Vector2(21.7381, 28.2726)
 
-[node name="HandThumbR" type="Sprite2D" parent="Torso/ArmHighR/ArmLowR/HandR"]
-z_index = -1
-position = Vector2(73.7381, 8.27262)
+[node name="HandThumbR" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/ArmHighRBone2D/ArmLowRBone2D/HandRBone2D/HandR"]
+z_index = 23
+z_as_relative = false
+position = Vector2(73.7381, 8.27267)
 texture = ExtResource("16_o3d40")
