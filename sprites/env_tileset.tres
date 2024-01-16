@@ -1,0 +1,32 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://d37wiseuhlpj5"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_l2h5m"]
+load_path = "res://.godot/imported/env_spritesheet.png-3040185a61c26c26aff62a236a0eebc6.ctex"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c4r8i"]
+texture = SubResource("CompressedTexture2D_l2h5m")
+texture_region_size = Vector2i(256, 256)
+3:1/0 = 0
+3:2/0 = 0
+3:3/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+4:3/0 = 0
+4:2/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+5:2/0 = 0
+5:3/0 = 0
+5:4/0 = 0
+2:1/0 = 0
+1:1/0 = 0
+1:2/0 = 0
+1:3/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+2:3/0 = 0
+2:2/0 = 0
+
+[resource]
+tile_size = Vector2i(256, 256)
+sources/1 = SubResource("TileSetAtlasSource_c4r8i")

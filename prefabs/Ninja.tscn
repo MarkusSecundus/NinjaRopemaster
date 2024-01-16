@@ -74,7 +74,6 @@ offset = Vector2(17.8972, 153.566)
 
 [node name="LegLowLBone2D" type="Bone2D" parent="Skeleton2D/TorsoBone2D/LegHighLBone2D"]
 position = Vector2(56.1836, 337.183)
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 56.1836, 337.183)
 
 [node name="LegLowL" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/LegHighLBone2D/LegLowLBone2D"]
@@ -127,6 +126,7 @@ offset = Vector2(66.5926, 78.75)
 
 [node name="ArmHighLBone2D" type="Bone2D" parent="Skeleton2D/TorsoBone2D"]
 position = Vector2(115.545, -450.371)
+rotation = -0.396449
 rest = Transform2D(1, 0, 0, 1, 115.545, -450.371)
 
 [node name="ArmHighL" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/ArmHighLBone2D"]
@@ -137,6 +137,8 @@ offset = Vector2(127.256, 117.892)
 
 [node name="ArmLowLBone2D" type="Bone2D" parent="Skeleton2D/TorsoBone2D/ArmHighLBone2D"]
 position = Vector2(239.555, 232.522)
+rotation = 0.303629
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 239.555, 232.522)
 
 [node name="ArmLowL" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/ArmHighLBone2D/ArmLowLBone2D"]
@@ -147,6 +149,8 @@ offset = Vector2(-40.425, 100.09)
 
 [node name="HandLBone2D" type="Bone2D" parent="Skeleton2D/TorsoBone2D/ArmHighLBone2D/ArmLowLBone2D"]
 position = Vector2(-74.3096, 249.628)
+rotation = 0.147199
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -74.3096, 249.628)
 
 [node name="HandL" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/ArmHighLBone2D/ArmLowLBone2D/HandLBone2D"]
