@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c6c42jh8kb2h"]
+[gd_scene load_steps=30 format=3 uid="uid://c6c42jh8kb2h"]
 
 [ext_resource type="Texture2D" uid="uid://bhq06r05uke4o" path="res://sprites/characters/ninja/torso.png" id="1_0lpve"]
 [ext_resource type="Texture2D" uid="uid://dqrhjqt8tf7wl" path="res://sprites/characters/ninja/head.png" id="2_nktre"]
@@ -18,14 +18,75 @@
 [ext_resource type="Texture2D" uid="uid://c1ejmkb3xwixc" path="res://sprites/characters/ninja/hand_R.png" id="16_gfqd3"]
 [ext_resource type="Texture2D" uid="uid://cakekvvh3yrig" path="res://sprites/characters/ninja/handThumb_R.png" id="16_o3d40"]
 
-[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_ol2gw"]
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_vix2m"]
+target_nodepath = NodePath("IKTargets/HandL")
+flip_bend_direction = true
+joint_one_bone_idx = 9
+joint_one_bone2d_node = NodePath("TorsoBone2D/ArmHighLBone2D")
+joint_two_bone_idx = 10
+joint_two_bone2d_node = NodePath("TorsoBone2D/ArmHighLBone2D/ArmLowLBone2D")
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_r005f"]
+target_nodepath = NodePath("IKTargets/HandR")
+flip_bend_direction = true
+joint_one_bone_idx = 12
+joint_one_bone2d_node = NodePath("TorsoBone2D/ArmHighRBone2D")
+joint_two_bone_idx = 13
+joint_two_bone2d_node = NodePath("TorsoBone2D/ArmHighRBone2D/ArmLowRBone2D")
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_t0s1f"]
+target_nodepath = NodePath("IKTargets/FootL")
+joint_one_bone_idx = 3
+joint_one_bone2d_node = NodePath("TorsoBone2D/LegHighLBone2D")
+joint_two_bone_idx = 4
+joint_two_bone2d_node = NodePath("TorsoBone2D/LegHighLBone2D/LegLowLBone2D")
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_hfj3o"]
+target_nodepath = NodePath("IKTargets/FootR")
+joint_one_bone_idx = 6
+joint_one_bone2d_node = NodePath("TorsoBone2D/LegHighRBone2D")
+joint_two_bone_idx = 7
+joint_two_bone2d_node = NodePath("TorsoBone2D/LegHighRBone2D/LegLowRBone2D")
+
+[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_cbnu6"]
+bone_index = 5
+bone2d_node = NodePath("TorsoBone2D/LegHighLBone2D/LegLowLBone2D/FootLBone2D")
+target_nodepath = NodePath("IKTargets/FootLookL")
+
+[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_hof80"]
+bone_index = 8
+bone2d_node = NodePath("TorsoBone2D/LegHighRBone2D/LegLowRBone2D/FootRBone2D")
+target_nodepath = NodePath("IKTargets/FootLookR")
 
 [sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_mejrv"]
 enabled = true
-modification_count = 1
-modifications/0 = SubResource("SkeletonModification2DCCDIK_ol2gw")
+modification_count = 6
+modifications/0 = SubResource("SkeletonModification2DTwoBoneIK_vix2m")
+modifications/1 = SubResource("SkeletonModification2DTwoBoneIK_r005f")
+modifications/2 = SubResource("SkeletonModification2DTwoBoneIK_t0s1f")
+modifications/3 = SubResource("SkeletonModification2DTwoBoneIK_hfj3o")
+modifications/4 = SubResource("SkeletonModification2DLookAt_cbnu6")
+modifications/5 = SubResource("SkeletonModification2DLookAt_hof80")
 
-[node name="Ninja" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stbo7"]
+size = Vector2(630, 1580)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nhncg"]
+radius = 238.002
+
+[sub_resource type="Animation" id="Animation_125uf"]
+resource_name = "Idle"
+
+[sub_resource type="Animation" id="Animation_mdx0p"]
+resource_name = "Walk"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ovavb"]
+_data = {
+"Idle": SubResource("Animation_125uf"),
+"Walk": SubResource("Animation_mdx0p")
+}
+
+[node name="Ninja" type="RigidBody2D"]
 
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
 modification_stack = SubResource("SkeletonModificationStack2D_mejrv")
@@ -63,28 +124,37 @@ texture = ExtResource("3_bugpi")
 
 [node name="LegHighLBone2D" type="Bone2D" parent="Skeleton2D/TorsoBone2D"]
 position = Vector2(103.044, 168)
-scale = Vector2(1.14974, 0.981663)
+rotation = -0.0183343
+scale = Vector2(1, 1)
+skew = -6.69956e-05
 rest = Transform2D(1.14974, 0, 0, 0.981663, 103.044, 168)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="LegHighL" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/LegHighLBone2D"]
 z_index = 15
 z_as_relative = false
+position = Vector2(-5.34382, -3.59035)
+scale = Vector2(1.07222, 1.07222)
 texture = ExtResource("4_b0e85")
 offset = Vector2(17.8972, 153.566)
 
 [node name="LegLowLBone2D" type="Bone2D" parent="Skeleton2D/TorsoBone2D/LegHighLBone2D"]
 position = Vector2(56.1836, 337.183)
 rest = Transform2D(1, 0, 0, 1, 56.1836, 337.183)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="LegLowL" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/LegHighLBone2D/LegLowLBone2D"]
 z_index = 14
 z_as_relative = false
+position = Vector2(-14.5148, 33.2378)
+scale = Vector2(1.09512, 1.09512)
 texture = ExtResource("5_eu65y")
 offset = Vector2(14.499, 132.428)
 
 [node name="FootLBone2D" type="Bone2D" parent="Skeleton2D/TorsoBone2D/LegHighLBone2D/LegLowLBone2D"]
-position = Vector2(38.9661, 281.156)
+position = Vector2(31.2965, 353.605)
 rest = Transform2D(1, 0, 0, 1, 38.9661, 281.156)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="FootL" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/LegHighLBone2D/LegLowLBone2D/FootLBone2D"]
 z_index = 13
@@ -94,12 +164,14 @@ offset = Vector2(66.1517, 91.6812)
 
 [node name="LegHighRBone2D" type="Bone2D" parent="Skeleton2D/TorsoBone2D"]
 position = Vector2(-101.441, 114.619)
-scale = Vector2(1.09188, 1.02331)
 rest = Transform2D(1.09188, 0, 0, 1.02331, -101.441, 114.619)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="LegHighR" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/LegHighRBone2D"]
 z_index = 18
 z_as_relative = false
+position = Vector2(9.11019, 10.6733)
+scale = Vector2(1.06115, 1.06115)
 texture = ExtResource("5_1jw8y")
 offset = Vector2(-5.77777, 187.033)
 
@@ -107,20 +179,25 @@ offset = Vector2(-5.77777, 187.033)
 position = Vector2(-7.25516, 369.217)
 scale = Vector2(0.982619, 1.00488)
 rest = Transform2D(0.982619, 0, 0, 1.00488, -7.25516, 369.217)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="LegLowR" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/LegHighRBone2D/LegLowRBone2D"]
 z_index = 17
+position = Vector2(13.8894, 60.322)
+scale = Vector2(1.06606, 1.06606)
 texture = ExtResource("7_0jvx5")
 offset = Vector2(8.00001, 111.47)
 
 [node name="FootRBone2D" type="Bone2D" parent="Skeleton2D/TorsoBone2D/LegHighRBone2D/LegLowRBone2D"]
-position = Vector2(14.3192, 264.716)
+position = Vector2(29.8779, 357.607)
 scale = Vector2(1.01286, 1.0567)
 rest = Transform2D(1.01286, 0, 0, 1.0567, 14.3192, 264.716)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="FootR" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/LegHighRBone2D/LegLowRBone2D/FootRBone2D"]
 z_index = 16
 z_as_relative = false
+scale = Vector2(1.01696, 1.01696)
 texture = ExtResource("9_ay6m0")
 offset = Vector2(66.5926, 78.75)
 
@@ -128,6 +205,7 @@ offset = Vector2(66.5926, 78.75)
 position = Vector2(115.545, -450.371)
 rotation = -0.396449
 rest = Transform2D(1, 0, 0, 1, 115.545, -450.371)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="ArmHighL" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/ArmHighLBone2D"]
 z_index = 19
@@ -140,6 +218,7 @@ position = Vector2(239.555, 232.522)
 rotation = 0.303629
 scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 239.555, 232.522)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="ArmLowL" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/ArmHighLBone2D/ArmLowLBone2D"]
 z_index = 24
@@ -168,6 +247,7 @@ texture = ExtResource("12_juueq")
 [node name="ArmHighRBone2D" type="Bone2D" parent="Skeleton2D/TorsoBone2D"]
 position = Vector2(-278.5, -432)
 rest = Transform2D(1, 0, 0, 1, -278.5, -432)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="ArmHighR" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/ArmHighRBone2D"]
 z_index = 21
@@ -177,6 +257,7 @@ offset = Vector2(-93, 153)
 [node name="ArmLowRBone2D" type="Bone2D" parent="Skeleton2D/TorsoBone2D/ArmHighRBone2D"]
 position = Vector2(-176.546, 296.99)
 rest = Transform2D(1, 0, 0, 1, -176.546, 296.99)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="ArmLowR" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/ArmHighRBone2D/ArmLowRBone2D"]
 z_index = 25
@@ -199,3 +280,36 @@ z_index = 23
 z_as_relative = false
 position = Vector2(73.7381, 8.27267)
 texture = ExtResource("16_o3d40")
+
+[node name="IKTargets" type="Node2D" parent="Skeleton2D"]
+
+[node name="HandL" type="Node2D" parent="Skeleton2D/IKTargets"]
+position = Vector2(656, -248)
+
+[node name="HandR" type="Node2D" parent="Skeleton2D/IKTargets"]
+position = Vector2(-280, 258)
+
+[node name="FootL" type="Node2D" parent="Skeleton2D/IKTargets"]
+position = Vector2(215, 1014)
+
+[node name="FootR" type="Node2D" parent="Skeleton2D/IKTargets"]
+position = Vector2(-152, 1015)
+
+[node name="FootLookL" type="Node2D" parent="Skeleton2D/IKTargets"]
+position = Vector2(915, 916)
+
+[node name="FootLookR" type="Node2D" parent="Skeleton2D/IKTargets"]
+position = Vector2(577, 878)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(69, 429)
+shape = SubResource("RectangleShape2D_stbo7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(20, -555)
+shape = SubResource("CircleShape2D_nhncg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ovavb")
+}
