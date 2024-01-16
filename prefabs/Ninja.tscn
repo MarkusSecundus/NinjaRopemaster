@@ -152,7 +152,10 @@ texture = ExtResource("5_eu65y")
 offset = Vector2(14.499, 132.428)
 
 [node name="FootLBone2D" type="Bone2D" parent="Skeleton2D/TorsoBone2D/LegHighLBone2D/LegLowLBone2D"]
-position = Vector2(31.2965, 353.605)
+position = Vector2(29.0803, 343.85)
+rotation = -0.343971
+scale = Vector2(0.999992, 0.999993)
+skew = 6.73532e-05
 rest = Transform2D(1, 0, 0, 1, 38.9661, 281.156)
 metadata/_local_pose_override_enabled_ = true
 
@@ -189,8 +192,10 @@ texture = ExtResource("7_0jvx5")
 offset = Vector2(8.00001, 111.47)
 
 [node name="FootRBone2D" type="Bone2D" parent="Skeleton2D/TorsoBone2D/LegHighRBone2D/LegLowRBone2D"]
-position = Vector2(29.8779, 357.607)
-scale = Vector2(1.01286, 1.0567)
+position = Vector2(29.8763, 357.606)
+rotation = -0.40683
+scale = Vector2(1.00932, 1.0607)
+skew = -0.0165236
 rest = Transform2D(1.01286, 0, 0, 1.0567, 14.3192, 264.716)
 metadata/_local_pose_override_enabled_ = true
 
@@ -302,6 +307,7 @@ position = Vector2(915, 916)
 position = Vector2(577, 878)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(69, 429)
 shape = SubResource("RectangleShape2D_stbo7")
 
