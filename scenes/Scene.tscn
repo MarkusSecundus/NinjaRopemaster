@@ -14,7 +14,7 @@ rough = true
 [node name="Scene" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(963, 541)
+position = Vector2(970, 711)
 
 [node name="Environment" parent="." instance=ExtResource("1")]
 
