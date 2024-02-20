@@ -8,6 +8,8 @@ script = ExtResource("1_s5gg8")
 rope_segment = ExtResource("2_v5n7v")
 end_point = NodePath("EndPointMarker")
 
+[node name="Anchor" type="RigidBody2D" parent="."]
+
 [node name="AnchorBody" type="StaticBody2D" parent="."]
 
 [node name="EndPointMarker" type="Node2D" parent="."]

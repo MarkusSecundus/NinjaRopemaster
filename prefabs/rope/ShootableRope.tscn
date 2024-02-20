@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqckty0ofaprs"]
+
+[ext_resource type="Script" path="res://scripts/movement/rope/ShootableRopeController.gd" id="1_hafvv"]
+[ext_resource type="PackedScene" uid="uid://ck4lhl14781ud" path="res://prefabs/rope/RopePiece.tscn" id="1_nfg6h"]
+
+[node name="ShootableRope" type="Node2D"]
+script = ExtResource("1_hafvv")
+
+[node name="RopePiece" parent="." instance=ExtResource("1_nfg6h")]

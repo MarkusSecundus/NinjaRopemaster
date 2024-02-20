@@ -88,7 +88,7 @@ position = Vector2(652, 511)
 scale = Vector2(1, 1)
 
 [node name="HandLBone2D" parent="Ninja/Skeleton2D/TorsoBone2D/ArmHighLBone2D/ArmLowLBone2D" index="1"]
-scale = Vector2(1, 1)
+scale = Vector2(0.999999, 0.999999)
 
 [connection signal="ready" from="Rope2" to="Rope2" method="create_the_rope"]
 [connection signal="ready" from="Rope3" to="Rope3" method="create_the_rope"]

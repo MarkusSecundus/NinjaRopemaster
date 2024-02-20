@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://heg7h5k5i46j"]
+
+[ext_resource type="Script" path="res://scripts/movement/rope/RopeHookController.gd" id="1_3msn5"]
+[ext_resource type="Texture2D" uid="uid://bx8e1r8lw0rak" path="res://sprites/characters/ninja/hook.png" id="1_uvnl5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktsrk"]
+size = Vector2(9, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cdrlw"]
+size = Vector2(19.6602, 19.229)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g3tbd"]
+size = Vector2(8.78533, 8.96627)
+
+[node name="RopeHookPiece" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 2
+linear_damp = 0.1
+script = ExtResource("1_3msn5")
+
+[node name="RopeSprite2" type="Sprite2D" parent="."]
+position = Vector2(-1, 13)
+rotation = -0.19593
+scale = Vector2(0.149502, 0.149502)
+texture = ExtResource("1_uvnl5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 17.5)
+shape = SubResource("RectangleShape2D_ktsrk")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-8.9407e-07, 15)
+rotation = -0.689991
+scale = Vector2(0.997767, 0.996792)
+shape = SubResource("RectangleShape2D_cdrlw")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(0.0607383, -0.259035)
+rotation = 0.785398
+scale = Vector2(0.997767, 0.996792)
+shape = SubResource("RectangleShape2D_g3tbd")
+
+[node name="AnchorPointMarker" type="Node2D" parent="."]
+position = Vector2(0, 29)
+
+[connection signal="body_entered" from="." to="." method="_on_hitting_target"]

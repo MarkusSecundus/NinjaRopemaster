@@ -28,7 +28,7 @@ script = ExtResource("2_0n3d5")
 max_speed = 700
 acceleration = 20.0
 jump_force = Vector2(0, -800)
-air_control_factor = 0.3
+air_control_factor = 0.1
 jump_press_tolerance_seconds = 0.3
 
 [sub_resource type="Resource" id="Resource_5k71e"]
@@ -370,7 +370,7 @@ modification_stack = SubResource("SkeletonModificationStack2D_mejrv")
 [node name="TorsoBone2D" type="Bone2D" parent="Skeleton2D"]
 position = Vector2(21.4286, 7.14285)
 rotation = 0.0101981
-scale = Vector2(0.999834, 0.999834)
+scale = Vector2(0.999833, 0.999833)
 rest = Transform2D(0.999831, 0.0101967, -0.0101967, 0.999831, 21.4286, 7.14285)
 
 [node name="Torso" type="Sprite2D" parent="Skeleton2D/TorsoBone2D"]
