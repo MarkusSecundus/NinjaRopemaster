@@ -15,6 +15,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") * 2
 
 @onready var current_state : IControlState = self.change_state(state_basic)
 
+@onready var _to_rotate : Node2D = $ToRotate;
+
 class IControlState:
 	extends Resource
 	

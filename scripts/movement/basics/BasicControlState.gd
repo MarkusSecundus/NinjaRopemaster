@@ -9,7 +9,7 @@ extends PlayerController.IControlState
 
 @export var jump_press_tolerance_seconds : float = 0.3
 
-var base : RigidBody2D:
+var base : PlayerController:
 	get: return base_controller as RigidBody2D
 
 func activate():
@@ -31,16 +31,14 @@ func physics_process(delta):
 		
 
 func move_direction(direction: float)->void:
-	if direction != 0: base._sprite.flip_h = (direction < 0)
+	if direction != 0: base._to_rotate.scale.x = sign(direction)# base._sprite.flip_h = (direction < 0)
 	
-	if !is_grounded(): 
-		if direction == 0: return
-		direction *= air_control_factor
 	var velocity_direction = direction - base.linear_velocity.x
 	var to_apply = Vector2(velocity_direction * acceleration, 0)
-	#print("applying force {0} - velocity is {1}".format([to_apply, base.linear_velocity]))
-	base.apply_force(to_apply)
-	#base.gravity_scale = 1
+	if !is_grounded(): 
+		if direction == 0: return
+		to_apply *= air_control_factor
+	base.apply_force(to_apply * base.mass)
 	
 	
 var _last_jump_request_end : float = -INF
@@ -48,8 +46,8 @@ func handle_jumping(jump_was_requested : bool)->void:
 	if is_grounded():
 		if jump_was_requested || (_last_jump_request_end > TimeUtils.seconds_elapsed):
 			_last_jump_request_end = -INF
-			base.apply_impulse(jump_force)
-			print("applying jump {0} - velocity is {1}".format([jump_force, base.linear_velocity]))
+			base.apply_impulse(jump_force*base.mass)
+			#print("applying jump {0} - velocity is {1}".format([jump_force, base.linear_velocity]))
 	elif jump_was_requested:
 		_last_jump_request_end = TimeUtils.seconds_elapsed + jump_press_tolerance_seconds
 	

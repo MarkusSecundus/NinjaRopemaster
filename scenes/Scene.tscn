@@ -1,30 +1,22 @@
-[gd_scene load_steps=9 format=3 uid="uid://dk1ctt8lufi7j"]
+[gd_scene load_steps=8 format=3 uid="uid://dk1ctt8lufi7j"]
 
 [ext_resource type="PackedScene" uid="uid://fhk26kw5alwx" path="res://prefabs/Environment.tscn" id="1"]
-[ext_resource type="PackedScene" uid="uid://urydr0rqxuxr" path="res://prefabs/Player.tscn" id="2"]
+[ext_resource type="Script" path="res://scripts/simple_behaviors/SmoothFollowPoint.gd" id="1_gttlc"]
 [ext_resource type="PackedScene" uid="uid://o6guho11r4et" path="res://prefabs/Crate.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://ck4lhl14781ud" path="res://prefabs/rope/RopePiece.tscn" id="4_r3t7a"]
 [ext_resource type="PackedScene" uid="uid://dv5h81qov6qq0" path="res://prefabs/rope/Rope.tscn" id="5_frwya"]
 [ext_resource type="Texture2D" uid="uid://b0vhuf0ephu81" path="res://sprites/crate.png" id="6_1yilr"]
 [ext_resource type="PackedScene" uid="uid://c6c42jh8kb2h" path="res://prefabs/Ninja.tscn" id="7_e07y7"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2fhxo"]
-friction = 0.0
-rough = true
-
 [node name="Scene" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("to_follow")]
 position = Vector2(970, 711)
+script = ExtResource("1_gttlc")
+to_follow = NodePath("../Ninja/ToRotate/CameraPoint")
+max_speed = 1e+17
 
 [node name="Environment" parent="." instance=ExtResource("1")]
-
-[node name="Player" parent="." instance=ExtResource("2")]
-position = Vector2(583, 20)
-physics_material_override = SubResource("PhysicsMaterial_2fhxo")
-can_sleep = false
-lock_rotation = true
-freeze_mode = 1
 
 [node name="Crate2" parent="." instance=ExtResource("3")]
 position = Vector2(321, 433)
@@ -90,14 +82,20 @@ scale = Vector2(0.435, 0.435)
 texture = ExtResource("6_1yilr")
 
 [node name="Ninja" parent="." instance=ExtResource("7_e07y7")]
-position = Vector2(378, 985)
+position = Vector2(652, 511)
+
+[node name="LegHighLBone2D" parent="Ninja/Skeleton2D/TorsoBone2D" index="2"]
+scale = Vector2(1, 1)
+
+[node name="HandLBone2D" parent="Ninja/Skeleton2D/TorsoBone2D/ArmHighLBone2D/ArmLowLBone2D" index="1"]
+scale = Vector2(1, 1)
 
 [connection signal="ready" from="Rope2" to="Rope2" method="create_the_rope"]
 [connection signal="ready" from="Rope3" to="Rope3" method="create_the_rope"]
 
-[editable path="Player"]
 [editable path="Rope/RopePiece"]
 [editable path="Rope/RopePiece2"]
 [editable path="Rope/RopePiece3"]
 [editable path="Rope2"]
 [editable path="Rope3"]
+[editable path="Ninja"]

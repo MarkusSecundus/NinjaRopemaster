@@ -1,7 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://c6c42jh8kb2h"]
+[gd_scene load_steps=38 format=3 uid="uid://c6c42jh8kb2h"]
 
 [ext_resource type="Texture2D" uid="uid://bhq06r05uke4o" path="res://sprites/characters/ninja/torso.png" id="1_0lpve"]
+[ext_resource type="Script" path="res://scripts/movement/basics/PlayerController.gd" id="1_axc6r"]
+[ext_resource type="Script" path="res://scripts/movement/basics/BasicControlState.gd" id="2_0n3d5"]
 [ext_resource type="Texture2D" uid="uid://dqrhjqt8tf7wl" path="res://sprites/characters/ninja/head.png" id="2_nktre"]
+[ext_resource type="Script" path="res://scripts/movement/basics/ClimbingRopeControlState.gd" id="3_3d2qs"]
 [ext_resource type="Texture2D" uid="uid://de5upyi630bbl" path="res://sprites/characters/ninja/eyes.png" id="3_bugpi"]
 [ext_resource type="Texture2D" uid="uid://bv61gwgh38i2i" path="res://sprites/characters/ninja/legHigh_L.png" id="4_b0e85"]
 [ext_resource type="Texture2D" uid="uid://l83nfuvpiu5f" path="res://sprites/characters/ninja/legHigh_R.png" id="5_1jw8y"]
@@ -18,6 +21,18 @@
 [ext_resource type="Texture2D" uid="uid://c1ejmkb3xwixc" path="res://sprites/characters/ninja/hand_R.png" id="16_gfqd3"]
 [ext_resource type="Texture2D" uid="uid://cakekvvh3yrig" path="res://sprites/characters/ninja/handThumb_R.png" id="16_o3d40"]
 [ext_resource type="Script" path="res://scripts/util/CopyPosition.gd" id="18_3ejjp"]
+[ext_resource type="Script" path="res://scripts/movement/basics/GroundChecker.gd" id="19_43qge"]
+
+[sub_resource type="Resource" id="Resource_bnk28"]
+script = ExtResource("2_0n3d5")
+max_speed = 700
+acceleration = 20.0
+jump_force = Vector2(0, -800)
+air_control_factor = 0.3
+jump_press_tolerance_seconds = 0.3
+
+[sub_resource type="Resource" id="Resource_5k71e"]
+script = ExtResource("3_3d2qs")
 
 [sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_vix2m"]
 target_nodepath = NodePath("IKTargets/HandL")
@@ -69,7 +84,7 @@ modifications/4 = SubResource("SkeletonModification2DLookAt_cbnu6")
 modifications/5 = SubResource("SkeletonModification2DLookAt_hof80")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_stbo7"]
-size = Vector2(86.5, 199)
+size = Vector2(63, 189)
 
 [sub_resource type="Animation" id="Animation_nbku4"]
 resource_name = "Idle"
@@ -323,103 +338,7 @@ tracks/9/keys = {
 resource_name = "Running"
 length = 1.2
 loop_mode = 1
-step = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Skeleton2D/IKTargets/FootL:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(78.5714, 842.857), Vector2(0, 864.286), Vector2(-292.857, 757.143), Vector2(-385.714, 542.857), Vector2(-114.286, 600), Vector2(185.714, 764.286)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Skeleton2D/IKTargets/FootR:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-250, 821.429), Vector2(-35.7143, 735.714), Vector2(114.286, 714.286), Vector2(250, 757.143), Vector2(35.7142, 828.571), Vector2(-214.286, 828.571)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Skeleton2D/IKTargets/HandL:position")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(221.429, 128.571)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Skeleton2D/IKTargets/HandR:position")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-185.714, 171.429)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Skeleton2D/IKTargets/FootLookL:position")
-tracks/4/interp = 2
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1328.57, 200)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Skeleton2D/IKTargets/FootLookR:position")
-tracks/5/interp = 2
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1257.14, -107.143)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Skeleton2D/TorsoBone2D:position")
-tracks/6/interp = 2
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(57.1429, 7.14286)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Skeleton2D/TorsoBone2D:rotation")
-tracks/7/interp = 4
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.113349]
-}
+step = 0.05
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bcgn0"]
 _data = {
@@ -428,16 +347,30 @@ _data = {
 "Running": SubResource("Animation_yki48")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aushh"]
+size = Vector2(54, 8)
+
 [node name="Ninja" type="RigidBody2D"]
+collision_mask = 3
+mass = 50.0
+lock_rotation = true
+script = ExtResource("1_axc6r")
+state_basic = SubResource("Resource_bnk28")
+state_climbingrope = SubResource("Resource_5k71e")
+
+[node name="ToRotate" type="Node2D" parent="."]
+
+[node name="CameraPoint" type="Node2D" parent="ToRotate"]
+position = Vector2(0, -71)
 
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
-scale = Vector2(0.14, 0.14)
+scale = Vector2(0.1, 0.1)
 modification_stack = SubResource("SkeletonModificationStack2D_mejrv")
 
 [node name="TorsoBone2D" type="Bone2D" parent="Skeleton2D"]
 position = Vector2(21.4286, 7.14285)
 rotation = 0.0101981
-scale = Vector2(0.99984, 0.99984)
+scale = Vector2(0.999834, 0.999834)
 rest = Transform2D(0.999831, 0.0101967, -0.0101967, 0.999831, 21.4286, 7.14285)
 
 [node name="Torso" type="Sprite2D" parent="Skeleton2D/TorsoBone2D"]
@@ -659,7 +592,7 @@ position = Vector2(1328.57, 200)
 position = Vector2(1257.14, -107.143)
 
 [node name="BodyShape" type="CollisionShape2D" parent="."]
-position = Vector2(-1.25, 38.5)
+position = Vector2(-0.5, 2.5)
 shape = SubResource("RectangleShape2D_stbo7")
 script = ExtResource("18_3ejjp")
 
@@ -667,3 +600,14 @@ script = ExtResource("18_3ejjp")
 libraries = {
 "": SubResource("AnimationLibrary_bcgn0")
 }
+autoplay = "Idle"
+
+[node name="Feet" type="Area2D" parent="."]
+collision_mask = 2
+script = ExtResource("19_43qge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Feet"]
+position = Vector2(-1, 97)
+shape = SubResource("RectangleShape2D_aushh")
+
+[connection signal="body_exited" from="Feet" to="Feet" method="_on_collision_leave"]
