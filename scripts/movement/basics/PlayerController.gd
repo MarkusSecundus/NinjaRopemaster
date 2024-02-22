@@ -17,6 +17,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") * 2
 
 @onready var _to_rotate : Node2D = $ToRotate;
 @onready var _hand : Node2D = $ToRotate/Hand;
+@onready var _hand_joint : PinJoint2D = $PinJoint2D;
+
 
 class IControlState:
 	extends Resource

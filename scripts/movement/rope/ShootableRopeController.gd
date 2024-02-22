@@ -6,6 +6,8 @@ var rope_hook : PackedScene = preload("res://prefabs/rope/RopeHookPiece.tscn")
 @export var shoot_force : float;
 
 
+signal on_hook_hit(last_segment: RigidBody2D);
+
 
 var _already_created := false
 func create_the_rope(where_to_place:Node2D, target_position:Vector2)->void:
@@ -18,13 +20,18 @@ func create_the_rope(where_to_place:Node2D, target_position:Vector2)->void:
 	var look_direction := where_to_place.global_position - target_position;
 	var hook = _spawn_segment(rope_hook, where_to_place.global_position, look_direction, null);
 	hook.on_hit.connect(_on_hit_callback)
-	last_body = _spawn_segment(rope_segment, _get_anchor_of_segment(hook).global_position, look_direction, hook);
+	last_body = hook;
 	hook.apply_impulse(direction * shoot_force);
+	
+	var temp := rope_segment.instantiate() as RigidBody2D;
+	self.segment_length = _get_anchor_of_segment(temp).position.length()
+	temp.queue_free()
 
 
 func _on_hit_callback():
-	print("hit the ground")
+	if is_finished: return
 	is_finished = true;
+	on_hook_hit.emit(last_body)
 
 
 var is_finished : bool = false;
@@ -35,16 +42,18 @@ var segment_length : float = 0;
 func _process(delta):
 	if is_finished: return
 	
-	var anchor_point := last_anchor_point.global_position;
-	print("dst: {0} X {1}".format([where_to_place.global_position.distance_to(anchor_point), segment_length]))
-	if(where_to_place.global_position.distance_to(anchor_point) >= segment_length):
-		last_body = _spawn_segment(rope_segment, anchor_point, last_body.global_position, last_body)
+	#print("dst: {0} X {1}".format([where_to_place.global_position.distance_to(last_anchor_point.global_position), segment_length]))
+	$WhereToPlace.global_position = where_to_place.global_position
+	$Anchor.global_position = last_anchor_point.global_position
+	if(where_to_place.global_position.distance_to(last_anchor_point.global_position) >= segment_length):
+		var look_direction := last_anchor_point.global_position - where_to_place.global_position
+		last_body = _spawn_segment(rope_segment, last_anchor_point.global_position, -look_direction, last_body)
 
 
 func _spawn_segment(segment_prefab:PackedScene, parent_anchor_point : Vector2, look_direction: Vector2, body_to_connect: RigidBody2D)->RigidBody2D:
 	
 	var new_segment := segment_prefab.instantiate() as RigidBody2D
-	self.add_child(new_segment)
+	get_tree().root.add_child(new_segment)
 	var anchor_point_marker := _get_anchor_of_segment(new_segment)
 	last_anchor_point = anchor_point_marker;
 	
@@ -56,8 +65,8 @@ func _spawn_segment(segment_prefab:PackedScene, parent_anchor_point : Vector2, l
 	new_segment.rotation += to_rotate;
 	
 	if body_to_connect: 
-		var segment_dimensions := Vector2.ZERO - anchor_point_marker.position
-		self.segment_length = segment_dimensions.length()
+		#var segment_dimensions := Vector2.ZERO - anchor_point_marker.position
+		#self.segment_length = segment_dimensions.length()
 		joint.node_b = body_to_connect.get_path()
 	
 	return new_segment;

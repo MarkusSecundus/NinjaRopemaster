@@ -1,7 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqckty0ofaprs"]
+[gd_scene load_steps=3 format=3 uid="uid://dqckty0ofaprs"]
 
 [ext_resource type="Script" path="res://scripts/movement/rope/ShootableRopeController.gd" id="1_hafvv"]
+[ext_resource type="Texture2D" uid="uid://b0vhuf0ephu81" path="res://sprites/crate.png" id="2_llsru"]
 
 [node name="ShootableRope" type="Node2D"]
 script = ExtResource("1_hafvv")
 shoot_force = 2000.0
+
+[node name="WhereToPlace" type="Sprite2D" parent="."]
+modulate = Color(0.0313726, 0.976471, 0.52549, 1)
+z_index = 7
+position = Vector2(-5, 3)
+texture = ExtResource("2_llsru")
+
+[node name="Anchor" type="Sprite2D" parent="."]
+modulate = Color(1, 0.0784314, 1, 1)
+z_index = 7
+position = Vector2(32, 14)
+texture = ExtResource("2_llsru")

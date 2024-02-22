@@ -15,7 +15,10 @@ size = Vector2(13.6056, 13.7051)
 [node name="RopeHookPiece" type="RigidBody2D"]
 collision_layer = 4
 collision_mask = 2
-mass = 2.0
+mass = 100.0
+freeze_mode = 1
+max_contacts_reported = 1
+contact_monitor = true
 linear_damp = 0.1
 script = ExtResource("1_3msn5")
 

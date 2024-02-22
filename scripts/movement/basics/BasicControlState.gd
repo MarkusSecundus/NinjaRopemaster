@@ -58,8 +58,9 @@ func handle_rope_throw(should_throw: bool, mouse_position: Vector2)->void:
 	if !should_throw: return
 	var rope := rope_prefab.instantiate() as ShootableRopeController;
 	base.add_child(rope);
+	rope.on_hook_hit.connect(func(last_segment: RigidBody2D): base._hand_joint.node_b = last_segment.get_path() )
 	rope.create_the_rope(base._hand, mouse_position);
-	pass
+	pass 
 
 
 func is_grounded()->bool:
