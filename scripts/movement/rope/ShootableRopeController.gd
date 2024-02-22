@@ -39,15 +39,17 @@ var where_to_place : Node2D;
 var last_body : PhysicsBody2D
 var last_anchor_point : Node2D;
 var segment_length : float = 0;
-func _process(delta):
+func _physics_process(delta):
 	if is_finished: return
 	
-	#print("dst: {0} X {1}".format([where_to_place.global_position.distance_to(last_anchor_point.global_position), segment_length]))
-	$WhereToPlace.global_position = where_to_place.global_position
-	$Anchor.global_position = last_anchor_point.global_position
-	if(where_to_place.global_position.distance_to(last_anchor_point.global_position) >= segment_length):
-		var look_direction := last_anchor_point.global_position - where_to_place.global_position
-		last_body = _spawn_segment(rope_segment, last_anchor_point.global_position, -look_direction, last_body)
+	var counter:=0
+	while counter <= 2:
+		#print("dst: {0} X {1}".format([where_to_place.global_position.distance_to(last_anchor_point.global_position), segment_length]))
+		if(where_to_place.global_position.distance_to(last_anchor_point.global_position) >= segment_length):
+			var look_direction := last_anchor_point.global_position - where_to_place.global_position
+			last_body = _spawn_segment(rope_segment, last_anchor_point.global_position, -look_direction, last_body)
+		else: break
+
 
 
 func _spawn_segment(segment_prefab:PackedScene, parent_anchor_point : Vector2, look_direction: Vector2, body_to_connect: RigidBody2D)->RigidBody2D:
@@ -74,3 +76,7 @@ func _spawn_segment(segment_prefab:PackedScene, parent_anchor_point : Vector2, l
 
 func _get_joint_of_segment(segment: RigidBody2D)->PinJoint2D: return segment.get_node("Joint") as PinJoint2D;
 func _get_anchor_of_segment(segment: RigidBody2D)->Node2D: return segment.get_node("AnchorPointMarker") as Node2D;
+func _get_predecessor_of_segment(segment: RigidBody2D)->RigidBody2D:
+	var path := _get_joint_of_segment(segment).node_b
+	if path: return get_node(path) as RigidBody2D;
+	else: return null;

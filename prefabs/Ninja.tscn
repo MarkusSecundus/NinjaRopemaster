@@ -409,7 +409,6 @@ rotation = -0.0183343
 scale = Vector2(1, 1)
 skew = -6.69956e-05
 rest = Transform2D(0.999883, -0.0135671, 0.0136545, 0.999882, 103.044, 168)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="LegHighL" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/LegHighLBone2D"]
 z_index = 15
@@ -422,7 +421,6 @@ offset = Vector2(17.8972, 153.566)
 [node name="LegLowLBone2D" type="Bone2D" parent="Skeleton2D/TorsoBone2D/LegHighLBone2D"]
 position = Vector2(56.1836, 337.183)
 rest = Transform2D(0.92629, 0.376756, -0.376756, 0.92629, 56.1836, 337.183)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="LegLowL" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/LegHighLBone2D/LegLowLBone2D"]
 z_index = 14
@@ -438,7 +436,6 @@ rotation = -0.343971
 scale = Vector2(0.999992, 0.999993)
 skew = 6.73532e-05
 rest = Transform2D(0.870799, -0.491665, 0.491593, 0.870845, 29.0804, 343.851)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="FootL" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/LegHighLBone2D/LegLowLBone2D/FootLBone2D"]
 z_index = 13
@@ -449,7 +446,6 @@ offset = Vector2(66.1517, 91.6812)
 [node name="LegHighRBone2D" type="Bone2D" parent="Skeleton2D/TorsoBone2D"]
 position = Vector2(-101.441, 114.619)
 rest = Transform2D(0.988042, 0.153979, -0.153979, 0.988042, -101.441, 114.619)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="LegHighR" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/LegHighRBone2D"]
 z_index = 18
@@ -463,7 +459,6 @@ offset = Vector2(-5.77777, 187.033)
 position = Vector2(-7.25516, 369.217)
 scale = Vector2(0.982619, 1.00488)
 rest = Transform2D(0.961144, 0.204307, -0.208935, 0.982922, -7.25516, 369.217)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="LegLowR" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/LegHighRBone2D/LegLowRBone2D"]
 z_index = 17
@@ -478,7 +473,6 @@ rotation = -0.40683
 scale = Vector2(1.00932, 1.0607)
 skew = -0.0165236
 rest = Transform2D(0.877939, -0.494153, 0.539161, 0.915929, 29.8762, 357.607)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="FootR" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/LegHighRBone2D/LegLowRBone2D/FootRBone2D"]
 z_index = 16
@@ -492,7 +486,6 @@ position = Vector2(115.545, -450.371)
 rotation = 0.433026
 scale = Vector2(0.999965, 0.999965)
 rest = Transform2D(0.902409, 0.430827, -0.430827, 0.902409, 115.545, -450.371)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="ArmHighL" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/ArmHighLBone2D"]
 z_index = 19
@@ -505,7 +498,6 @@ position = Vector2(239.555, 232.522)
 rotation = -0.590817
 scale = Vector2(0.99995, 0.99995)
 rest = Transform2D(0.604847, -0.796325, 0.796325, 0.604847, 239.555, 232.522)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="ArmLowL" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/ArmHighLBone2D/ArmLowLBone2D"]
 z_index = 24
@@ -536,7 +528,6 @@ position = Vector2(-278.5, -432)
 rotation = -0.439383
 scale = Vector2(0.999859, 0.999859)
 rest = Transform2D(0.905266, -0.424811, 0.424811, 0.905266, -278.5, -432)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="ArmHighR" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/ArmHighRBone2D"]
 z_index = 21
@@ -548,7 +539,6 @@ position = Vector2(-176.546, 296.99)
 rotation = 0.594901
 scale = Vector2(0.999891, 0.999891)
 rest = Transform2D(0.828989, 0.55925, -0.55925, 0.828989, -176.546, 296.99)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="ArmLowR" type="Sprite2D" parent="Skeleton2D/TorsoBone2D/ArmHighRBone2D/ArmLowRBone2D"]
 z_index = 25
@@ -614,5 +604,6 @@ shape = SubResource("RectangleShape2D_aushh")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
 node_a = NodePath("..")
+softness = 0.36
 
 [connection signal="body_exited" from="Feet" to="Feet" method="_on_collision_leave"]
