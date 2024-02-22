@@ -1,4 +1,5 @@
 extends RigidBody2D
+class_name RopeHookController
 
 signal on_hit();
 

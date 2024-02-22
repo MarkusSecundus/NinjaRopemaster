@@ -9,6 +9,8 @@ extends PlayerController.IControlState
 
 @export var jump_press_tolerance_seconds : float = 0.3
 
+var rope_prefab = preload("res://prefabs/rope/ShootableRope.tscn")
+
 var base : PlayerController:
 	get: return base_controller as RigidBody2D
 
@@ -25,7 +27,7 @@ func physics_process(delta):
 		move_direction(0)
 		
 	handle_jumping(Input.is_action_just_pressed("Jump"))
-	
+	handle_rope_throw(Input.is_action_just_pressed("Throw"), base.get_global_mouse_position())
 	#base.move_and_slide()
 	#ScreenWrap.wrap_x_cbody(base)
 		
@@ -50,7 +52,14 @@ func handle_jumping(jump_was_requested : bool)->void:
 			#print("applying jump {0} - velocity is {1}".format([jump_force, base.linear_velocity]))
 	elif jump_was_requested:
 		_last_jump_request_end = TimeUtils.seconds_elapsed + jump_press_tolerance_seconds
-	
+		
+
+func handle_rope_throw(should_throw: bool, mouse_position: Vector2)->void:
+	if !should_throw: return
+	var rope := rope_prefab.instantiate() as ShootableRopeController;
+	base.add_child(rope);
+	rope.create_the_rope(base._hand, mouse_position);
+	pass
 
 
 func is_grounded()->bool:

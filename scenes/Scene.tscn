@@ -28,7 +28,6 @@ position = Vector2(937, 69)
 
 [node name="RopePiece" parent="Rope" instance=ExtResource("4_r3t7a")]
 position = Vector2(-8, -14)
-collision_layer = 4
 
 [node name="Joint" parent="Rope/RopePiece" index="2"]
 position = Vector2(0, -1)
@@ -36,7 +35,6 @@ node_b = NodePath("../../RopeAnchor")
 
 [node name="RopePiece2" parent="Rope" instance=ExtResource("4_r3t7a")]
 position = Vector2(-8, 9)
-collision_layer = 4
 
 [node name="Joint" parent="Rope/RopePiece2" index="2"]
 position = Vector2(0, -1)
@@ -44,7 +42,6 @@ node_b = NodePath("../../RopePiece")
 
 [node name="RopePiece3" parent="Rope" instance=ExtResource("4_r3t7a")]
 position = Vector2(-8, 31)
-collision_layer = 4
 
 [node name="Joint" parent="Rope/RopePiece3" index="2"]
 position = Vector2(0, -1)
@@ -57,7 +54,7 @@ position = Vector2(408, 174)
 scale = Vector2(0.435, 0.435)
 texture = ExtResource("6_1yilr")
 
-[node name="EndPointMarker" parent="Rope2" index="1"]
+[node name="EndPointMarker" parent="Rope2" index="2"]
 position = Vector2(52, 161)
 
 [node name="Crate2" type="Sprite2D" parent="Rope2/EndPointMarker" index="0"]
@@ -73,7 +70,7 @@ end_point = NodePath("../Rope2/EndPointMarker")
 scale = Vector2(0.435, 0.435)
 texture = ExtResource("6_1yilr")
 
-[node name="EndPointMarker" parent="Rope3" index="1"]
+[node name="EndPointMarker" parent="Rope3" index="2"]
 position = Vector2(-696, 301)
 
 [node name="Crate2" type="Sprite2D" parent="Rope3/EndPointMarker" index="0"]
@@ -86,6 +83,9 @@ position = Vector2(652, 511)
 
 [node name="LegHighLBone2D" parent="Ninja/Skeleton2D/TorsoBone2D" index="2"]
 scale = Vector2(1, 1)
+
+[node name="ArmHighLBone2D" parent="Ninja/Skeleton2D/TorsoBone2D" index="4"]
+scale = Vector2(0.999965, 0.999965)
 
 [node name="HandLBone2D" parent="Ninja/Skeleton2D/TorsoBone2D/ArmHighLBone2D/ArmLowLBone2D" index="1"]
 scale = Vector2(0.999999, 0.999999)
