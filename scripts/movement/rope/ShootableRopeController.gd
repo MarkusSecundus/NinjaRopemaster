@@ -2,7 +2,8 @@ extends Node2D
 class_name ShootableRopeController
 
 var rope_segment : PackedScene = preload("res://prefabs/rope/RopePiece.tscn");
-var rope_hook : PackedScene = preload("res://prefabs/rope/RopeHookPiece.tscn")
+var rope_hook : PackedScene = preload("res://prefabs/rope/RopeHookPiece.tscn");
+var max_segments :int= 20
 @export var shoot_force : float;
 
 
@@ -19,7 +20,7 @@ func create_the_rope(where_to_place:Node2D, target_position:Vector2)->void:
 	self.where_to_place = where_to_place;
 	var look_direction := where_to_place.global_position - target_position;
 	var hook = _spawn_segment(rope_hook, where_to_place.global_position, look_direction, null);
-	hook.on_hit.connect(_on_hit_callback)
+	hook.on_hit.connect(_on_shot_finished_callback)
 	last_body = hook;
 	hook.apply_impulse(direction * shoot_force);
 	
@@ -28,7 +29,7 @@ func create_the_rope(where_to_place:Node2D, target_position:Vector2)->void:
 	temp.queue_free()
 
 
-func _on_hit_callback():
+func _on_shot_finished_callback():
 	if is_finished: return
 	is_finished = true;
 	on_hook_hit.emit(last_body)
@@ -39,16 +40,20 @@ var where_to_place : Node2D;
 var last_body : PhysicsBody2D
 var last_anchor_point : Node2D;
 var segment_length : float = 0;
+
+
+var _segments_count = 0;
+#func _integrate_forces(state: PhysicsDirectBodyState2D)->void:
 func _physics_process(delta):
 	if is_finished: return
 	
-	var counter:=0
-	while counter <= 2:
-		#print("dst: {0} X {1}".format([where_to_place.global_position.distance_to(last_anchor_point.global_position), segment_length]))
-		if(where_to_place.global_position.distance_to(last_anchor_point.global_position) >= segment_length):
-			var look_direction := last_anchor_point.global_position - where_to_place.global_position
-			last_body = _spawn_segment(rope_segment, last_anchor_point.global_position, -look_direction, last_body)
-		else: break
+	#print("dst: {0} X {1}".format([where_to_place.global_position.distance_to(last_anchor_point.global_position), segment_length]))
+	if(where_to_place.global_position.distance_to(last_anchor_point.global_position) >= segment_length):
+		var look_direction := last_anchor_point.global_position - where_to_place.global_position
+		last_body = _spawn_segment(rope_segment, last_anchor_point.global_position, -look_direction, last_body)
+		_segments_count += 1
+		if _segments_count >= max_segments:
+			_on_shot_finished_callback()
 
 
 
@@ -72,6 +77,18 @@ func _spawn_segment(segment_prefab:PackedScene, parent_anchor_point : Vector2, l
 		joint.node_b = body_to_connect.get_path()
 	
 	return new_segment;
+
+func destroy_last_segment()->RigidBody2D:
+	if !is_finished:
+		ErrorUtils.report_error("Destroying rope segments but rope generation hadn't yet finished!")
+		_on_shot_finished_callback()
+	var to_destroy := last_body
+	last_body = _get_predecessor_of_segment(last_body)
+	to_destroy.queue_free()
+	if last_body is RopeHookController:
+		last_body.queue_free()
+		return null
+	return last_body
 
 
 func _get_joint_of_segment(segment: RigidBody2D)->PinJoint2D: return segment.get_node("Joint") as PinJoint2D;

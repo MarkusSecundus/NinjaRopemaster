@@ -12,6 +12,7 @@ mass = 15.0
 linear_damp = 0.1
 
 [node name="RopeSprite2" type="Sprite2D" parent="."]
+z_index = 500
 position = Vector2(-0.253597, 9.01761)
 rotation = -0.19593
 scale = Vector2(0.154888, 0.154888)

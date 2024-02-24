@@ -1,12 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://dk1ctt8lufi7j"]
+[gd_scene load_steps=11 format=3 uid="uid://dk1ctt8lufi7j"]
 
 [ext_resource type="PackedScene" uid="uid://fhk26kw5alwx" path="res://prefabs/Environment.tscn" id="1"]
 [ext_resource type="Script" path="res://scripts/simple_behaviors/SmoothFollowPoint.gd" id="1_gttlc"]
 [ext_resource type="PackedScene" uid="uid://o6guho11r4et" path="res://prefabs/Crate.tscn" id="3"]
+[ext_resource type="Script" path="res://scripts/Crate.gd" id="4_5giqo"]
 [ext_resource type="PackedScene" uid="uid://ck4lhl14781ud" path="res://prefabs/rope/RopePiece.tscn" id="4_r3t7a"]
 [ext_resource type="PackedScene" uid="uid://dv5h81qov6qq0" path="res://prefabs/rope/Rope.tscn" id="5_frwya"]
 [ext_resource type="Texture2D" uid="uid://b0vhuf0ephu81" path="res://sprites/crate.png" id="6_1yilr"]
 [ext_resource type="PackedScene" uid="uid://c6c42jh8kb2h" path="res://prefabs/Ninja.tscn" id="7_e07y7"]
+
+[sub_resource type="PhysicsMaterial" id="16"]
+rough = true
+
+[sub_resource type="RectangleShape2D" id="15"]
+size = Vector2(30, 30)
 
 [node name="Scene" type="Node2D"]
 
@@ -20,6 +27,20 @@ max_speed = 1e+17
 
 [node name="Crate2" parent="." instance=ExtResource("3")]
 position = Vector2(321, 433)
+
+[node name="Crate3" type="RigidBody2D" parent="."]
+position = Vector2(354, 742)
+collision_mask = 3
+mass = 2.0
+physics_material_override = SubResource("16")
+script = ExtResource("4_5giqo")
+
+[node name="Sprite2D" type="Sprite2D" parent="Crate3"]
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("6_1yilr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Crate3"]
+shape = SubResource("15")
 
 [node name="Rope" type="Node2D" parent="."]
 position = Vector2(937, 69)
@@ -84,14 +105,15 @@ position = Vector2(189, 899)
 [node name="LegHighLBone2D" parent="Ninja/Skeleton2D/TorsoBone2D" index="2"]
 scale = Vector2(1, 1)
 
-[node name="FootLBone2D" parent="Ninja/Skeleton2D/TorsoBone2D/LegHighLBone2D/LegLowLBone2D" index="1"]
-scale = Vector2(0.999992, 0.999993)
-
 [node name="ArmHighLBone2D" parent="Ninja/Skeleton2D/TorsoBone2D" index="4"]
 scale = Vector2(0.999965, 0.999965)
 
 [node name="HandLBone2D" parent="Ninja/Skeleton2D/TorsoBone2D/ArmHighLBone2D/ArmLowLBone2D" index="1"]
 scale = Vector2(0.999999, 0.999999)
+
+[node name="PinJoint2D" parent="Ninja" index="5"]
+position = Vector2(0, 1.375)
+node_b = NodePath("../../Crate3")
 
 [connection signal="ready" from="Rope2" to="Rope2" method="create_the_rope"]
 [connection signal="ready" from="Rope3" to="Rope3" method="create_the_rope"]

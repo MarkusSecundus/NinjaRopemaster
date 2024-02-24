@@ -16,6 +16,7 @@ size = Vector2(13.6056, 13.7051)
 collision_layer = 4
 collision_mask = 2
 mass = 100.0
+gravity_scale = 0.2
 freeze_mode = 1
 max_contacts_reported = 1
 contact_monitor = true
