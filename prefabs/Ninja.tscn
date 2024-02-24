@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://c6c42jh8kb2h"]
+[gd_scene load_steps=40 format=3 uid="uid://c6c42jh8kb2h"]
 
 [ext_resource type="Texture2D" uid="uid://bhq06r05uke4o" path="res://sprites/characters/ninja/torso.png" id="1_0lpve"]
 [ext_resource type="Script" path="res://scripts/movement/basics/PlayerController.gd" id="1_axc6r"]
@@ -23,6 +23,9 @@
 [ext_resource type="Script" path="res://scripts/util/CopyPosition.gd" id="18_3ejjp"]
 [ext_resource type="Script" path="res://scripts/movement/basics/GroundChecker.gd" id="19_43qge"]
 [ext_resource type="Texture2D" uid="uid://b0vhuf0ephu81" path="res://sprites/crate.png" id="23_gjdg7"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uiftb"]
+friction = 0.0
 
 [sub_resource type="Resource" id="Resource_bnk28"]
 script = ExtResource("2_0n3d5")
@@ -355,6 +358,7 @@ size = Vector2(54, 8)
 [node name="Ninja" type="RigidBody2D"]
 collision_mask = 3
 mass = 100.0
+physics_material_override = SubResource("PhysicsMaterial_uiftb")
 lock_rotation = true
 script = ExtResource("1_axc6r")
 state_basic = SubResource("Resource_bnk28")

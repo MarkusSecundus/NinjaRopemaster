@@ -15,8 +15,16 @@ var rope_prefab = preload("res://prefabs/rope/ShootableRope.tscn")
 var base : PlayerController:
 	get: return base_controller as RigidBody2D
 
+var _helper_body: AnimatableBody2D
+var _helper_joint: PinJoint2D;
+
 func initialize(baseController: PlayerController):
 	super.initialize(baseController)
+	_helper_body = AnimatableBody2D.new()
+	_helper_joint = PinJoint2D.new();
+	_helper_body.add_child(_helper_joint)
+	base.get_tree().root.add_child(_helper_body)
+	_helper_joint.node_a = _helper_body.get_path()
 
 func activate():
 	pass
@@ -84,10 +92,11 @@ func handle_rope_throw(mouse_position: Vector2)->void:
 
 
 func handle_rope_climb(delta:float)->void:
-	base._hand_joint.node_b = NodePath()
 	
-	var shift := ((base._hand_joint.get_parent()as Node2D).global_position - _rope.last_body.global_position).normalized() * climb_speed * delta;
-	base._hand_joint.global_position += shift
+	var shift := ((base._hand_joint.get_parent()as Node2D).global_position - _rope.last_body.global_position).normalized() * climb_speed;
+	var new_joint_pos := base._hand_joint.global_position + shift * delta
+	base.global_position -= shift*delta;
+	base._hand_joint.global_position = new_joint_pos
 	if base._hand_joint.position.length() >= _rope.segment_length:
 		var next := _rope.destroy_last_segment()
 		if !next:
@@ -98,7 +107,10 @@ func handle_rope_climb(delta:float)->void:
 		else:
 			base._hand_joint.position -= base._hand_joint.position.normalized()*_rope.segment_length
 			base._hand_joint.node_b = next.get_path()
-		print("joint now connected to {0}".format([base._hand_joint.node_b]))
+	print("shift: {0}".format([shift]))
+
+func _position_climbing(global_pos: Vector2)->void:
+	pass
 
 #endregion
 

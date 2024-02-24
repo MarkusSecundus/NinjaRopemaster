@@ -48,10 +48,10 @@ func _physics_process(delta):
 	if is_finished: return
 	
 	#print("dst: {0} X {1}".format([where_to_place.global_position.distance_to(last_anchor_point.global_position), segment_length]))
-	if(where_to_place.global_position.distance_to(last_anchor_point.global_position) >= segment_length):
+	while !is_finished && (where_to_place.global_position.distance_to(last_anchor_point.global_position) >= segment_length*0.5):
 		var look_direction := last_anchor_point.global_position - where_to_place.global_position
 		last_body = _spawn_segment(rope_segment, last_anchor_point.global_position, -look_direction, last_body)
-		_segments_count += 1
+		#_segments_count += 1
 		if _segments_count >= max_segments:
 			_on_shot_finished_callback()
 

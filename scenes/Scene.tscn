@@ -105,15 +105,14 @@ position = Vector2(189, 899)
 [node name="LegHighLBone2D" parent="Ninja/Skeleton2D/TorsoBone2D" index="2"]
 scale = Vector2(1, 1)
 
+[node name="FootLBone2D" parent="Ninja/Skeleton2D/TorsoBone2D/LegHighLBone2D/LegLowLBone2D" index="1"]
+scale = Vector2(0.999992, 0.999993)
+
 [node name="ArmHighLBone2D" parent="Ninja/Skeleton2D/TorsoBone2D" index="4"]
 scale = Vector2(0.999965, 0.999965)
 
 [node name="HandLBone2D" parent="Ninja/Skeleton2D/TorsoBone2D/ArmHighLBone2D/ArmLowLBone2D" index="1"]
 scale = Vector2(0.999999, 0.999999)
-
-[node name="PinJoint2D" parent="Ninja" index="5"]
-position = Vector2(0, 1.375)
-node_b = NodePath("../../Crate3")
 
 [connection signal="ready" from="Rope2" to="Rope2" method="create_the_rope"]
 [connection signal="ready" from="Rope3" to="Rope3" method="create_the_rope"]
