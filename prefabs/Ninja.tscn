@@ -359,6 +359,7 @@ size = Vector2(54, 8)
 collision_mask = 11
 mass = 40.0
 physics_material_override = SubResource("PhysicsMaterial_uiftb")
+gravity_scale = 1.523
 lock_rotation = true
 script = ExtResource("1_axc6r")
 state_basic = SubResource("Resource_bnk28")

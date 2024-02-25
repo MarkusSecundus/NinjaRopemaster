@@ -48,7 +48,17 @@ func _physics_process(delta: float)->void:
 	if current_state:
 		current_state.physics_process(delta)
 		
+	
+var last_velocity : Vector2;	
 func _integrate_forces(state: PhysicsDirectBodyState2D)->void:
+	#var original_velocity = state.linear_velocity
+	#print("velocity: {0}".format([state.linear_velocity]))
+	#if state.linear_velocity.abs().x < 0.1 && last_velocity.abs().x > 60:
+	#	state.linear_velocity = last_velocity
+	#	state.linear_velocity.y += -1
+	#	print("velocity helper")
+	#last_velocity = original_velocity
+	
 	if current_state:
 		current_state.integrate_forces(state)
 		
