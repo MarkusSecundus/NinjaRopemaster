@@ -36,6 +36,8 @@ func _on_shot_finished_callback():
 	on_hook_hit.emit(last_body)
 
 
+var is_frozen: bool:
+	get: return hook_segment && hook_segment.is_frozen
 var is_finished : bool = false;
 var where_to_place : Node2D;
 var last_body : RigidBody2D
@@ -87,10 +89,11 @@ var climb_progress :float= 0.0
 func get_climb_point()->Vector2:
 	return lerp(_get_anchor_of_segment(last_body).global_position, last_body.global_position, climb_progress) as Vector2
 
-func progress_the_climb(distance_traveled: float)->bool:
+func progress_the_climb(distance_traveled: float, min_segments_remaining: int=0)->bool:
 	climb_progress += distance_traveled / segment_length
 	while(climb_progress >= 1):
-		if !destroy_last_segment():
+		if _segments_count <= min_segments_remaining || !destroy_last_segment():
+			climb_progress = clampf(climb_progress, 0, 1)
 			return false
 		climb_progress -= 1
 	return true
@@ -106,6 +109,7 @@ func destroy_last_segment()->RigidBody2D:
 	if last_body is RopeHookController:
 		last_body.queue_free()
 		return null
+	_segments_count -= 1
 	return last_body
 
 

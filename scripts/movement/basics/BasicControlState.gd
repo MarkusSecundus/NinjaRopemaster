@@ -64,8 +64,8 @@ func move_direction(direction: float)->void:
 	
 var _last_jump_request_end : float = -INF
 func handle_jumping(jump_was_requested : bool)->void:
-	if is_grounded() || (_rope && _rope.is_finished):
-		if jump_was_requested || (_last_jump_request_end > TimeUtils.seconds_elapsed):
+	if is_grounded() || (_rope && _rope.is_frozen):
+		if jump_was_requested || (_last_jump_request_end > TimeUtils.seconds_elapsed && is_grounded()):
 			_last_jump_request_end = -INF
 			base.apply_impulse(jump_force*base.mass)
 			if !is_grounded():
@@ -116,12 +116,11 @@ func handle_rope_climb(delta:float)->void:
 	_to_invoke_in_integrate_forces.append(func (state: PhysicsDirectBodyState2D):
 		if !_rope: return
 		var distance_climbed = climb_speed*delta
-		if _rope.progress_the_climb(distance_climbed):
+		if _rope.progress_the_climb(distance_climbed, 2):
 			var new_position = _rope.get_climb_point()
 			base.global_position = new_position
 			base._hand_joint.node_b = _rope.last_body.get_path()
-		else:
-			handle_rope_drop()
+		#else: handle_rope_drop()
 		
 		return
 		var shift := ((base._hand_joint.get_parent()as Node2D).global_position - _rope.last_body.global_position).normalized() * climb_speed;

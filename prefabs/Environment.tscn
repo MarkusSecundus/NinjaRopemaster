@@ -34,7 +34,7 @@ size = Vector2(713, 1228)
 [node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
 
 [node name="Black" type="Sprite2D" parent="CanvasLayer/ParallaxBackground"]
-position = Vector2(4163, 1156)
+position = Vector2(4857, 1164)
 scale = Vector2(96924, 47250)
 texture = SubResource("GradientTexture1D_cvwd4")
 
@@ -44,18 +44,18 @@ motion_scale = Vector2(0.1, 0.1)
 
 [node name="BackgroundFar" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
 self_modulate = Color(1, 1, 1, 0.890196)
-position = Vector2(234, -1032)
+position = Vector2(77.9999, -1113)
 scale = Vector2(0.296783, 0.296783)
 texture = ExtResource("1_qiq8p")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
 position = Vector2(1001, 1337)
 scale = Vector2(0.535045, 0.535045)
-motion_scale = Vector2(0.3, 0.3)
+motion_scale = Vector2(0.15, 0.15)
 
 [node name="BackgroundNear" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer2"]
 self_modulate = Color(1, 1, 1, 0.32549)
-position = Vector2(0, -681)
+position = Vector2(956.929, -827.968)
 scale = Vector2(0.763716, 0.763716)
 texture = ExtResource("2_077wg")
 
