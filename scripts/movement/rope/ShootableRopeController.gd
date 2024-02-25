@@ -89,7 +89,6 @@ func get_climb_point()->Vector2:
 
 func progress_the_climb(distance_traveled: float)->bool:
 	climb_progress += distance_traveled / segment_length
-	print("progressing the climb by {0} ({1})".format([climb_progress, distance_traveled / segment_length]))
 	while(climb_progress >= 1):
 		if !destroy_last_segment():
 			return false
@@ -100,6 +99,7 @@ func destroy_last_segment()->RigidBody2D:
 	if !is_finished:
 		ErrorUtils.report_error("Destroying rope segments but rope generation hadn't yet finished!")
 		_on_shot_finished_callback()
+	if !last_body: return null
 	var to_destroy := last_body
 	last_body = _get_predecessor_of_segment(last_body)
 	to_destroy.queue_free()
@@ -109,9 +109,15 @@ func destroy_last_segment()->RigidBody2D:
 	return last_body
 
 
-func _get_joint_of_segment(segment: RigidBody2D)->PinJoint2D: return segment.get_node("Joint") as PinJoint2D;
-func _get_anchor_of_segment(segment: RigidBody2D)->Node2D: return segment.get_node("AnchorPointMarker") as Node2D;
+func _get_joint_of_segment(segment: RigidBody2D)->PinJoint2D: 
+	if !segment: return null
+	return segment.get_node("Joint") as PinJoint2D;
+func _get_anchor_of_segment(segment: RigidBody2D)->Node2D:
+	if !segment: return null
+	return segment.get_node("AnchorPointMarker") as Node2D;
 func _get_predecessor_of_segment(segment: RigidBody2D)->RigidBody2D:
-	var path := _get_joint_of_segment(segment).node_b
+	var joint :=_get_joint_of_segment(segment)
+	if !joint: return null
+	var path := joint.node_b
 	if path: return get_node(path) as RigidBody2D;
 	else: return null;

@@ -88,8 +88,9 @@ modifications/3 = SubResource("SkeletonModification2DTwoBoneIK_hfj3o")
 modifications/4 = SubResource("SkeletonModification2DLookAt_cbnu6")
 modifications/5 = SubResource("SkeletonModification2DLookAt_hof80")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_stbo7"]
-size = Vector2(63, 189)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_87cap"]
+radius = 35.5
+height = 197.0
 
 [sub_resource type="Animation" id="Animation_nbku4"]
 resource_name = "Idle"
@@ -602,7 +603,7 @@ position = Vector2(1257.14, -107.143)
 
 [node name="BodyShape" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 2.5)
-shape = SubResource("RectangleShape2D_stbo7")
+shape = SubResource("CapsuleShape2D_87cap")
 script = ExtResource("18_3ejjp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

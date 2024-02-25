@@ -64,10 +64,12 @@ func move_direction(direction: float)->void:
 	
 var _last_jump_request_end : float = -INF
 func handle_jumping(jump_was_requested : bool)->void:
-	if is_grounded():
+	if is_grounded() || (_rope && _rope.is_finished):
 		if jump_was_requested || (_last_jump_request_end > TimeUtils.seconds_elapsed):
 			_last_jump_request_end = -INF
 			base.apply_impulse(jump_force*base.mass)
+			if !is_grounded():
+				handle_rope_drop()
 			#print("applying jump {0} - velocity is {1}".format([jump_force, base.linear_velocity]))
 	elif jump_was_requested:
 		_last_jump_request_end = TimeUtils.seconds_elapsed + jump_press_tolerance_seconds
@@ -102,13 +104,17 @@ func handle_rope_throw(mouse_position: Vector2)->void:
 func handle_rope_drop()->void:
 	base._hand_joint.position = Vector2.ZERO
 	base._hand_joint.node_b = NodePath()
+	_rope.progress_the_climb(INF)
 	_rope.queue_free()
 	_rope = null
 	
 
+
+
 func handle_rope_climb(delta:float)->void:
 	
 	_to_invoke_in_integrate_forces.append(func (state: PhysicsDirectBodyState2D):
+		if !_rope: return
 		var distance_climbed = climb_speed*delta
 		if _rope.progress_the_climb(distance_climbed):
 			var new_position = _rope.get_climb_point()
