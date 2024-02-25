@@ -3,7 +3,7 @@ class_name ShootableRopeController
 
 var rope_segment : PackedScene = preload("res://prefabs/rope/RopePiece.tscn");
 var rope_hook : PackedScene = preload("res://prefabs/rope/RopeHookPiece.tscn");
-var max_segments :int= 20
+var max_segments :int= 30
 @export var shoot_force : float;
 
 
@@ -20,6 +20,7 @@ func create_the_rope(where_to_place:Node2D, target_position:Vector2)->void:
 	self.where_to_place = where_to_place;
 	var look_direction := where_to_place.global_position - target_position;
 	var hook = _spawn_segment(rope_hook, where_to_place.global_position, look_direction, null);
+	hook_segment = hook
 	hook.on_hit.connect(_on_shot_finished_callback)
 	last_body = hook;
 	hook.apply_impulse(direction * shoot_force);
@@ -37,10 +38,10 @@ func _on_shot_finished_callback():
 
 var is_finished : bool = false;
 var where_to_place : Node2D;
-var last_body : PhysicsBody2D
+var last_body : RigidBody2D
 var last_anchor_point : Node2D;
 var segment_length : float = 0;
-
+var hook_segment: RopeHookController;
 
 var _segments_count = 0;
 #func _integrate_forces(state: PhysicsDirectBodyState2D)->void:
@@ -51,9 +52,11 @@ func _physics_process(delta):
 	while !is_finished && (where_to_place.global_position.distance_to(last_anchor_point.global_position) >= segment_length*0.5):
 		var look_direction := last_anchor_point.global_position - where_to_place.global_position
 		last_body = _spawn_segment(rope_segment, last_anchor_point.global_position, -look_direction, last_body)
-		#_segments_count += 1
+		_segments_count += 1
 		if _segments_count >= max_segments:
+			hook_segment.is_finished = true
 			_on_shot_finished_callback()
+
 
 
 
@@ -77,6 +80,21 @@ func _spawn_segment(segment_prefab:PackedScene, parent_anchor_point : Vector2, l
 		joint.node_b = body_to_connect.get_path()
 	
 	return new_segment;
+
+
+var climb_progress :float= 0.0
+
+func get_climb_point()->Vector2:
+	return lerp(_get_anchor_of_segment(last_body).global_position, last_body.global_position, climb_progress) as Vector2
+
+func progress_the_climb(distance_traveled: float)->bool:
+	climb_progress += distance_traveled / segment_length
+	print("progressing the climb by {0} ({1})".format([climb_progress, distance_traveled / segment_length]))
+	while(climb_progress >= 1):
+		if !destroy_last_segment():
+			return false
+		climb_progress -= 1
+	return true
 
 func destroy_last_segment()->RigidBody2D:
 	if !is_finished:

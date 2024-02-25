@@ -32,6 +32,13 @@ func activate():
 func physics_process(delta):
 	handle_rope_stuff(delta)
 	handle_basic_movement(delta)
+	
+
+var _to_invoke_in_integrate_forces : Array[Callable] = []	
+func integrate_forces(state: PhysicsDirectBodyState2D)->void:
+	for c in _to_invoke_in_integrate_forces:
+		c.call(state);
+	_to_invoke_in_integrate_forces.clear()
 		
 #region BasicMovement
 func handle_basic_movement(delta: float)->void:
@@ -78,7 +85,9 @@ func handle_rope_stuff(delta: float)->void:
 		if(Input.is_action_just_pressed("Throw")):
 			handle_rope_throw(mouse_position)
 	elif _rope.is_finished:
-		if(Input.is_action_pressed("Throw")):
+		if(Input.is_action_just_pressed("Drop")):
+			handle_rope_drop()
+		elif(Input.is_action_pressed("Throw")):
 			handle_rope_climb(delta)
 
 func handle_rope_throw(mouse_position: Vector2)->void:
@@ -90,24 +99,40 @@ func handle_rope_throw(mouse_position: Vector2)->void:
 	_rope.on_hook_hit.connect(connect_to_rope)
 	_rope.create_the_rope(base._hand, mouse_position);
 
+func handle_rope_drop()->void:
+	base._hand_joint.position = Vector2.ZERO
+	base._hand_joint.node_b = NodePath()
+	_rope.queue_free()
+	_rope = null
+	
 
 func handle_rope_climb(delta:float)->void:
 	
-	var shift := ((base._hand_joint.get_parent()as Node2D).global_position - _rope.last_body.global_position).normalized() * climb_speed;
-	var new_joint_pos := base._hand_joint.global_position + shift * delta
-	base.global_position -= shift*delta;
-	base._hand_joint.global_position = new_joint_pos
-	if base._hand_joint.position.length() >= _rope.segment_length:
-		var next := _rope.destroy_last_segment()
-		if !next:
-			_rope.queue_free()
-			_rope = null
-			base._hand_joint.position = Vector2.ZERO
-			base._hand_joint.node_b = NodePath()
+	_to_invoke_in_integrate_forces.append(func (state: PhysicsDirectBodyState2D):
+		var distance_climbed = climb_speed*delta
+		if _rope.progress_the_climb(distance_climbed):
+			var new_position = _rope.get_climb_point()
+			base.global_position = new_position
+			base._hand_joint.node_b = _rope.last_body.get_path()
 		else:
-			base._hand_joint.position -= base._hand_joint.position.normalized()*_rope.segment_length
-			base._hand_joint.node_b = next.get_path()
-	print("shift: {0}".format([shift]))
+			handle_rope_drop()
+		
+		return
+		var shift := ((base._hand_joint.get_parent()as Node2D).global_position - _rope.last_body.global_position).normalized() * climb_speed;
+		var new_joint_pos := base._hand_joint.global_position + shift * delta
+		base.global_position -= shift*delta;
+		base._hand_joint.global_position = new_joint_pos
+		if base._hand_joint.position.length() >= _rope.segment_length:
+			var next := _rope.destroy_last_segment()
+			if !next:
+				handle_rope_drop()
+			else:
+				base._hand_joint.position -= base._hand_joint.position.normalized()*_rope.segment_length
+				base._hand_joint.node_b = next.get_path()
+		print("shift: {0}".format([shift]))
+	);
+	
+	
 
 func _position_climbing(global_pos: Vector2)->void:
 	pass

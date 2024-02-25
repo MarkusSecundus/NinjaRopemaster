@@ -34,7 +34,7 @@ acceleration = 20.0
 jump_force = Vector2(0, -800)
 air_control_factor = 0.1
 jump_press_tolerance_seconds = 0.3
-climb_speed = 100.0
+climb_speed = 200.0
 
 [sub_resource type="Resource" id="Resource_5k71e"]
 script = ExtResource("3_3d2qs")
@@ -356,8 +356,8 @@ _data = {
 size = Vector2(54, 8)
 
 [node name="Ninja" type="RigidBody2D"]
-collision_mask = 3
-mass = 100.0
+collision_mask = 11
+mass = 40.0
 physics_material_override = SubResource("PhysicsMaterial_uiftb")
 lock_rotation = true
 script = ExtResource("1_axc6r")
@@ -611,7 +611,7 @@ libraries = {
 autoplay = "Idle"
 
 [node name="Feet" type="Area2D" parent="."]
-collision_mask = 2
+collision_mask = 10
 script = ExtResource("19_43qge")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Feet"]

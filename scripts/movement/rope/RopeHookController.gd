@@ -5,9 +5,10 @@ signal on_hit();
 
 var is_frozen : bool = false
 var frozen_position : Vector2;
-
+var is_finished : bool = false;
 
 func _on_hitting_target(target: Node)->void:
+	if is_finished: return
 	#dprint("Hook hit something ({0})".format([name]))
 	is_frozen=true
 	frozen_position = global_position
