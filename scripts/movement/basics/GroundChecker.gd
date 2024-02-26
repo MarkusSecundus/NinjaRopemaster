@@ -13,5 +13,4 @@ func is_grounded()->bool:
 var _last_collision_leave_seconds = -INF
 
 func _on_collision_leave(other: Node)->void:
-	print("leaving collision")
 	_last_collision_leave_seconds = TimeUtils.seconds_elapsed

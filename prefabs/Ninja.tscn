@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://c6c42jh8kb2h"]
+[gd_scene load_steps=40 format=3 uid="uid://c6c42jh8kb2h"]
 
 [ext_resource type="Texture2D" uid="uid://bhq06r05uke4o" path="res://sprites/characters/ninja/torso.png" id="1_0lpve"]
 [ext_resource type="Script" path="res://scripts/movement/basics/PlayerController.gd" id="1_axc6r"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://cakekvvh3yrig" path="res://sprites/characters/ninja/handThumb_R.png" id="16_o3d40"]
 [ext_resource type="Script" path="res://scripts/util/CopyPosition.gd" id="18_3ejjp"]
 [ext_resource type="Script" path="res://scripts/movement/basics/GroundChecker.gd" id="19_43qge"]
+[ext_resource type="Script" path="res://scripts/damage_system/Damageable.gd" id="23_bcci4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uiftb"]
 friction = 0.0
@@ -1389,5 +1390,8 @@ libraries = {
 "": SubResource("AnimationLibrary_1rj2o")
 }
 autoplay = "Idle"
+
+[node name="NinjaDamageable" type="Node" parent="."]
+script = ExtResource("23_bcci4")
 
 [connection signal="body_exited" from="Feet" to="Feet" method="_on_collision_leave"]

@@ -105,6 +105,7 @@ func handle_rope_drop()->void:
 	base._hand_joint.position = Vector2.ZERO
 	base._hand_joint.node_b = NodePath()
 	_rope.progress_the_climb(INF)
+	if _rope.hook_segment: _rope.hook_segment.queue_free()
 	_rope.queue_free()
 	_rope = null
 	
