@@ -4,17 +4,25 @@ class_name RopeHookController
 signal on_hit();
 
 var is_frozen : bool = false
-var frozen_position : Vector2;
 var is_finished : bool = false;
+
+var _static_helper_body : StaticBody2D = null;
+
+func _exit_tree():
+	if _static_helper_body: _static_helper_body.queue_free()
 
 func _on_hitting_target(target: Node)->void:
 	if is_finished: return
 	#dprint("Hook hit something ({0})".format([name]))
 	is_frozen=true
-	frozen_position = global_position
+	is_finished = true
+	var body = target as PhysicsBody2D
+	if !body:
+		_static_helper_body = StaticBody2D.new()
+		get_tree().root.add_child(_static_helper_body)
+		_static_helper_body.position = Vector2.ZERO
+		body = _static_helper_body
+		
+	$PinJoint2D.node_b = body.get_path()
 	on_hit.emit()
 
-func _integrate_forces(state):
-	if !is_frozen: return
-	linear_velocity = Vector2.ZERO
-	global_position = frozen_position
