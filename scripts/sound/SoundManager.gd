@@ -14,7 +14,9 @@ func _get_sound_player()->AudioStreamPlayer:
 	_soundPool.add_child(ret);
 	return ret;
 
-func PlaySound(sound: AudioStream)->void:
+func PlaySound(sound: AudioStream, pitch: float = 1)->void:
 	var player := _get_sound_player()
 	player.stream = sound
+	player.pitch_scale = pitch
 	player.play()
+

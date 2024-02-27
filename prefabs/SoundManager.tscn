@@ -1,14 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnd0o8dg5nytd"]
+[gd_scene load_steps=5 format=3 uid="uid://cnd0o8dg5nytd"]
 
 [ext_resource type="Script" path="res://scripts/sound/SoundManager.gd" id="1_dv25x"]
+[ext_resource type="AudioStream" uid="uid://boap2j33tlssl" path="res://sounds/music/soundtrack-core.ogg" id="2_43qm6"]
+[ext_resource type="AudioStream" uid="uid://pte7nyq03ty3" path="res://sounds/music/soundtrack-drums.ogg" id="3_dptbj"]
+[ext_resource type="AudioStream" uid="uid://8qa2m60g1the" path="res://sounds/music/soundtrack-intense.ogg" id="4_hhi87"]
 
 [node name="SoundManager" type="Node"]
 script = ExtResource("1_dv25x")
 
 [node name="SoundtrackLayers" type="Node" parent="."]
 
-[node name="LayerPrototype" type="AudioStreamPlayer" parent="SoundtrackLayers"]
-
 [node name="Layer0" type="AudioStreamPlayer" parent="SoundtrackLayers"]
+stream = ExtResource("2_43qm6")
+volume_db = -9.996
+autoplay = true
+
+[node name="Layer1" type="AudioStreamPlayer" parent="SoundtrackLayers"]
+stream = ExtResource("3_dptbj")
+autoplay = true
+
+[node name="Layer2" type="AudioStreamPlayer" parent="SoundtrackLayers"]
+stream = ExtResource("4_hhi87")
+autoplay = true
 
 [node name="SoundPool" type="Node" parent="."]
