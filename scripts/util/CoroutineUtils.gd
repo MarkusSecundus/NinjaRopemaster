@@ -44,18 +44,29 @@ class Generator:
 		
 	func take_first(count: int)->Generator: return GeneratorHelpers.TakeFirst.new([self, count])
 	func where(predicate: Callable)->Generator: return GeneratorHelpers.Where.new([self, predicate])
-	func to_array()->Array:
-		var ret:=[];
-		while(self.MoveNext()): ret.append(self.Current);
-		return ret;
+	func select(transform: Callable)->Generator: return GeneratorHelpers.Select.new([self, transform])
+	func to_array(array: Array = [])->Array:
+		while(self.MoveNext()): array.append(self.Current);
+		return array;
+	static func from_array(array: Array)->Generator: return GeneratorHelpers.FromArray.new([array])
+		
 
 class GeneratorHelpers:
+	class FromArray:
+		extends Generator
+		func _impl(array: Array)->void:
+			for item in array: await _yield(item)
 	class TakeFirst:
 		extends Generator
 		func _impl(generator: Generator,  number: int)->void:
 			while generator.MoveNext() && number > 0:
 				await _yield(generator.Current)
 				number -= 1
+	class Select:
+		extends Generator
+		func _impl(generator: Generator, transform: Callable)->void:
+			while generator.MoveNext():
+				await _yield(transform.call(generator.Current))
 	class Where:
 		extends Generator
 		func _impl(generator: Generator, predicate: Callable)->void:

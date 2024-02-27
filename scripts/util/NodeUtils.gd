@@ -47,15 +47,15 @@ static func get_ancestor_component_of_type(node: Node, component_type, flags := 
 			.format([component_type.get_path(),node.get_path()]));
 	return null;
 
-static func get_children_of_type(node: Node, child_type, flags := LOOKUP_FLAGS.NONE):
+static func get_children_of_type(node: Node, child_type, list :Array = [], flags := LOOKUP_FLAGS.NONE):
 	if !node: return [];
-	var list = []
+	
 	for i in range(node.get_child_count()):
 		var child = node.get_child(i)
 		if is_instance_of(child, child_type):
 			list.append(child)
 		if flags & LOOKUP_FLAGS.RECURSIVE:
-			list += get_children_of_type(child, child_type, flags & ~LOOKUP_FLAGS.REQUIRED)
+			list = get_children_of_type(child, child_type,list, flags & ~LOOKUP_FLAGS.REQUIRED)
 			
 	if list.is_empty() && flags & LOOKUP_FLAGS.REQUIRED:
 		ErrorUtils.report_error("Did not find required component of type '{0}' on node '{1}'"
@@ -66,9 +66,9 @@ static func get_sibling_of_type(node: Node, child_type, flags := LOOKUP_FLAGS.NO
 	if(!node): return null;
 	return get_child_of_type(node.get_parent(), child_type, flags);
 	
-static func get_siblings_of_type(node: Node, child_type, flags := LOOKUP_FLAGS.NONE):
+static func get_siblings_of_type(node: Node, child_type, list :Array = [], flags := LOOKUP_FLAGS.NONE):
 	if(!node): return [];
-	return get_children_of_type(node.get_parent(), child_type, flags);
+	return get_children_of_type(node.get_parent(), list, child_type, flags);
 	
 
 static var _counter: int = 0;

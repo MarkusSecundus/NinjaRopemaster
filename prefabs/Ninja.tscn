@@ -1556,6 +1556,7 @@ rotation = -0.182932
 scale = Vector2(0.999868, 0.999873)
 skew = -0.00055933
 rest = Transform2D(0.999883, -0.0135671, 0.0136545, 0.999882, 103.044, 168)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="LegHighL" type="Sprite2D" parent="ToRotate/Skeleton2D/TorsoBone2D/LegHighLBone2D"]
 z_index = 15
@@ -1570,6 +1571,7 @@ position = Vector2(56.1836, 337.183)
 rotation = 0.617711
 scale = Vector2(0.999893, 0.999893)
 rest = Transform2D(0.92629, 0.376756, -0.376756, 0.92629, 56.1836, 337.183)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="LegLowL" type="Sprite2D" parent="ToRotate/Skeleton2D/TorsoBone2D/LegHighLBone2D/LegLowLBone2D"]
 z_index = 14
@@ -1597,6 +1599,7 @@ position = Vector2(-101.441, 114.619)
 rotation = -0.0612751
 scale = Vector2(0.999862, 0.999862)
 rest = Transform2D(0.988042, 0.153979, -0.153979, 0.988042, -101.441, 114.619)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="LegHighR" type="Sprite2D" parent="ToRotate/Skeleton2D/TorsoBone2D/LegHighRBone2D"]
 z_index = 18
@@ -1612,6 +1615,7 @@ rotation = 0.579552
 scale = Vector2(0.982619, 1.00487)
 skew = -0.000171304
 rest = Transform2D(0.961144, 0.204307, -0.208935, 0.982922, -7.25516, 369.217)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="LegLowR" type="Sprite2D" parent="ToRotate/Skeleton2D/TorsoBone2D/LegHighRBone2D/LegLowRBone2D"]
 z_index = 17

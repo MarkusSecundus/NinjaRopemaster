@@ -12,7 +12,7 @@ script = ExtResource("1_dv25x")
 
 [node name="Layer0" type="AudioStreamPlayer" parent="SoundtrackLayers"]
 stream = ExtResource("2_43qm6")
-volume_db = -9.996
+volume_db = -5.95
 autoplay = true
 
 [node name="Layer1" type="AudioStreamPlayer" parent="SoundtrackLayers"]

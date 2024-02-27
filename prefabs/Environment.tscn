@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://fhk26kw5alwx"]
+[gd_scene load_steps=23 format=3 uid="uid://fhk26kw5alwx"]
 
 [ext_resource type="Texture2D" uid="uid://xvvsx21l8ds4" path="res://sprites/background/background_far.png" id="1_qiq8p"]
 [ext_resource type="Texture2D" uid="uid://btdgyi6xcf72a" path="res://sprites/background/background_near.png" id="2_077wg"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cotbbmso7h1u4" path="res://prefabs/RespawnPoint.tscn" id="5_uagrb"]
 [ext_resource type="PackedScene" uid="uid://rnejjjy8kf3s" path="res://prefabs/Sign.tscn" id="7_0u5rg"]
 [ext_resource type="PackedScene" uid="uid://squ6nptt3mql" path="res://prefabs/MovingPlatform.tscn" id="7_eivbt"]
+[ext_resource type="PackedScene" uid="uid://b5bg7q7a6p1if" path="res://prefabs/SoundtrackIntensityArea.tscn" id="9_qn1xa"]
 
 [sub_resource type="Gradient" id="Gradient_g5uf0"]
 interpolation_mode = 1
@@ -34,6 +35,21 @@ size = Vector2(713, 1228)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nfpmx"]
 normal = Vector2(-1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ewa4i"]
+size = Vector2(1195, 1369)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rooug"]
+size = Vector2(1195, 1369)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rlc41"]
+size = Vector2(2053.5, 2015.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kk5tb"]
+size = Vector2(2230, 3175)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b54lq"]
+size = Vector2(3023, 1970)
 
 [node name="Environment" type="Node2D"]
 
@@ -323,6 +339,41 @@ position = Vector2(-48, -58)
 
 [node name="Spikes3" parent="Areas/Area4/Hazards" instance=ExtResource("4_ninb7")]
 position = Vector2(1685, 1275)
+
+[node name="SoundtrackIntensities" type="Node2D" parent="."]
+visible = false
+
+[node name="Intensity1" parent="SoundtrackIntensities" instance=ExtResource("9_qn1xa")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SoundtrackIntensities/Intensity1"]
+position = Vector2(469.5, 767.5)
+shape = SubResource("RectangleShape2D_ewa4i")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SoundtrackIntensities/Intensity1"]
+position = Vector2(9675, 90)
+shape = SubResource("RectangleShape2D_rooug")
+
+[node name="Intensity1_9" parent="SoundtrackIntensities" instance=ExtResource("9_qn1xa")]
+intensity = 1.9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SoundtrackIntensities/Intensity1_9"]
+position = Vector2(2114.25, 353.75)
+shape = SubResource("RectangleShape2D_rlc41")
+
+[node name="Intensity2_2" parent="SoundtrackIntensities" instance=ExtResource("9_qn1xa")]
+intensity = 2.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SoundtrackIntensities/Intensity2_2"]
+position = Vector2(4767, 733.5)
+shape = SubResource("RectangleShape2D_kk5tb")
+
+[node name="Intensity3" parent="SoundtrackIntensities" instance=ExtResource("9_qn1xa")]
+position = Vector2(2394, 22)
+intensity = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SoundtrackIntensities/Intensity3"]
+position = Vector2(5163.5, 1336)
+shape = SubResource("RectangleShape2D_b54lq")
 
 [connection signal="body_entered" from="Hazards/KillFloor" to="Hazards/KillFloor" method="_body_entered"]
 

@@ -1,5 +1,95 @@
 class_name EaseType
 
+enum Enum{
+	LINEAR,
+	EASE_IN_QUAD,
+	EASE_OUT_QUAD,
+	EASE_IN_OUT_QUAD,
+	SMOOTHSTEP3,
+	
+	EASE_IN_SINE,
+	EASE_OUT_SINE,
+	EASE_IN_OUT_SINE,
+	
+	EASE_IN_CUBIC,
+	EASE_OUT_CUBIC,
+	EASE_IN_OUT_CUBIC,
+	
+	EASE_IN_QUINT,
+	EASE_OUT_QUINT,
+	EASE_IN_OUT_QUINT,
+	
+	EASE_IN_CIRC,
+	EASE_OUT_CIRC,
+	EASE_IN_OUT_CIRC,
+	
+	EASE_IN_ELASTIC,
+	EASE_OUT_ELASTIC,
+	EASE_IN_OUT_ELASTIC,
+	
+	EASE_IN_QUART,
+	EASE_OUT_QUART,
+	EASE_IN_OUT_QUART,
+	
+	EASE_IN_EXPO,
+	EASE_OUT_EXPO,
+	EASE_IN_OUT_EXPO,
+	
+	EASE_IN_BACK,
+	EASE_OUT_BACK,
+	EASE_IN_OUT_BACK,
+	
+	EASE_IN_BOUNCE,
+	EASE_OUT_BOUNCE,
+	EASE_IN_OUT_BOUNCE,
+}
+
+static func from_enum(id:Enum)->Callable: 
+	match id:
+		Enum.LINEAR: return LINEAR
+		Enum.EASE_IN_QUAD: return EASE_IN_QUAD
+		Enum.EASE_OUT_QUAD: return EASE_OUT_QUAD
+		Enum.EASE_IN_OUT_QUAD: return EASE_IN_OUT_QUAD
+		Enum.SMOOTHSTEP3: return SMOOTHSTEP3
+		
+		Enum.EASE_IN_SINE: return EASE_IN_SINE
+		Enum.EASE_OUT_SINE: return EASE_OUT_SINE
+		Enum.EASE_IN_OUT_SINE: return EASE_IN_OUT_SINE
+		
+		Enum.EASE_IN_CUBIC: return EASE_IN_CUBIC
+		Enum.EASE_OUT_CUBIC: return EASE_OUT_CUBIC
+		Enum.EASE_IN_OUT_CUBIC: return EASE_IN_OUT_CUBIC
+		
+		Enum.EASE_IN_QUINT: return EASE_IN_QUINT
+		Enum.EASE_OUT_QUINT: return EASE_OUT_QUINT
+		Enum.EASE_IN_OUT_QUINT: return EASE_IN_OUT_QUINT
+		
+		Enum.EASE_IN_CIRC: return EASE_IN_CIRC
+		Enum.EASE_OUT_CIRC: return EASE_OUT_CIRC
+		Enum.EASE_IN_OUT_CIRC: return EASE_IN_OUT_CIRC
+		
+		Enum.EASE_IN_ELASTIC: return EASE_IN_ELASTIC
+		Enum.EASE_OUT_ELASTIC: return EASE_OUT_ELASTIC
+		Enum.EASE_IN_OUT_ELASTIC: return EASE_IN_OUT_ELASTIC
+		
+		Enum.EASE_IN_QUART: return EASE_IN_QUART
+		Enum.EASE_OUT_QUART: return EASE_OUT_QUART
+		Enum.EASE_IN_OUT_QUART: return EASE_IN_OUT_QUART
+		
+		Enum.EASE_IN_EXPO: return EASE_IN_EXPO
+		Enum.EASE_OUT_EXPO: return EASE_OUT_EXPO
+		Enum.EASE_IN_OUT_EXPO: return EASE_IN_OUT_EXPO
+		
+		Enum.EASE_IN_BACK: return EASE_IN_BACK
+		Enum.EASE_OUT_BACK: return EASE_OUT_BACK
+		Enum.EASE_IN_OUT_BACK: return EASE_IN_OUT_BACK
+		
+		Enum.EASE_IN_BOUNCE: return EASE_IN_BOUNCE
+		Enum.EASE_OUT_BOUNCE: return EASE_OUT_BOUNCE
+		Enum.EASE_IN_OUT_BOUNCE: return EASE_IN_OUT_BOUNCE
+	return Callable()
+
+
 static var LINEAR 				: Callable = _FunctionImplementations.linear;
 static var EASE_IN_QUAD 		: Callable = _FunctionImplementations.ease_in_quad;
 static var EASE_OUT_QUAD 		: Callable = _FunctionImplementations.ease_out_quad;
