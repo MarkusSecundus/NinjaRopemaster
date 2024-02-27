@@ -9,12 +9,10 @@ extends Node
 
 const MIN_DB : float= -80.0
 
-var _soundtrackLayers : Array[AudioStreamPlayer] = []
-var _soundtrackLayerDefaultIntensities : Array[float] = []
+var _soundtrackLayers : Array[SoundtrackPart] = []
 func _ready():
-	_soundtrackLayers = NodeUtils.get_children_of_type($SoundtrackLayers, AudioStreamPlayer, _soundtrackLayers) as Array[AudioStreamPlayer];
-	_soundtrackLayerDefaultIntensities = CoroutineUtils.Generator.from_array(_soundtrackLayers).select(func(pl:AudioStreamPlayer):return pl.volume_db).to_array(_soundtrackLayerDefaultIntensities);
-
+	_soundtrackLayers = NodeUtils.get_children_of_type($SoundtrackLayers, SoundtrackPart, _soundtrackLayers) as Array[SoundtrackPart];
+	
 
 func _get_sound_player()->AudioStreamPlayer:
 	for c in get_children():
@@ -33,15 +31,24 @@ func PlaySound(sound: AudioStream, pitch: float = 1)->void:
 
 var _running_tweens : Array[CustomTween] = []
 
+func _compute_intensity(decibel_layers: Array[float], intensity_floor: int, intensity_factor: float)->float:
+	if intensity_floor < 0 || decibel_layers.size()<= 1: return decibel_layers[0]
+	if intensity_floor+1 >= decibel_layers.size(): return decibel_layers[decibel_layers.size()-1]
+	return lerpf(decibel_layers[intensity_floor], decibel_layers[intensity_floor + 1], intensity_factor)
+
 func SetSoundtrackIntensity(intensity: float)->void:
 	for tw in _running_tweens: tw.stop() 
 	_running_tweens.clear()
 	
+	var intensity_floor := int(floorf(intensity))
+	var intensity_factor := intensity - intensity_floor
+	
 	var i:int = 0
 	while i < _soundtrackLayers.size():
-		var intensity_factor := clampf(intensity - i, 0, 1) 
-		var db := MIN_DB if intensity_factor==0 else lerpf(minReasonableDb, _soundtrackLayerDefaultIntensities[i], intensity_factor)
 		var layer := _soundtrackLayers[i]
+		
+		var db := _compute_intensity(layer.decibels, intensity_floor, intensity_factor)
+		
 		if layer.volume_db != db:
 			_running_tweens.append(Tweens.tween(layer, "volume_db", layer.volume_db, db, soundtrackTransition_seconds))
 		i+= 1

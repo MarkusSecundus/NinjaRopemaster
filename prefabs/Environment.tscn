@@ -343,35 +343,36 @@ position = Vector2(1685, 1275)
 [node name="SoundtrackIntensities" type="Node2D" parent="."]
 visible = false
 
-[node name="Intensity1" parent="SoundtrackIntensities" instance=ExtResource("9_qn1xa")]
+[node name="Intensity0" parent="SoundtrackIntensities" instance=ExtResource("9_qn1xa")]
+intensity = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SoundtrackIntensities/Intensity1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SoundtrackIntensities/Intensity0"]
 position = Vector2(469.5, 767.5)
 shape = SubResource("RectangleShape2D_ewa4i")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="SoundtrackIntensities/Intensity1"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SoundtrackIntensities/Intensity0"]
 position = Vector2(9675, 90)
 shape = SubResource("RectangleShape2D_rooug")
 
-[node name="Intensity1_9" parent="SoundtrackIntensities" instance=ExtResource("9_qn1xa")]
-intensity = 1.9
+[node name="Intensity0_9" parent="SoundtrackIntensities" instance=ExtResource("9_qn1xa")]
+intensity = 0.9
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SoundtrackIntensities/Intensity1_9"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SoundtrackIntensities/Intensity0_9"]
 position = Vector2(2114.25, 353.75)
 shape = SubResource("RectangleShape2D_rlc41")
 
-[node name="Intensity2_2" parent="SoundtrackIntensities" instance=ExtResource("9_qn1xa")]
-intensity = 2.2
+[node name="Intensity1_5" parent="SoundtrackIntensities" instance=ExtResource("9_qn1xa")]
+intensity = 1.7
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SoundtrackIntensities/Intensity2_2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SoundtrackIntensities/Intensity1_5"]
 position = Vector2(4767, 733.5)
 shape = SubResource("RectangleShape2D_kk5tb")
 
-[node name="Intensity3" parent="SoundtrackIntensities" instance=ExtResource("9_qn1xa")]
+[node name="Intensity2" parent="SoundtrackIntensities" instance=ExtResource("9_qn1xa")]
 position = Vector2(2394, 22)
-intensity = 3.0
+intensity = 2.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SoundtrackIntensities/Intensity3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SoundtrackIntensities/Intensity2"]
 position = Vector2(5163.5, 1336)
 shape = SubResource("RectangleShape2D_b54lq")
 
