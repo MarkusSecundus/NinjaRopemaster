@@ -101,7 +101,7 @@ scale = Vector2(0.435, 0.435)
 texture = ExtResource("6_1yilr")
 
 [node name="Ninja" parent="." instance=ExtResource("7_e07y7")]
-position = Vector2(3720, -640)
+position = Vector2(241, 1085)
 
 [connection signal="ready" from="Rope2" to="Rope2" method="create_the_rope"]
 [connection signal="ready" from="Rope3" to="Rope3" method="create_the_rope"]

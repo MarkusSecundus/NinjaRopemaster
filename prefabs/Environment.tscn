@@ -362,7 +362,7 @@ position = Vector2(2114.25, 353.75)
 shape = SubResource("RectangleShape2D_rlc41")
 
 [node name="Intensity1_5" parent="SoundtrackIntensities" instance=ExtResource("9_qn1xa")]
-intensity = 1.7
+intensity = 1.6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SoundtrackIntensities/Intensity1_5"]
 position = Vector2(4767, 733.5)
