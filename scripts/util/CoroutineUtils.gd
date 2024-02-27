@@ -43,6 +43,11 @@ class Generator:
 		return _on_next_signal;
 		
 	func take_first(count: int)->Generator: return GeneratorHelpers.TakeFirst.new([self, count])
+	func where(predicate: Callable)->Generator: return GeneratorHelpers.Where.new([self, predicate])
+	func to_array()->Array:
+		var ret:=[];
+		while(self.MoveNext()): ret.append(self.Current);
+		return ret;
 
 class GeneratorHelpers:
 	class TakeFirst:
@@ -51,3 +56,8 @@ class GeneratorHelpers:
 			while generator.MoveNext() && number > 0:
 				await _yield(generator.Current)
 				number -= 1
+	class Where:
+		extends Generator
+		func _impl(generator: Generator, predicate: Callable)->void:
+			while generator.MoveNext():
+				if predicate.call(generator.Current): await _yield(generator.Current)
