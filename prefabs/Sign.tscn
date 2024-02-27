@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://rnejjjy8kf3s"]
+
+[ext_resource type="Script" path="res://scripts/simple_behaviors/TextBubble.gd" id="1_p8utj"]
+[ext_resource type="Texture2D" uid="uid://bitxyqsktsn62" path="res://sprites/env_spritesheet.png" id="2_jjdis"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cidtx"]
+atlas = ExtResource("2_jjdis")
+region = Rect2(512, 0, 256, 257)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lnt4a"]
+radius = 66.4831
+
+[node name="Sign" type="Area2D"]
+script = ExtResource("1_p8utj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -2
+scale = Vector2(0.615, 0.615)
+texture = SubResource("AtlasTexture_cidtx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 7)
+shape = SubResource("CircleShape2D_lnt4a")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+
+[connection signal="body_entered" from="." to="." method="_on_body_enter"]
+[connection signal="body_exited" from="." to="." method="_on_body_exit"]

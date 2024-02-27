@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://fhk26kw5alwx"]
+[gd_scene load_steps=17 format=3 uid="uid://fhk26kw5alwx"]
 
 [ext_resource type="Texture2D" uid="uid://xvvsx21l8ds4" path="res://sprites/background/background_far.png" id="1_qiq8p"]
 [ext_resource type="Texture2D" uid="uid://btdgyi6xcf72a" path="res://sprites/background/background_near.png" id="2_077wg"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cxo061fhw5nbl" path="res://prefabs/Spikes.tscn" id="4_ninb7"]
 [ext_resource type="Script" path="res://scripts/damage_system/damagers/AreaDamager.gd" id="5_8s24r"]
 [ext_resource type="PackedScene" uid="uid://cotbbmso7h1u4" path="res://prefabs/RespawnPoint.tscn" id="5_uagrb"]
+[ext_resource type="PackedScene" uid="uid://rnejjjy8kf3s" path="res://prefabs/Sign.tscn" id="7_0u5rg"]
 [ext_resource type="PackedScene" uid="uid://squ6nptt3mql" path="res://prefabs/MovingPlatform.tscn" id="7_eivbt"]
 
 [sub_resource type="Gradient" id="Gradient_g5uf0"]
@@ -137,6 +138,10 @@ position = Vector2(1437, 1274)
 
 [node name="Spikes3" parent="Areas/Area1/Hazards" instance=ExtResource("4_ninb7")]
 position = Vector2(1685, 1275)
+
+[node name="Sign" parent="Areas/Area1" instance=ExtResource("7_0u5rg")]
+position = Vector2(616, 1144)
+message = "Welcome in this game!"
 
 [node name="Area2" type="Node2D" parent="Areas"]
 

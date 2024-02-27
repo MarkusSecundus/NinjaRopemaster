@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnd0o8dg5nytd"]
+
+[ext_resource type="Script" path="res://scripts/sound/SoundManager.gd" id="1_dv25x"]
+
+[node name="SoundManager" type="Node"]
+script = ExtResource("1_dv25x")
+
+[node name="SoundtrackLayers" type="Node" parent="."]
+
+[node name="LayerPrototype" type="AudioStreamPlayer" parent="SoundtrackLayers"]
+
+[node name="Layer0" type="AudioStreamPlayer" parent="SoundtrackLayers"]
+
+[node name="SoundPool" type="Node" parent="."]

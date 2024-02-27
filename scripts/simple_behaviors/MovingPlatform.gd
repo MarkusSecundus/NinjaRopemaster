@@ -51,4 +51,4 @@ func _move_next(indexer: CoroutineUtils.Generator)->void:
 	var end := _get_segment_position(end_index)
 	var duration := end.distance_to(begin)/movement_speed
 	
-	Tweens.tween(_platform, "position", begin, end, duration, EaseType.LINEAR, func(t:CustomTween):_move_next(indexer));
+	Tweens.tween(_platform, "position", begin, end, duration, EaseType.EASE_IN_BOUNCE, func(t:CustomTween):_move_next(indexer));
