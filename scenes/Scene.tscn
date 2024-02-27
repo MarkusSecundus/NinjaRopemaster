@@ -18,10 +18,11 @@ size = Vector2(30, 30)
 [node name="Scene" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("to_follow")]
-position = Vector2(970, 711)
+position = Vector2(611, 514)
 script = ExtResource("1_gttlc")
 to_follow = NodePath("../Ninja/ToRotate/CameraPoint")
-max_speed = 1e+17
+speed = 10.0
+distance_scaling = 1.1
 
 [node name="Environment" parent="." instance=ExtResource("1")]
 
@@ -100,22 +101,7 @@ scale = Vector2(0.435, 0.435)
 texture = ExtResource("6_1yilr")
 
 [node name="Ninja" parent="." instance=ExtResource("7_e07y7")]
-position = Vector2(189, 899)
-
-[node name="LegHighLBone2D" parent="Ninja/ToRotate/Skeleton2D/TorsoBone2D" index="2"]
-scale = Vector2(0.999896, 0.999895)
-
-[node name="FootLBone2D" parent="Ninja/ToRotate/Skeleton2D/TorsoBone2D/LegHighLBone2D/LegLowLBone2D" index="1"]
-scale = Vector2(0.999985, 1.00005)
-
-[node name="ArmHighLBone2D" parent="Ninja/ToRotate/Skeleton2D/TorsoBone2D" index="4"]
-scale = Vector2(0.999948, 0.999948)
-
-[node name="ArmLowLBone2D" parent="Ninja/ToRotate/Skeleton2D/TorsoBone2D/ArmHighLBone2D" index="1"]
-scale = Vector2(0.999966, 0.999966)
-
-[node name="ArmHighRBone2D" parent="Ninja/ToRotate/Skeleton2D/TorsoBone2D" index="5"]
-scale = Vector2(0.999954, 0.999954)
+position = Vector2(3391, -585)
 
 [connection signal="ready" from="Rope2" to="Rope2" method="create_the_rope"]
 [connection signal="ready" from="Rope3" to="Rope3" method="create_the_rope"]

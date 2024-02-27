@@ -36,6 +36,11 @@ func _ready():
 	state_climbingrope.initialize(self)
 	current_state = self.change_state(state_basic)
 
+func reset():
+	if current_state:
+		current_state.deactivate()
+		current_state.activate()
+
 func change_state(new_state: IControlState)->IControlState:
 	if current_state:
 		current_state.deactivate()

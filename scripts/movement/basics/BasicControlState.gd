@@ -29,6 +29,11 @@ func initialize(baseController: PlayerController):
 func activate():
 	pass
 
+func deactivate():
+	handle_rope_drop()
+	base.linear_velocity = Vector2.ZERO
+	base.angular_velocity = 0
+
 func physics_process(delta):
 	handle_rope_stuff(delta)
 	handle_basic_movement(delta)
@@ -102,6 +107,7 @@ func handle_rope_throw(mouse_position: Vector2)->void:
 	_rope.create_the_rope(base._hand, mouse_position);
 
 func handle_rope_drop()->void:
+	if !_rope : return
 	base._hand_joint.position = Vector2.ZERO
 	base._hand_joint.node_b = NodePath()
 	_rope.progress_the_climb(INF)

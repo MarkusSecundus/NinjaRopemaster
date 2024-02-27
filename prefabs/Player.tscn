@@ -13,6 +13,7 @@ acceleration = 6.0
 jump_force = Vector2(0, -600)
 air_control_factor = 1.1
 jump_press_tolerance_seconds = 0.3
+climb_speed = 10.0
 
 [sub_resource type="Resource" id="Resource_04wun"]
 script = ExtResource("3_gkhy3")

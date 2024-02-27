@@ -5,7 +5,7 @@ class_name Damageable
 @onready var HP:float = MaxHP;
 
 @export var seconds_between_damage : float = 0.3;
-
+@export var invulnerability_after_respawn: float = 3;
 
 var is_dead: bool:
 	get: return HP <= 0
@@ -13,6 +13,11 @@ var is_dead: bool:
 signal on_health_update();
 signal on_damaged();
 signal on_death();
+
+
+func reset()->void:
+	HP = MaxHP;
+	next_allowed_damage_time = TimeUtils.seconds_elapsed + invulnerability_after_respawn
 
 var next_allowed_damage_time : float = -INF;
 func do_damage(dmg: float)->void:
