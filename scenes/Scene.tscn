@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dk1ctt8lufi7j"]
+[gd_scene load_steps=11 format=3 uid="uid://dk1ctt8lufi7j"]
 
 [ext_resource type="PackedScene" uid="uid://fhk26kw5alwx" path="res://prefabs/Environment.tscn" id="1"]
 [ext_resource type="Script" path="res://scripts/simple_behaviors/SmoothFollowPoint.gd" id="1_gttlc"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://dv5h81qov6qq0" path="res://prefabs/rope/Rope.tscn" id="5_frwya"]
 [ext_resource type="Texture2D" uid="uid://b0vhuf0ephu81" path="res://sprites/crate.png" id="6_1yilr"]
 [ext_resource type="PackedScene" uid="uid://c6c42jh8kb2h" path="res://prefabs/Ninja.tscn" id="7_e07y7"]
-[ext_resource type="Script" path="res://scripts/oneshot_tests/CoroutineTest.gd" id="9_uyo5p"]
 
 [sub_resource type="PhysicsMaterial" id="16"]
 rough = true
@@ -102,19 +101,7 @@ scale = Vector2(0.435, 0.435)
 texture = ExtResource("6_1yilr")
 
 [node name="Ninja" parent="." instance=ExtResource("7_e07y7")]
-position = Vector2(4200, 1955)
-
-[node name="FootLBone2D" parent="Ninja/ToRotate/Skeleton2D/TorsoBone2D/LegHighLBone2D/LegLowLBone2D" index="1"]
-scale = Vector2(0.999985, 1.00005)
-
-[node name="LegLowRBone2D" parent="Ninja/ToRotate/Skeleton2D/TorsoBone2D/LegHighRBone2D" index="1"]
-scale = Vector2(0.982619, 1.00487)
-
-[node name="ArmLowLBone2D" parent="Ninja/ToRotate/Skeleton2D/TorsoBone2D/ArmHighLBone2D" index="1"]
-scale = Vector2(0.999953, 0.999953)
-
-[node name="Test" type="Node" parent="."]
-script = ExtResource("9_uyo5p")
+position = Vector2(3264, -701)
 
 [connection signal="ready" from="Rope2" to="Rope2" method="create_the_rope"]
 [connection signal="ready" from="Rope3" to="Rope3" method="create_the_rope"]

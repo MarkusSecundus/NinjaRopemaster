@@ -8,7 +8,7 @@ atlas = ExtResource("1_506yv")
 region = Rect2(249, 79, 266, 178)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ut025"]
-size = Vector2(230, 116)
+size = Vector2(199, 96)
 
 [node name="Spikes" type="Area2D"]
 position = Vector2(1410, 1271)
@@ -19,7 +19,7 @@ Damage = 200.0
 texture = SubResource("AtlasTexture_ohrqb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 6)
+position = Vector2(5.5, 13)
 shape = SubResource("RectangleShape2D_ut025")
 
 [connection signal="body_entered" from="." to="." method="_body_entered"]
