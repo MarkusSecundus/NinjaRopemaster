@@ -42,3 +42,12 @@ class Generator:
 		_did_yield = true
 		return _on_next_signal;
 		
+	func take_first(count: int)->Generator: return GeneratorHelpers.TakeFirst.new([self, count])
+
+class GeneratorHelpers:
+	class TakeFirst:
+		extends Generator
+		func _impl(generator: Generator,  number: int)->void:
+			while generator.MoveNext() && number > 0:
+				await _yield(generator.Current)
+				number -= 1

@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://squ6nptt3mql"]
+[gd_scene load_steps=7 format=3 uid="uid://squ6nptt3mql"]
 
 [ext_resource type="Texture2D" uid="uid://bitxyqsktsn62" path="res://sprites/env_spritesheet.png" id="1_2s4lj"]
 [ext_resource type="Script" path="res://scripts/simple_behaviors/MovingPlatform.gd" id="1_aybhq"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wndf7"]
+friction = 2.0
+rough = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ejmly"]
 atlas = ExtResource("1_2s4lj")
@@ -21,6 +25,7 @@ script = ExtResource("1_aybhq")
 [node name="Platform" type="AnimatableBody2D" parent="."]
 scale = Vector2(0.259, 0.259)
 collision_layer = 3
+physics_material_override = SubResource("PhysicsMaterial_wndf7")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platform"]
 texture = SubResource("AtlasTexture_ejmly")

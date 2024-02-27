@@ -18,7 +18,7 @@ class TestGenerateNumbers:
 				begin -= 1
 
 func _ready():
-	var tst:= TestGenerateNumbers.new([1, -15]);
+	var tst:= MovingPlatform.ReturnIndexer.new([5]).take_first(50)
 	while(tst.MoveNext()):
 		print("value: {0}".format([tst.Current]))
 	print("finished generation!")
