@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://squ6nptt3mql"]
+
+[ext_resource type="Texture2D" uid="uid://bitxyqsktsn62" path="res://sprites/env_spritesheet.png" id="1_2s4lj"]
+[ext_resource type="Script" path="res://scripts/simple_behaviors/MovingPlatform.gd" id="1_aybhq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejmly"]
+atlas = ExtResource("1_2s4lj")
+region = Rect2(256, 512, 768, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7r80"]
+atlas = ExtResource("1_2s4lj")
+region = Rect2(256, 1024, 768, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2mil"]
+size = Vector2(664.093, 305.019)
+
+[node name="MovingPlatform" type="Node2D"]
+position = Vector2(4030, -452)
+script = ExtResource("1_aybhq")
+
+[node name="Platform" type="AnimatableBody2D" parent="."]
+scale = Vector2(0.259, 0.259)
+collision_layer = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform"]
+texture = SubResource("AtlasTexture_ejmly")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Platform"]
+position = Vector2(0, 256)
+texture = SubResource("AtlasTexture_j7r80")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(-0.000244141, 160.232)
+shape = SubResource("RectangleShape2D_j2mil")

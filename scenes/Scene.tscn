@@ -18,7 +18,7 @@ size = Vector2(30, 30)
 [node name="Scene" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("to_follow")]
-position = Vector2(611, 514)
+position = Vector2(4211, 1793)
 script = ExtResource("1_gttlc")
 to_follow = NodePath("../Ninja/ToRotate/CameraPoint")
 speed = 10.0
@@ -101,7 +101,7 @@ scale = Vector2(0.435, 0.435)
 texture = ExtResource("6_1yilr")
 
 [node name="Ninja" parent="." instance=ExtResource("7_e07y7")]
-position = Vector2(3391, -585)
+position = Vector2(4200, 1955)
 
 [connection signal="ready" from="Rope2" to="Rope2" method="create_the_rope"]
 [connection signal="ready" from="Rope3" to="Rope3" method="create_the_rope"]
