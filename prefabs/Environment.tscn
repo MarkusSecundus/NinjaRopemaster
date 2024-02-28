@@ -82,11 +82,11 @@ texture = SubResource("GradientTexture1D_cvwd4")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
 position = Vector2(1034, 1466)
-motion_scale = Vector2(0.1, 0.1)
+motion_scale = Vector2(0.02, 0.02)
 
 [node name="BackgroundFar" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
 self_modulate = Color(1, 1, 1, 0.890196)
-position = Vector2(77.9999, -1117)
+position = Vector2(77.9999, -1104)
 scale = Vector2(0.296783, 0.296783)
 texture = ExtResource("1_qiq8p")
 

@@ -3709,7 +3709,7 @@ texture = ExtResource("3_bugpi")
 [node name="LegHighLBone2D" type="Bone2D" parent="ToRotate/Skeleton2D/TorsoBone2D"]
 position = Vector2(103.044, 168)
 rotation = -0.182932
-scale = Vector2(0.999853, 0.999851)
+scale = Vector2(0.999852, 0.999851)
 skew = -0.000561833
 rest = Transform2D(0.999883, -0.0135671, 0.0136545, 0.999882, 103.044, 168)
 editor_settings/show_bone_gizmo = false
