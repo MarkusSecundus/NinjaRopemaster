@@ -6,6 +6,8 @@ class_name PlayerRespawnable
 @onready var _damageable := NodeUtils.get_sibling_of_type(self, Damageable) as Damageable 
 
 
+func is_respawn_point_set()->bool: return _respawn_point != null
+
 var _respawn_point : Node2D;
 func set_respawn_point(point: Node2D)->void: 
 	_respawn_point = point
@@ -14,7 +16,6 @@ func set_respawn_point(point: Node2D)->void:
 func _get_respawn_position()->Vector2: return _respawn_point.global_position if _respawn_point else Vector2.ZERO
 
 func respawn()->void: 
-	_damageable.reset()
-	_player.reset()
 	print("respawning {0} -> {1}".format([_player.global_position, _get_respawn_position()]))
 	_player.global_position = _get_respawn_position()
+	if _damageable: _damageable.reset()

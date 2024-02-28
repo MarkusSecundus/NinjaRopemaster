@@ -19,6 +19,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") * 2
 @onready var _hand : Node2D = $ToRotate/Hand;
 @onready var _hand_joint : Joint2D = $JointHolder/PinJoint2D;
 
+@onready var _respawner : IRespawnable = NodeUtils.get_child_of_type(self, IRespawnable)
+@onready var _animator : AnimationPlayer = $AnimationPlayer;
 
 class IControlState:
 	extends Resource
@@ -34,12 +36,17 @@ class IControlState:
 func _ready():
 	state_basic.initialize(self)
 	state_climbingrope.initialize(self)
-	current_state = self.change_state(state_basic)
+	reset()
+
+func do_die():
+	current_state = self.change_state(null)
+	_animator.play("Die")
 
 func reset():
-	if current_state:
-		current_state.deactivate()
-		current_state.activate()
+	print("reseting the player")
+	if _respawner.is_respawn_point_set(): _respawner.respawn()
+	_animator.play("Idle")
+	current_state = self.change_state(state_basic)
 
 func change_state(new_state: IControlState)->IControlState:
 	if current_state:
