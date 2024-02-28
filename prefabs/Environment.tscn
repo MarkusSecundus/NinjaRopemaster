@@ -171,9 +171,55 @@ message = "
 What ye just observed below thyself
 were SPIKES
 
-Beware, less they become the instrument
+Beware, lest they become the instrument
 of thine DOOM"
-__editor_bubble_visible = true
+
+[node name="Sign3" parent="Areas/Area1" instance=ExtResource("7_0u5rg")]
+position = Vector2(2983, 879)
+message = "[Flashback from your training days at the dojo]
+... \"Remember, using the rope is easy, just:
+ - click LMB to shoot it in your cursor's direction.
+   it will either hit something and get stuck, or
+   you'll end up dragging it with you.
+- then, by holding LMB, you can climb the rope
+  to get closer to whatever you just hit
+- if unsuccessful, just retract it by clicking RMB
+- if the rope is stuck well enough, you can
+  use it to jump, even without your feet touching
+  solid ground. Just keep in mind that will 
+  result in the rope getting retracted as well.\"
+
+\"That's it. Now, keep your practice, and maybe
+one day you'll be good enough to be able
+to bring me those damned crackers from the store\""
+
+[node name="CanvasLayer" parent="Areas/Area1/Sign3" index="2"]
+visible = false
+
+[node name="Sprite2D" parent="Areas/Area1/Sign3/CanvasLayer/Bubble" index="0"]
+position = Vector2(11.5, 155.5)
+scale = Vector2(0.694336, 0.735352)
+
+[node name="Label" parent="Areas/Area1/Sign3/CanvasLayer/Bubble" index="1"]
+offset_left = -251.0
+offset_right = 299.0
+offset_bottom = 133.0
+text = "[Flashback from your training days at the dojo]
+... \"Remember, using the rope is easy, just:
+ - click LMB to shoot it in your cursor's direction.
+   it will either hit something and get stuck, or
+   you'll end up dragging it with you.
+- then, by holding LMB, you can climb the rope
+  to get closer to whatever you just hit
+- if unsuccessful, just retract it by clicking RMB
+- if the rope is stuck well enough, you can
+  use it to jump, even without your feet touching
+  solid ground. Just keep in mind that will 
+  result in the rope getting retracted as well.\"
+
+\"That's it. Now, keep your practice, and maybe
+one day you'll be good enough to be able
+to bring me those damned crackers from the store\""
 
 [node name="Area2" type="Node2D" parent="Areas"]
 
@@ -239,6 +285,13 @@ ease = 3
 
 [node name="Node2D" type="Node2D" parent="Areas/Area2/MovingPlatform"]
 position = Vector2(1193, 313)
+
+[node name="Sign3" parent="Areas/Area2" instance=ExtResource("7_0u5rg")]
+position = Vector2(3582, -519)
+message = "
+
+         Now, descend into the depths
+           'tis the only way forward"
 
 [node name="Area3" type="Node2D" parent="Areas"]
 
@@ -359,6 +412,14 @@ position = Vector2(-48, -58)
 [node name="Spikes3" parent="Areas/Area4/Hazards" instance=ExtResource("4_ninb7")]
 position = Vector2(1685, 1275)
 
+[node name="Sign4" parent="Areas/Area4" instance=ExtResource("7_0u5rg")]
+position = Vector2(9425, 622)
+message = "
+
+     Path to enlightenment is perilous.
+
+            You will make sacrifices."
+
 [node name="SoundtrackIntensities" type="Node2D" parent="."]
 visible = false
 
@@ -398,6 +459,7 @@ shape = SubResource("RectangleShape2D_b54lq")
 [connection signal="body_entered" from="Hazards/KillFloor" to="Hazards/KillFloor" method="_body_entered"]
 
 [editable path="Areas/Area1/Checkpoint"]
+[editable path="Areas/Area1/Sign3"]
 [editable path="Areas/Area2/Checkpoint"]
 [editable path="Areas/Area3/Checkpoint"]
 [editable path="Areas/Area4/Checkpoint"]
