@@ -32,6 +32,7 @@ class IControlState:
 	func deactivate()->void: pass
 	func physics_process(delta: float)->void: pass #InterfaceUtils.report_not_implemented_error(physics_process)
 	func integrate_forces(state: PhysicsDirectBodyState2D)->void: pass#InterfaceUtils.report_not_implemented_error(integrate_forces)
+	func process(delta: float)->void: pass
 
 func _ready():
 	state_basic.initialize(self)
@@ -49,17 +50,16 @@ func reset():
 	current_state = self.change_state(state_basic)
 
 func change_state(new_state: IControlState)->IControlState:
-	if current_state:
-		current_state.deactivate()
+	if current_state: current_state.deactivate()
 	current_state = new_state
-	if current_state:
-		current_state.activate()
+	if current_state: current_state.activate()
 	return current_state
 
 func _physics_process(delta: float)->void:
-	if current_state:
-		current_state.physics_process(delta)
+	if current_state: current_state.physics_process(delta)
 		
+func _process(delta)->void:
+	if current_state: current_state.process(delta)
 	
 var last_velocity : Vector2;	
 func _integrate_forces(state: PhysicsDirectBodyState2D)->void:

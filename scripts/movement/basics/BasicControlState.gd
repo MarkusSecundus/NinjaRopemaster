@@ -45,6 +45,18 @@ func integrate_forces(state: PhysicsDirectBodyState2D)->void:
 		c.call(state);
 	_to_invoke_in_integrate_forces.clear()
 		
+		
+
+func process(delta: float)->void:
+	if _rope:
+		if !_rope.is_finished || _rope.is_frozen: _set_facing((_rope.hook_segment.global_position - base.global_position).x)
+		base._animator.play("HoldingRope", 0.3)
+	elif is_grounded():
+		base._animator.play("Idle", 0.3)
+	else:
+		base._animator.play("Falling", 0.5)
+		
+		
 #region BasicMovement
 func handle_basic_movement(delta: float)->void:
 	if Input.is_action_pressed("Left"):
@@ -55,9 +67,11 @@ func handle_basic_movement(delta: float)->void:
 		move_direction(0)
 	handle_jumping(Input.is_action_just_pressed("Jump"))
 
+func _set_facing(direction_x: float)->void: 
+	if direction_x != 0: base._to_rotate.scale.x = sign(direction_x)
 
 func move_direction(direction: float)->void:
-	if direction != 0: base._to_rotate.scale.x = sign(direction)# base._sprite.flip_h = (direction < 0)
+	_set_facing(direction)
 	
 	var velocity_direction = direction - base.linear_velocity.x
 	var to_apply = Vector2(velocity_direction * acceleration, 0)
