@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://fhk26kw5alwx"]
+[gd_scene load_steps=29 format=3 uid="uid://fhk26kw5alwx"]
 
 [ext_resource type="Texture2D" uid="uid://xvvsx21l8ds4" path="res://sprites/background/background_far.png" id="1_qiq8p"]
 [ext_resource type="Texture2D" uid="uid://btdgyi6xcf72a" path="res://sprites/background/background_near.png" id="2_077wg"]
@@ -35,6 +35,9 @@ size = Vector2(713, 1228)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nfpmx"]
 normal = Vector2(-1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lallk"]
+size = Vector2(2785, 984)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ewa4i"]
 size = Vector2(1195, 1369)
@@ -258,7 +261,7 @@ to bring me those damned crackers from the store\""
 visible = false
 
 [node name="Bubble" parent="Areas/Area1/SignInstructions/CanvasLayer" index="0"]
-position = Vector2(1515, 304)
+position = Vector2(1399, 304)
 
 [node name="Sprite2D" parent="Areas/Area1/SignInstructions/CanvasLayer/Bubble" index="0"]
 position = Vector2(11.5, 155.5)
@@ -288,7 +291,7 @@ to bring me those damned crackers from the store\""
 [node name="Area2" type="Node2D" parent="Areas"]
 
 [node name="Checkpoint" parent="Areas/Area2" instance=ExtResource("5_uagrb")]
-position = Vector2(6367, 1538)
+position = Vector2(3487, -672)
 
 [node name="SetupTrigger" parent="Areas/Area2/Checkpoint" index="0"]
 position = Vector2(-48.5, -34)
@@ -355,15 +358,16 @@ position = Vector2(3582, -519)
 message = "
 
          Now, descend into the depths
+
            'tis the only way forward"
 
 [node name="Area3" type="Node2D" parent="Areas"]
 
 [node name="Checkpoint" parent="Areas/Area3" instance=ExtResource("5_uagrb")]
-position = Vector2(3314, -622)
+position = Vector2(6178, 1578)
 
 [node name="SetupTrigger" parent="Areas/Area3/Checkpoint" index="0"]
-position = Vector2(-48.5, -34)
+position = Vector2(132, -34)
 
 [node name="SpawnPoint" parent="Areas/Area3/Checkpoint" index="1"]
 position = Vector2(-101, -42)
@@ -732,7 +736,8 @@ position = Vector2(-27, 512)
 position = Vector2(13748, -6555)
 
 [node name="SetupTrigger" parent="Areas/Area6/Checkpoint" index="0"]
-position = Vector2(-1019, -35)
+position = Vector2(-941.5, -35)
+shape = SubResource("RectangleShape2D_lallk")
 
 [node name="SpawnPoint" parent="Areas/Area6/Checkpoint" index="1"]
 position = Vector2(130, 48)
@@ -807,6 +812,17 @@ preheated oven - 200°C for cca 70 minutes.
 
 The cake is finished IFF no dough sticks
 on a wooden stick when pierced through."
+
+[node name="SignReciepe6" parent="Areas/Area6" instance=ExtResource("7_0u5rg")]
+position = Vector2(11686, -6137)
+message = "
+                Congratulations!
+
+    You now have a Cocoa-Flavoured cake
+
+       Enjoy it best with your family,
+            relatives and/or friends"
+__editor_bubble_visible = true
 
 [node name="SoundtrackIntensities" type="Node2D" parent="."]
 visible = false
