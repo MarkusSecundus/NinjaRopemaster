@@ -91,10 +91,10 @@ func handle_rope_stuff(delta: float)->void:
 	if !_rope:
 		if(Input.is_action_just_pressed("Throw")):
 			handle_rope_throw(mouse_position)
-	elif _rope.is_finished:
+	else:
 		if(Input.is_action_just_pressed("Drop")):
 			handle_rope_drop()
-		elif(Input.is_action_pressed("Throw")):
+		elif(_rope.is_finished && Input.is_action_pressed("Throw")):
 			handle_rope_climb(delta)
 
 func handle_rope_throw(mouse_position: Vector2)->void:

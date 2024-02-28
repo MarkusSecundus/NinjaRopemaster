@@ -15,7 +15,6 @@ func create_the_rope(where_to_place:Node2D, target_position:Vector2)->void:
 	if _already_created: return
 	_already_created = true
 	var direction := (target_position - where_to_place.global_position).limit_length(1.0)
-	var length_remaining := direction.length()
 	
 	self.where_to_place = where_to_place;
 	var look_direction := where_to_place.global_position - target_position;
@@ -47,7 +46,7 @@ var hook_segment: RopeHookController;
 
 var _segments_count = 0;
 #func _integrate_forces(state: PhysicsDirectBodyState2D)->void:
-func _physics_process(delta):
+func _physics_process(_delta):
 	if is_finished: return
 	
 	#print("dst: {0} X {1}".format([where_to_place.global_position.distance_to(last_anchor_point.global_position), segment_length]))
@@ -100,7 +99,7 @@ func progress_the_climb(distance_traveled: float, min_segments_remaining: int=0)
 
 func destroy_last_segment()->RigidBody2D:
 	if !is_finished:
-		ErrorUtils.report_error("Destroying rope segments but rope generation hadn't yet finished!")
+		ErrorUtils.report_warning("Destroying rope segments but rope generation hadn't yet finished!")
 		_on_shot_finished_callback()
 	if !last_body: return null
 	var to_destroy := last_body

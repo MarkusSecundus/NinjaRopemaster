@@ -1,17 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://rnejjjy8kf3s"]
+[gd_scene load_steps=8 format=3 uid="uid://rnejjjy8kf3s"]
 
 [ext_resource type="Script" path="res://scripts/simple_behaviors/TextBubble.gd" id="1_p8utj"]
 [ext_resource type="Texture2D" uid="uid://bitxyqsktsn62" path="res://sprites/env_spritesheet.png" id="2_jjdis"]
+[ext_resource type="Texture2D" uid="uid://diye1mg8u6q1d" path="res://sprites/dialog-bubble.png" id="3_1t44h"]
+[ext_resource type="FontFile" uid="uid://bldfnjlswltl4" path="res://fonts/veteran typewriter.ttf" id="4_cgii3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cidtx"]
 atlas = ExtResource("2_jjdis")
 region = Rect2(512, 0, 256, 257)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lnt4a"]
-radius = 66.4831
+radius = 110.018
+
+[sub_resource type="LabelSettings" id="LabelSettings_b3lb3"]
+line_spacing = 9.33
+font = ExtResource("4_cgii3")
+font_size = 22
 
 [node name="Sign" type="Area2D"]
 script = ExtResource("1_p8utj")
+message = "Toto je text ds"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -2
@@ -24,7 +32,24 @@ shape = SubResource("CircleShape2D_lnt4a")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+[node name="Bubble" type="Node2D" parent="CanvasLayer"]
+position = Vector2(898, 205)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Bubble"]
+position = Vector2(0.499992, 0)
+scale = Vector2(0.604492, 0.34082)
+texture = ExtResource("3_1t44h")
+
+[node name="Label" type="Label" parent="CanvasLayer/Bubble"]
+offset_left = -224.0
+offset_top = -122.0
+offset_right = 243.0
+offset_bottom = 96.0
+text = "Ye, who trespasses in this barren wasteland,
+be forewarned - there is no treasure to be found here"
+label_settings = SubResource("LabelSettings_b3lb3")
+clip_text = true
+text_overrun_behavior = 3
 
 [connection signal="body_entered" from="." to="." method="_on_body_enter"]
 [connection signal="body_exited" from="." to="." method="_on_body_exit"]

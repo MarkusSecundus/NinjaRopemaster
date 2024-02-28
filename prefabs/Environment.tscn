@@ -157,7 +157,23 @@ position = Vector2(1685, 1275)
 
 [node name="Sign" parent="Areas/Area1" instance=ExtResource("7_0u5rg")]
 position = Vector2(616, 1144)
-message = "Welcome in this game!"
+message = "Ye, who trespasses in this barren wasteland,
+be forewarned. 
+There is no treasure to be found here,
+no glory. Just pain, suffering and death.
+
+... but should ye by chance get to the top, 
+   we have cookies"
+
+[node name="Sign2" parent="Areas/Area1" instance=ExtResource("7_0u5rg")]
+position = Vector2(1969, 1075)
+message = "
+What ye just observed below thyself
+were SPIKES
+
+Beware, less they become the instrument
+of thine DOOM"
+__editor_bubble_visible = true
 
 [node name="Area2" type="Node2D" parent="Areas"]
 
@@ -219,7 +235,7 @@ position = Vector2(5660, 2194)
 
 [node name="MovingPlatform" parent="Areas/Area2" instance=ExtResource("7_eivbt")]
 position = Vector2(4620, 1651)
-movement_speed = 150.0
+ease = 3
 
 [node name="Node2D" type="Node2D" parent="Areas/Area2/MovingPlatform"]
 position = Vector2(1193, 313)
@@ -315,7 +331,10 @@ movement_type = 1
 position = Vector2(720, 35)
 
 [node name="Node2D2" type="Node2D" parent="Areas/Area3/MovingPlatform4"]
-position = Vector2(760, -580)
+position = Vector2(760, -700)
+
+[node name="Node2D3" type="Node2D" parent="Areas/Area3/MovingPlatform4"]
+position = Vector2(972, -700)
 
 [node name="MovingPlatform5" parent="Areas/Area3" instance=ExtResource("7_eivbt")]
 position = Vector2(7974, 785)
