@@ -7,7 +7,8 @@ extends Node
 	set(value): 
 		message = value
 		if Engine.is_editor_hint():
-			$CanvasLayer/Bubble/Label.text = message
+			var lbl := get_node_or_null("CanvasLayer/Bubble/Label");
+			if lbl: lbl.text = message
 			
 @export var fade_seconds : float = 0.2;
 @export var __editor_bubble_visible:bool = false:
@@ -22,7 +23,9 @@ extends Node
 @onready var _bubble := $CanvasLayer/Bubble;
 
 func _ready():
-	if Engine.is_editor_hint(): return
+	if Engine.is_editor_hint():
+		__editor_bubble_visible = false
+		return
 	$CanvasLayer/Bubble/Label.text = message
 	_canvasLayer.hide()
 	_bubble.modulate = Color(_bubble.modulate, 0.0)

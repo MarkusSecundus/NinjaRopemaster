@@ -1,19 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dk1ctt8lufi7j"]
+[gd_scene load_steps=4 format=3 uid="uid://dk1ctt8lufi7j"]
 
 [ext_resource type="PackedScene" uid="uid://fhk26kw5alwx" path="res://prefabs/Environment.tscn" id="1"]
 [ext_resource type="Script" path="res://scripts/simple_behaviors/SmoothFollowPoint.gd" id="1_gttlc"]
-[ext_resource type="PackedScene" uid="uid://o6guho11r4et" path="res://prefabs/Crate.tscn" id="3"]
-[ext_resource type="Script" path="res://scripts/Crate.gd" id="4_5giqo"]
-[ext_resource type="PackedScene" uid="uid://ck4lhl14781ud" path="res://prefabs/rope/RopePiece.tscn" id="4_r3t7a"]
-[ext_resource type="PackedScene" uid="uid://dv5h81qov6qq0" path="res://prefabs/rope/Rope.tscn" id="5_frwya"]
-[ext_resource type="Texture2D" uid="uid://b0vhuf0ephu81" path="res://sprites/crate.png" id="6_1yilr"]
 [ext_resource type="PackedScene" uid="uid://c6c42jh8kb2h" path="res://prefabs/Ninja.tscn" id="7_e07y7"]
-
-[sub_resource type="PhysicsMaterial" id="16"]
-rough = true
-
-[sub_resource type="RectangleShape2D" id="15"]
-size = Vector2(30, 30)
 
 [node name="Scene" type="Node2D"]
 
@@ -26,89 +15,7 @@ distance_scaling = 1.1
 
 [node name="Environment" parent="." instance=ExtResource("1")]
 
-[node name="Crate2" parent="." instance=ExtResource("3")]
-position = Vector2(321, 433)
-
-[node name="Crate3" type="RigidBody2D" parent="."]
-position = Vector2(354, 742)
-collision_mask = 3
-mass = 2.0
-physics_material_override = SubResource("16")
-script = ExtResource("4_5giqo")
-
-[node name="Sprite2D" type="Sprite2D" parent="Crate3"]
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("6_1yilr")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Crate3"]
-shape = SubResource("15")
-
-[node name="Rope" type="Node2D" parent="."]
-position = Vector2(937, 69)
-
-[node name="RopeAnchor" type="StaticBody2D" parent="Rope"]
-
-[node name="RopePiece" parent="Rope" instance=ExtResource("4_r3t7a")]
-position = Vector2(-8, -14)
-
-[node name="Joint" parent="Rope/RopePiece" index="2"]
-position = Vector2(0, -1)
-node_b = NodePath("../../RopeAnchor")
-
-[node name="RopePiece2" parent="Rope" instance=ExtResource("4_r3t7a")]
-position = Vector2(-8, 9)
-
-[node name="Joint" parent="Rope/RopePiece2" index="2"]
-position = Vector2(0, -1)
-node_b = NodePath("../../RopePiece")
-
-[node name="RopePiece3" parent="Rope" instance=ExtResource("4_r3t7a")]
-position = Vector2(-8, 31)
-
-[node name="Joint" parent="Rope/RopePiece3" index="2"]
-position = Vector2(0, -1)
-node_b = NodePath("../../RopePiece2")
-
-[node name="Rope2" parent="." instance=ExtResource("5_frwya")]
-position = Vector2(408, 174)
-
-[node name="Crate2" type="Sprite2D" parent="Rope2/AnchorBody" index="0"]
-scale = Vector2(0.435, 0.435)
-texture = ExtResource("6_1yilr")
-
-[node name="EndPointMarker" parent="Rope2" index="2"]
-position = Vector2(52, 161)
-
-[node name="Crate2" type="Sprite2D" parent="Rope2/EndPointMarker" index="0"]
-self_modulate = Color(0.298039, 0.772549, 0.835294, 1)
-scale = Vector2(0.435, 0.435)
-texture = ExtResource("6_1yilr")
-
-[node name="Rope3" parent="." node_paths=PackedStringArray("end_point") instance=ExtResource("5_frwya")]
-position = Vector2(1025, 69)
-end_point = NodePath("../Rope2/EndPointMarker")
-
-[node name="Crate2" type="Sprite2D" parent="Rope3/AnchorBody" index="0"]
-scale = Vector2(0.435, 0.435)
-texture = ExtResource("6_1yilr")
-
-[node name="EndPointMarker" parent="Rope3" index="2"]
-position = Vector2(-696, 301)
-
-[node name="Crate2" type="Sprite2D" parent="Rope3/EndPointMarker" index="0"]
-self_modulate = Color(0.298039, 0.772549, 0.835294, 1)
-scale = Vector2(0.435, 0.435)
-texture = ExtResource("6_1yilr")
-
 [node name="Ninja" parent="." instance=ExtResource("7_e07y7")]
-position = Vector2(241, 1085)
+position = Vector2(14099, -1972)
 
-[connection signal="ready" from="Rope2" to="Rope2" method="create_the_rope"]
-[connection signal="ready" from="Rope3" to="Rope3" method="create_the_rope"]
-
-[editable path="Rope/RopePiece"]
-[editable path="Rope/RopePiece2"]
-[editable path="Rope/RopePiece3"]
-[editable path="Rope2"]
-[editable path="Rope3"]
 [editable path="Ninja"]
