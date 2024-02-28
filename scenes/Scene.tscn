@@ -18,16 +18,16 @@ distance_scaling = 1.1
 [node name="Ninja" parent="." instance=ExtResource("7_e07y7")]
 position = Vector2(187, 1078)
 
-[node name="LegHighLBone2D" parent="Ninja/ToRotate/Skeleton2D/TorsoBone2D" index="2"]
-scale = Vector2(0.999866, 0.999868)
+[node name="LegHighLBone2D" parent="Ninja/ToRotate/Skeleton2D/TorsoBone2D" index="3"]
+scale = Vector2(0.999866, 0.999867)
 
 [node name="FootLBone2D" parent="Ninja/ToRotate/Skeleton2D/TorsoBone2D/LegHighLBone2D/LegLowLBone2D" index="1"]
 scale = Vector2(0.999985, 1.00005)
 
-[node name="LegHighRBone2D" parent="Ninja/ToRotate/Skeleton2D/TorsoBone2D" index="3"]
+[node name="LegHighRBone2D" parent="Ninja/ToRotate/Skeleton2D/TorsoBone2D" index="4"]
 scale = Vector2(0.999857, 0.999857)
 
-[node name="ArmHighLBone2D" parent="Ninja/ToRotate/Skeleton2D/TorsoBone2D" index="4"]
+[node name="ArmHighLBone2D" parent="Ninja/ToRotate/Skeleton2D/TorsoBone2D" index="5"]
 scale = Vector2(0.999928, 0.999928)
 
 [editable path="Ninja"]
