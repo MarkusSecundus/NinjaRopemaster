@@ -7,8 +7,14 @@ var max_segments :int= 30
 @export var shoot_force : float;
 
 
-signal on_hook_hit(last_segment: RigidBody2D);
+@onready var _soundShooting : PlaySound = $"ShootSound";
+@onready var _soundOnDestroyed : PlaySound = $"DestroyedSound";
+@onready var _soundThrowSuccess : PlaySound = $ThrowSuccessSound;
+@onready var _soundThrowFail : PlaySound = $ThrowFailSound;
 
+
+signal on_shoot();
+signal on_hook_hit(last_segment: RigidBody2D);
 
 var _already_created := false
 func create_the_rope(where_to_place:Node2D, target_position:Vector2)->void:
@@ -27,12 +33,19 @@ func create_the_rope(where_to_place:Node2D, target_position:Vector2)->void:
 	var temp := rope_segment.instantiate() as RigidBody2D;
 	self.segment_length = _get_anchor_of_segment(temp).position.length()
 	temp.queue_free()
-
+	
+	on_shoot.emit()
+	_soundShooting.start_periodical_play()
 
 func _on_shot_finished_callback():
 	if is_finished: return
 	is_finished = true;
 	on_hook_hit.emit(last_body)
+	
+	_soundShooting.stop_periodical_play()
+	if !hook_segment.is_finished: pass
+	elif hook_segment.is_frozen: _soundThrowSuccess.play()
+	else: _soundThrowFail.play()
 
 
 var is_frozen: bool:
@@ -59,6 +72,11 @@ func _physics_process(_delta):
 			_on_shot_finished_callback()
 
 
+func destroy_self():
+	_soundOnDestroyed.play()
+	self.progress_the_climb(INF)
+	if hook_segment: hook_segment.queue_free()
+	self.queue_free()
 
 
 func _spawn_segment(segment_prefab:PackedScene, parent_anchor_point : Vector2, look_direction: Vector2, body_to_connect: RigidBody2D)->RigidBody2D:

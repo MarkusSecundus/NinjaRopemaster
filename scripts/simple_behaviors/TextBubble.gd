@@ -43,13 +43,11 @@ var _should_be_visible : bool = false;
 
 func _on_body_enter(body: Node):
 	if body is PlayerController:
-		print("player entered")
 		_should_be_visible = true;
 		_canvasLayer.show()
 		_tween_fade(1.0)
 	
 func _on_body_exit(body: Node):
 	if body is PlayerController:
-		print("player left")
 		_should_be_visible = false
 		_tween_fade(0.0).add_on_finished_callback(func(_t):if!_should_be_visible:_canvasLayer.hide())

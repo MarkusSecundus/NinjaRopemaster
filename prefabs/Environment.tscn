@@ -257,9 +257,6 @@ message = "[Flashback from your training days at the dojo]
 one day you'll be good enough to be able
 to bring me those damned crackers from the store\""
 
-[node name="CanvasLayer" parent="Areas/Area1/SignInstructions" index="2"]
-visible = false
-
 [node name="Bubble" parent="Areas/Area1/SignInstructions/CanvasLayer" index="0"]
 position = Vector2(1399, 304)
 

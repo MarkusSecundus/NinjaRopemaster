@@ -15,16 +15,17 @@ func _ready():
 	
 
 func _get_sound_player()->AudioStreamPlayer:
-	for c in get_children():
+	for c in _soundPool.get_children():
 		var str := c as AudioStreamPlayer
 		if !str.is_playing(): return str
-	var ret = AudioStreamPlayback.new();
+	var ret = AudioStreamPlayer.new();
 	_soundPool.add_child(ret);
 	return ret;
 
-func PlaySound(sound: AudioStream, pitch: float = 1)->void:
+func PlaySound(sound: AudioStream, pitch: float = 1, volume_db: float=0)->void:
 	var player := _get_sound_player()
 	player.stream = sound
+	player.volume_db = volume_db
 	player.pitch_scale = pitch
 	player.play()
 

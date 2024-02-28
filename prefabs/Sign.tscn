@@ -31,6 +31,7 @@ position = Vector2(-4, 7)
 shape = SubResource("CircleShape2D_lnt4a")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Bubble" type="Node2D" parent="CanvasLayer"]
 position = Vector2(898, 205)
