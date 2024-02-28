@@ -39,6 +39,7 @@ func _ready():
 	state_climbingrope.initialize(self)
 	reset()
 
+
 func do_die():
 	current_state = self.change_state(null)
 	_animator.play("Die")
