@@ -67,7 +67,6 @@ func set_animation()->void:
 		else: _play_animation("Idle", 0.3)
 	
 func _play_animation(name: String, ease: float)->void:
-	print(is_in_freefall())
 	#print("Playing {0}".format([name]))
 	base._animator.play(name, ease)
 	
