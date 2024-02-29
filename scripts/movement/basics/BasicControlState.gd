@@ -47,19 +47,31 @@ func integrate_forces(state: PhysicsDirectBodyState2D)->void:
 		
 		
 
-func process(delta: float)->void:
+func process(_delta: float)->void:
+	set_animation();
+	
+func set_animation()->void:
 	if _rope:
 		if !_rope.is_finished || _rope.is_frozen: _set_facing((_rope.hook_segment.global_position - base.global_position).x)
 		if _last_rope_climb_timestamp+0.1 >= TimeUtils.seconds_elapsed:
-			base._animator.play("ClimbingRope", 0.1)
+			_play_animation("ClimbingRope", 0.1)
 		elif is_in_freefall() && _rope.is_finished && !_rope.is_frozen: base._animator.play("FallingWithLooseRope", 0.3)
-		else: base._animator.play("HoldingRope", 0.3)
-	elif is_in_freefall():
-		base._animator.play("Falling", 0.5)
+		else: _play_animation("HoldingRope", 0.3)
+	elif (!is_grounded() && !is_in_freefall()) || _jump_request_timestamp+0.3>= TimeUtils.seconds_elapsed:
+		_play_animation("Jump", 0.3)
+	elif  is_in_freefall():
+		_play_animation("Falling", 0.5)
 	else:
-		base._animator.play("Idle", 0.3)
+		if _last_running_timestamp+0.1>= TimeUtils.seconds_elapsed:
+			_play_animation("Run", 0.1);
+		else: _play_animation("Idle", 0.3)
 	
-func is_in_freefall()->bool: return !is_grounded()	
+func _play_animation(name: String, ease: float)->void:
+	print(is_in_freefall())
+	#print("Playing {0}".format([name]))
+	base._animator.play(name, ease)
+	
+func is_in_freefall()->bool: return base.is_in_freefall()
 		
 #region BasicMovement
 func handle_basic_movement(delta: float)->void:
@@ -74,8 +86,11 @@ func handle_basic_movement(delta: float)->void:
 func _set_facing(direction_x: float)->void: 
 	if direction_x != 0: base._to_rotate.scale.x = sign(direction_x)
 
+var _last_running_timestamp :float = -INF;
+
 func move_direction(direction: float)->void:
 	_set_facing(direction)
+	if direction != 0: _last_running_timestamp = TimeUtils.seconds_elapsed
 	
 	var velocity_direction = direction - base.linear_velocity.x
 	var to_apply = Vector2(velocity_direction * acceleration, 0)
@@ -85,11 +100,13 @@ func move_direction(direction: float)->void:
 	base.apply_force(to_apply * base.mass)
 	
 	
+var _jump_request_timestamp : float = -INF;
 var _last_jump_request_end : float = -INF
 func handle_jumping(jump_was_requested : bool)->void:
 	if is_grounded() || (_rope && _rope.is_frozen):
 		if jump_was_requested || (_last_jump_request_end > TimeUtils.seconds_elapsed && is_grounded()):
 			_last_jump_request_end = -INF
+			_jump_request_timestamp = TimeUtils.seconds_elapsed
 			base.apply_impulse(jump_force*base.mass)
 			if !is_grounded():
 				handle_rope_drop()

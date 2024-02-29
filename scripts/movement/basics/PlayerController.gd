@@ -7,7 +7,6 @@ class_name PlayerController
 # Set the gravity from project settings to be synced with RigidBody nodes
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") * 2
 
-@onready var _feet : GroundChecker = $Feet;
 @onready var _sprite : Sprite2D = $Sprite2D
 
 @export var state_basic : BasicControlState
@@ -76,5 +75,10 @@ func _integrate_forces(state: PhysicsDirectBodyState2D)->void:
 		current_state.integrate_forces(state)
 		
 
+@onready var _feet : GroundChecker = $Feet;
 func is_grounded()->bool:
 	return _feet.is_grounded()
+
+@onready var _freefallChecker : GroundChecker = $FreefallDetector
+func is_in_freefall()->bool:
+	return !_freefallChecker.is_grounded()
