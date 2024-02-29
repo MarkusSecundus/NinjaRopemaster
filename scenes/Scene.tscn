@@ -21,6 +21,9 @@ position = Vector2(201, 1184)
 [node name="LegHighLBone2D" parent="Ninja/ToRotate/Skeleton2D/TorsoBone2D" index="3"]
 scale = Vector2(0.999866, 0.999867)
 
+[node name="LegLowLBone2D" parent="Ninja/ToRotate/Skeleton2D/TorsoBone2D/LegHighLBone2D" index="1"]
+scale = Vector2(0.999873, 0.999873)
+
 [node name="FootLBone2D" parent="Ninja/ToRotate/Skeleton2D/TorsoBone2D/LegHighLBone2D/LegLowLBone2D" index="1"]
 scale = Vector2(0.999985, 1.00005)
 
