@@ -9,6 +9,7 @@
 [node name="Environment" parent="." instance=ExtResource("1")]
 
 [node name="PlayerWithCamera" type="Node2D" parent="."]
+position = Vector2(-10775, 7565)
 
 [node name="Camera2D" type="Camera2D" parent="PlayerWithCamera" node_paths=PackedStringArray("to_follow")]
 position = Vector2(10561, -6412)

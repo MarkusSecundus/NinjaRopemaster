@@ -3344,10 +3344,10 @@ tracks/4/path = NodePath("ToRotate/Skeleton2D/TorsoBone2D/LegHighLBone2D:positio
 tracks/4/interp = 2
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(103.044, 168)]
+"values": [Vector2(103.044, 168), Vector2(-29.831, 168.189), Vector2(103.044, 168), Vector2(-29.831, 168.189)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -3356,10 +3356,10 @@ tracks/5/path = NodePath("ToRotate/Skeleton2D/TorsoBone2D/LegHighLBone2D:rotatio
 tracks/5/interp = 4
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [-0.182932]
+"values": [-1.23475, 0.760994, -1.23475, 0.749521]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -3380,10 +3380,10 @@ tracks/7/path = NodePath("ToRotate/Skeleton2D/TorsoBone2D/LegHighLBone2D/LegLowL
 tracks/7/interp = 4
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.617711]
+"values": [1.17969, 0.397676, 1.17969, 0.455731]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -3404,10 +3404,10 @@ tracks/9/path = NodePath("ToRotate/Skeleton2D/TorsoBone2D/LegHighLBone2D/LegLowL
 tracks/9/interp = 4
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [-0.574037]
+"values": [0.103211, -1.04885, 0.103211, -0.164864]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
@@ -3416,10 +3416,10 @@ tracks/10/path = NodePath("ToRotate/Skeleton2D/TorsoBone2D/LegHighRBone2D:positi
 tracks/10/interp = 2
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-101.441, 114.619)]
+"values": [Vector2(-101.441, 114.619), Vector2(5.93673, 133.238), Vector2(-101.441, 114.619), Vector2(5.93673, 133.238)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
@@ -3428,10 +3428,10 @@ tracks/11/path = NodePath("ToRotate/Skeleton2D/TorsoBone2D/LegHighRBone2D:rotati
 tracks/11/interp = 4
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [-0.0612751]
+"values": [0.215733, -1.30041, 0.215733, -0.999246]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
@@ -3452,10 +3452,10 @@ tracks/13/path = NodePath("ToRotate/Skeleton2D/TorsoBone2D/LegHighRBone2D/LegLow
 tracks/13/interp = 4
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.579552]
+"values": [0.392425, 0.768297, 0.392425, 0.799844]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
@@ -3476,10 +3476,10 @@ tracks/15/path = NodePath("ToRotate/Skeleton2D/TorsoBone2D/LegHighRBone2D/LegLow
 tracks/15/interp = 4
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [-0.66709]
+"values": [-0.75479, -0.167992, -0.75479, 0.188514]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
@@ -3503,7 +3503,7 @@ tracks/17/keys = {
 "times": PackedFloat32Array(0, 0.5, 1, 1.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.205967, 1.42302, -0.0209702, 1.42302]
+"values": [-0.0209702, 1.42302, -0.0209702, 1.42302]
 }
 tracks/18/type = "value"
 tracks/18/imported = false
@@ -3527,7 +3527,7 @@ tracks/19/keys = {
 "times": PackedFloat32Array(0, 0.5, 1, 1.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [-2.80547, -2.5926, -2.69355, -2.5926]
+"values": [-2.69355, -2.5926, -2.69355, -2.5926]
 }
 tracks/20/type = "value"
 tracks/20/imported = false
@@ -3560,10 +3560,10 @@ tracks/22/path = NodePath("ToRotate/Skeleton2D/TorsoBone2D/ArmHighRBone2D:positi
 tracks/22/interp = 2
 tracks/22/loop_wrap = true
 tracks/22/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-278.5, -432), Vector2(-278.5, -432)]
+"values": [Vector2(-278.5, -432)]
 }
 tracks/23/type = "value"
 tracks/23/imported = false
@@ -3584,10 +3584,10 @@ tracks/24/path = NodePath("ToRotate/Skeleton2D/TorsoBone2D/ArmHighRBone2D/ArmLow
 tracks/24/interp = 2
 tracks/24/loop_wrap = true
 tracks/24/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-176.546, 296.99), Vector2(-176.546, 296.99)]
+"values": [Vector2(-176.546, 296.99)]
 }
 tracks/25/type = "value"
 tracks/25/imported = false
@@ -4029,7 +4029,7 @@ trail_enabled = true
 [node name="HeadBone2D" type="Bone2D" parent="ToRotate/Skeleton2D/TorsoBone2D"]
 position = Vector2(-58.8741, -469.949)
 rotation = 0.00236252
-scale = Vector2(0.999835, 0.999835)
+scale = Vector2(0.999841, 0.999841)
 rest = Transform2D(0.999827, 0.00236211, -0.00236211, 0.999827, -58.8741, -469.949)
 editor_settings/show_bone_gizmo = false
 
@@ -4053,8 +4053,8 @@ texture = ExtResource("3_bugpi")
 [node name="LegHighLBone2D" type="Bone2D" parent="ToRotate/Skeleton2D/TorsoBone2D"]
 position = Vector2(103.044, 168)
 rotation = -0.182932
-scale = Vector2(0.999858, 0.999853)
-skew = -0.000562668
+scale = Vector2(0.999854, 0.999847)
+skew = -0.000585675
 rest = Transform2D(0.999883, -0.0135671, 0.0136545, 0.999882, 103.044, 168)
 editor_settings/show_bone_gizmo = false
 
@@ -4084,8 +4084,8 @@ offset = Vector2(14.499, 132.428)
 [node name="FootLBone2D" type="Bone2D" parent="ToRotate/Skeleton2D/TorsoBone2D/LegHighLBone2D/LegLowLBone2D"]
 position = Vector2(29.079, 343.851)
 rotation = -0.574037
-scale = Vector2(0.999874, 0.999874)
-skew = 5.67436e-05
+scale = Vector2(0.999871, 0.999858)
+skew = 5.62668e-05
 rest = Transform2D(0.870799, -0.491665, 0.491593, 0.870845, 29.0804, 343.851)
 editor_settings/show_bone_gizmo = false
 
@@ -4098,7 +4098,7 @@ offset = Vector2(66.1517, 91.6812)
 [node name="LegHighRBone2D" type="Bone2D" parent="ToRotate/Skeleton2D/TorsoBone2D"]
 position = Vector2(-101.441, 114.619)
 rotation = -0.0612751
-scale = Vector2(0.999842, 0.999842)
+scale = Vector2(0.999831, 0.999831)
 rest = Transform2D(0.988042, 0.153979, -0.153979, 0.988042, -101.441, 114.619)
 editor_settings/show_bone_gizmo = false
 
@@ -4114,7 +4114,7 @@ offset = Vector2(-5.77777, 187.033)
 position = Vector2(-7.25516, 369.217)
 rotation = 0.579552
 scale = Vector2(0.982619, 1.00487)
-skew = -0.000962377
+skew = -0.00100684
 rest = Transform2D(0.961144, 0.204307, -0.208935, 0.982922, -7.25516, 369.217)
 editor_settings/show_bone_gizmo = false
 
@@ -4128,8 +4128,8 @@ offset = Vector2(8.00001, 111.47)
 [node name="FootRBone2D" type="Bone2D" parent="ToRotate/Skeleton2D/TorsoBone2D/LegHighRBone2D/LegLowRBone2D"]
 position = Vector2(29.8762, 357.606)
 rotation = -0.66709
-scale = Vector2(1.01475, 1.05506)
-skew = -0.011304
+scale = Vector2(1.01475, 1.05505)
+skew = -0.0113131
 rest = Transform2D(0.877939, -0.494153, 0.539161, 0.915929, 29.8762, 357.607)
 editor_settings/show_bone_gizmo = false
 
@@ -4156,7 +4156,7 @@ offset = Vector2(127.256, 117.892)
 [node name="ArmLowLBone2D" type="Bone2D" parent="ToRotate/Skeleton2D/TorsoBone2D/ArmHighLBone2D"]
 position = Vector2(239.555, 232.522)
 rotation = -0.590817
-scale = Vector2(0.999847, 0.999847)
+scale = Vector2(0.999852, 0.999852)
 rest = Transform2D(0.604847, -0.796325, 0.796325, 0.604847, 239.555, 232.522)
 editor_settings/show_bone_gizmo = false
 
