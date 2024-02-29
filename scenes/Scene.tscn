@@ -6,31 +6,33 @@
 
 [node name="Scene" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("to_follow")]
-position = Vector2(375, 867)
+[node name="Environment" parent="." instance=ExtResource("1")]
+
+[node name="PlayerWithCamera" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="PlayerWithCamera" node_paths=PackedStringArray("to_follow")]
+position = Vector2(10561, -6412)
 script = ExtResource("1_gttlc")
 to_follow = NodePath("../Ninja/ToRotate/CameraPoint")
 speed = 10.0
 distance_scaling = 1.1
 
-[node name="Environment" parent="." instance=ExtResource("1")]
+[node name="Ninja" parent="PlayerWithCamera" instance=ExtResource("7_e07y7")]
+position = Vector2(11109, -6339)
 
-[node name="Ninja" parent="." instance=ExtResource("7_e07y7")]
-position = Vector2(201, 1184)
-
-[node name="LegHighLBone2D" parent="Ninja/ToRotate/Skeleton2D/TorsoBone2D" index="3"]
+[node name="LegHighLBone2D" parent="PlayerWithCamera/Ninja/ToRotate/Skeleton2D/TorsoBone2D" index="3"]
 scale = Vector2(0.999866, 0.999867)
 
-[node name="LegLowLBone2D" parent="Ninja/ToRotate/Skeleton2D/TorsoBone2D/LegHighLBone2D" index="1"]
+[node name="LegLowLBone2D" parent="PlayerWithCamera/Ninja/ToRotate/Skeleton2D/TorsoBone2D/LegHighLBone2D" index="1"]
 scale = Vector2(0.999873, 0.999873)
 
-[node name="FootLBone2D" parent="Ninja/ToRotate/Skeleton2D/TorsoBone2D/LegHighLBone2D/LegLowLBone2D" index="1"]
+[node name="FootLBone2D" parent="PlayerWithCamera/Ninja/ToRotate/Skeleton2D/TorsoBone2D/LegHighLBone2D/LegLowLBone2D" index="1"]
 scale = Vector2(0.999985, 1.00005)
 
-[node name="LegHighRBone2D" parent="Ninja/ToRotate/Skeleton2D/TorsoBone2D" index="4"]
+[node name="LegHighRBone2D" parent="PlayerWithCamera/Ninja/ToRotate/Skeleton2D/TorsoBone2D" index="4"]
 scale = Vector2(0.999857, 0.999857)
 
-[node name="ArmHighLBone2D" parent="Ninja/ToRotate/Skeleton2D/TorsoBone2D" index="5"]
+[node name="ArmHighLBone2D" parent="PlayerWithCamera/Ninja/ToRotate/Skeleton2D/TorsoBone2D" index="5"]
 scale = Vector2(0.999928, 0.999928)
 
-[editable path="Ninja"]
+[editable path="PlayerWithCamera/Ninja"]
