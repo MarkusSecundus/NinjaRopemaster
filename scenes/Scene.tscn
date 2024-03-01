@@ -36,4 +36,10 @@ scale = Vector2(0.999857, 0.999857)
 [node name="ArmHighLBone2D" parent="PlayerWithCamera/Ninja/ToRotate/Skeleton2D/TorsoBone2D" index="5"]
 scale = Vector2(0.999928, 0.999928)
 
+[node name="ArmLowLBone2D" parent="PlayerWithCamera/Ninja/ToRotate/Skeleton2D/TorsoBone2D/ArmHighLBone2D" index="1"]
+scale = Vector2(0.99985, 0.99985)
+
+[node name="ArmHighRBone2D" parent="PlayerWithCamera/Ninja/ToRotate/Skeleton2D/TorsoBone2D" index="6"]
+scale = Vector2(0.999853, 0.999853)
+
 [editable path="PlayerWithCamera/Ninja"]

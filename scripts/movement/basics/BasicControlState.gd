@@ -50,27 +50,34 @@ func integrate_forces(state: PhysicsDirectBodyState2D)->void:
 func process(_delta: float)->void:
 	set_animation();
 	
+#region Animation
 func set_animation()->void:
-	if _rope:
-		if !_rope.is_finished || _rope.is_frozen: _set_facing((_rope.hook_segment.global_position - base.global_position).x)
-		if _last_rope_climb_timestamp+0.1 >= TimeUtils.seconds_elapsed:
-			_play_animation("ClimbingRope", 0.1)
-		elif is_in_freefall() && _rope.is_finished && !_rope.is_frozen: base._animator.play("FallingWithLooseRope", 0.3)
-		else: _play_animation("HoldingRope", 0.3)
-	elif (!is_grounded() && !is_in_freefall()) || _jump_request_timestamp+0.3>= TimeUtils.seconds_elapsed:
+	if _rope && (!_rope.is_finished || _rope.is_frozen): 
+		_set_facing((_rope.hook_segment.global_position - base.global_position).x)
+		
+	
+		
+	if _rope && _valid_timestamp(_last_rope_climb_timestamp):
+		_play_animation("ClimbingRope", 0.1, false)
+	elif ((!is_grounded() && !is_in_freefall() && !(_rope && _rope.is_frozen)) || _valid_timestamp(_jump_request_timestamp,0.3)):
 		_play_animation("Jump", 0.3)
 	elif  is_in_freefall():
 		_play_animation("Falling", 0.5)
 	else:
-		if _last_running_timestamp+0.1>= TimeUtils.seconds_elapsed:
+		if _valid_timestamp(_last_running_timestamp):
 			_play_animation("Run", 0.1);
 		else: _play_animation("Idle", 0.3)
 	
-func _play_animation(name: String, ease: float)->void:
+	
+func _play_animation(name: String, ease: float, has_rope_variant:bool=true)->void:
+	if has_rope_variant && _rope: name+="WithRope"
 	#print("Playing {0}".format([name]))
 	base._animator.play(name, ease)
-	
+
+func _valid_timestamp(timestamp: float, tolerance: float = 0.1)->bool: return timestamp+tolerance >= TimeUtils.seconds_elapsed
 func is_in_freefall()->bool: return base.is_in_freefall()
+	
+#endregion
 		
 #region BasicMovement
 func handle_basic_movement(delta: float)->void:
@@ -89,7 +96,7 @@ var _last_running_timestamp :float = -INF;
 
 func move_direction(direction: float)->void:
 	_set_facing(direction)
-	if direction != 0: _last_running_timestamp = TimeUtils.seconds_elapsed
+	if direction != 0 && is_grounded(): _last_running_timestamp = TimeUtils.seconds_elapsed
 	
 	var velocity_direction = direction - base.linear_velocity.x
 	var to_apply = Vector2(velocity_direction * acceleration, 0)
