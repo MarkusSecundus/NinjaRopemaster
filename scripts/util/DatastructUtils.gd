@@ -26,3 +26,9 @@ static func find_min(list, selector: Callable, compare_lt: Callable = Callable()
 		is_first_iteration = false
 	
 	return min;
+
+class Wrapper:
+	var value;
+	
+	func _init(value)->void:
+		self.value = value

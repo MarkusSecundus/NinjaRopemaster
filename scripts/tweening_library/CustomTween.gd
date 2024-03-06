@@ -25,10 +25,15 @@ func _init(target_obj, target_property_name, start_value, end_value, duration, e
 	self.add_on_finished_callback(on_finish_callback);
 
 func stop()->void:
+	print("stopping the tween")
 	_is_done = true;
 
 func update(delta: float)->void:
 	if _is_done: return 
+	
+	if !target_obj:
+		_is_done = true
+		return
 	
 	t = min(TARGET, t + delta*tween_speed);
 	if t >= TARGET:

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="4-1-Controller2D"
-run/main_scene="res://scenes/Scene.tscn"
+run/main_scene="res://scenes/StartupScreen.tscn"
 config/features=PackedStringArray("4.2")
 config/icon="res://icon.png"
 
@@ -27,7 +27,6 @@ StatsTracker="*res://scripts/stats/StatsTracker.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=2
 window/stretch/mode="canvas_items"
 
 [input]

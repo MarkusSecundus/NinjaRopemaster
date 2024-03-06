@@ -1,0 +1,101 @@
+[gd_scene load_steps=11 format=3 uid="uid://bvpal28egrtla"]
+
+[ext_resource type="TileSet" uid="uid://d37wiseuhlpj5" path="res://sprites/env_tileset.tres" id="1_8n38f"]
+[ext_resource type="FontFile" uid="uid://bldfnjlswltl4" path="res://fonts/veteran typewriter.ttf" id="1_28bfd"]
+[ext_resource type="Script" path="res://scripts/simple_behaviors/FancyFade.gd" id="2_b4dsr"]
+[ext_resource type="PackedScene" uid="uid://dv5h81qov6qq0" path="res://prefabs/rope/Rope.tscn" id="3_yjgby"]
+[ext_resource type="Script" path="res://scripts/oneshots/StartupScreenManager.gd" id="4_nykkl"]
+[ext_resource type="PackedScene" uid="uid://dk1ctt8lufi7j" path="res://scenes/Scene.tscn" id="5_nr44f"]
+
+[sub_resource type="Gradient" id="Gradient_yq6jt"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mmek5"]
+gradient = SubResource("Gradient_yq6jt")
+fill_from = Vector2(1, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_v7xwf"]
+line_spacing = 9.33
+font = ExtResource("1_28bfd")
+font_size = 132
+
+[sub_resource type="LabelSettings" id="LabelSettings_ytf1y"]
+line_spacing = 9.33
+font = ExtResource("1_28bfd")
+font_size = 32
+
+[node name="StartupScreen" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+visible = false
+position = Vector2(1255, 517)
+scale = Vector2(0.258641, 0.258641)
+tile_set = ExtResource("1_8n38f")
+format = 2
+layer_0/tile_data = PackedInt32Array(131068, 65537, 2, 196604, 65537, 4, 196605, 131073, 4, 196606, 131073, 4, 131069, 131073, 2, 131070, 131073, 2, 131071, 131073, 2, 65536, 131073, 2, 65537, 131073, 2, 65538, 131073, 2, 65539, 131073, 2, 196607, 131073, 4, 131072, 327681, 3, 131073, 131073, 3, 131074, 131073, 3, 131075, 131073, 3, 131076, 131073, 3)
+
+[node name="Rope" parent="." instance=ExtResource("3_yjgby")]
+position = Vector2(956, 707)
+create_on_start = true
+
+[node name="EndPointMarker" parent="Rope" index="1"]
+position = Vector2(269, 529)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1026, 845)
+zoom = Vector2(2.06, 2.06)
+
+[node name="Manager" type="Node" parent="." node_paths=PackedStringArray("transition_fade")]
+script = ExtResource("4_nykkl")
+transition_fade = NodePath("../CanvasLayer/BlackFader")
+next_scene = ExtResource("5_nr44f")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+scroll_offset = Vector2(-1984.7, -1185.49)
+
+[node name="Black" type="Sprite2D" parent="CanvasLayer/ParallaxBackground"]
+position = Vector2(923, 910)
+scale = Vector2(1000, 1000)
+texture = SubResource("GradientTexture2D_mmek5")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 140.0
+offset_right = -2.0
+offset_bottom = -776.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "NINJA ROPEMASTER"
+label_settings = SubResource("LabelSettings_v7xwf")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 767.0
+offset_right = -2.0
+offset_bottom = -149.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "( Press SPACE )"
+label_settings = SubResource("LabelSettings_ytf1y")
+horizontal_alignment = 1
+
+[node name="BlackFader" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(923, 910)
+scale = Vector2(1000, 1000)
+texture = SubResource("GradientTexture2D_mmek5")
+script = ExtResource("2_b4dsr")
+fade_out_seconds = 0.5
+action_on_start = 2
+
+[editable path="Rope"]

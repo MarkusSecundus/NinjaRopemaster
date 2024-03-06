@@ -36,8 +36,8 @@ class IControlState:
 	func process(delta: float)->void: pass
 
 func _ready():
-	state_basic.initialize(self)
-	state_climbingrope.initialize(self)
+	if state_basic: state_basic.initialize(self)
+	if state_climbingrope: state_climbingrope.initialize(self)
 	reset()
 
 

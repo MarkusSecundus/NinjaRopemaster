@@ -24,6 +24,6 @@ func _on_hitting_target(target: Node)->void:
 		_static_helper_body.position = Vector2.ZERO
 		body = _static_helper_body
 		
-	$PinJoint2D.node_b = body.get_path()
+	$Joint.node_b = body.get_path()
 	on_hit.emit()
 

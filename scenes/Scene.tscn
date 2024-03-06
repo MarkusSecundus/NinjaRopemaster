@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://dk1ctt8lufi7j"]
+[gd_scene load_steps=7 format=3 uid="uid://dk1ctt8lufi7j"]
 
 [ext_resource type="PackedScene" uid="uid://fhk26kw5alwx" path="res://prefabs/Environment.tscn" id="1"]
 [ext_resource type="Script" path="res://scripts/simple_behaviors/SmoothFollowPoint.gd" id="1_gttlc"]
+[ext_resource type="Script" path="res://scripts/simple_behaviors/FancyFade.gd" id="4_eexa3"]
 [ext_resource type="PackedScene" uid="uid://c6c42jh8kb2h" path="res://prefabs/Ninja.tscn" id="7_e07y7"]
+
+[sub_resource type="Gradient" id="Gradient_mmyi7"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sl1vd"]
+gradient = SubResource("Gradient_mmyi7")
+fill_from = Vector2(1, 0)
 
 [node name="Scene" type="Node2D"]
 
@@ -41,10 +50,17 @@ scale = Vector2(0.999928, 0.999928)
 [node name="ArmLowLBone2D" parent="PlayerWithCamera/Ninja/ToRotate/Skeleton2D/TorsoBone2D/ArmHighLBone2D" index="1"]
 scale = Vector2(0.99985, 0.99985)
 
-[node name="ArmHighRBone2D" parent="PlayerWithCamera/Ninja/ToRotate/Skeleton2D/TorsoBone2D" index="6"]
-scale = Vector2(0.999853, 0.999853)
-
 [node name="ArmLowRBone2D" parent="PlayerWithCamera/Ninja/ToRotate/Skeleton2D/TorsoBone2D/ArmHighRBone2D" index="1"]
 scale = Vector2(0.99983, 0.99983)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BlackFader" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(923, 910)
+scale = Vector2(1000, 1000)
+texture = SubResource("GradientTexture2D_sl1vd")
+script = ExtResource("4_eexa3")
+action_on_start = 2
 
 [editable path="PlayerWithCamera/Ninja"]
