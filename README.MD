@@ -5,3 +5,4 @@ Thrid-party assets used:
  - https://freesound.org/people/Avreliy/sounds/611613/
  - https://freesound.org/people/YehawSnail/sounds/683587/
  - https://freesound.org/people/unfa/sounds/610998/
+ - https://freesound.org/people/sturmankin/sounds/273393/

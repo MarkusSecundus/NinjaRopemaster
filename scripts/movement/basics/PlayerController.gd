@@ -21,6 +21,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") * 2
 @onready var _respawner : IRespawnable = NodeUtils.get_child_of_type(self, IRespawnable)
 @onready var _animator : AnimationPlayer = $AnimationPlayer;
 
+signal on_jump();
+
 class IControlState:
 	extends Resource
 	

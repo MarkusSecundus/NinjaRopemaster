@@ -118,6 +118,8 @@ func handle_jumping(jump_was_requested : bool)->void:
 			if !is_grounded():
 				StatsTracker.rope_jump_count += 1
 				handle_rope_drop()
+			base.on_jump.emit()
+			print("emitting on_jump(%d)"%[base.on_jump.get_connections().size()])
 			#print("applying jump {0} - velocity is {1}".format([jump_force, base.linear_velocity]))
 	elif jump_was_requested:
 		_last_jump_request_end = TimeUtils.seconds_elapsed + jump_press_tolerance_seconds

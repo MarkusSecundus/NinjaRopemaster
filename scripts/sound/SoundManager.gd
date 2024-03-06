@@ -22,13 +22,19 @@ func _get_sound_player()->AudioStreamPlayer:
 	_soundPool.add_child(ret);
 	return ret;
 
-func PlaySound(sound: AudioStream, pitch: float = 1, volume_db: float=0)->void:
+func PlaySound(sound: AudioStream, pitch: float = 1, volume_db: float=0)->AudioStreamPlayer:
 	var player := _get_sound_player()
 	player.stream = sound
 	player.volume_db = volume_db
 	player.pitch_scale = pitch
 	player.play()
+	return player
 
+
+func StopPlayGradually(player: AudioStreamPlayer, fadeout_seconds: float)->void:
+	if !player.playing: 
+		ErrorUtils.report_error("Calling StopGradually on player '%s' which isn't playing anything"%[player.name])
+	Tweens.tween(player, "volume_db", player.volume_db, minReasonableDb, fadeout_seconds, Callable(), func(tw: CustomTween): player.stop())
 
 var _running_tweens : Array[CustomTween] = []
 

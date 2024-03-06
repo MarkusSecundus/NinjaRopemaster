@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://c6c42jh8kb2h"]
+[gd_scene load_steps=61 format=3 uid="uid://c6c42jh8kb2h"]
 
 [ext_resource type="Texture2D" uid="uid://bhq06r05uke4o" path="res://sprites/characters/ninja/torso.png" id="1_0lpve"]
 [ext_resource type="Script" path="res://scripts/movement/basics/PlayerController.gd" id="1_axc6r"]
@@ -26,6 +26,10 @@
 [ext_resource type="Script" path="res://scripts/damage_system/respawning/PlayerRespawnable.gd" id="24_jxu6r"]
 [ext_resource type="Script" path="res://scripts/sound/PlaySound.gd" id="25_8rt6t"]
 [ext_resource type="AudioStream" uid="uid://bm7si10ekajfd" path="res://sounds/ninja/ninja-death-scream.ogg" id="26_1o0dj"]
+[ext_resource type="AudioStream" uid="uid://cjagyup8ko3no" path="res://sounds/ninja/run-01.ogg" id="27_iarkn"]
+[ext_resource type="AudioStream" uid="uid://bl03h8u8a5dk2" path="res://sounds/ninja/run-02.ogg" id="28_bl2mr"]
+[ext_resource type="AudioStream" uid="uid://bgweumdtxyapm" path="res://sounds/ninja/run-03.ogg" id="29_gn8cl"]
+[ext_resource type="AudioStream" uid="uid://dgqfdh3klkppd" path="res://sounds/ninja/run-04.ogg" id="30_h7qqu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uiftb"]
 friction = 0.0
@@ -4307,6 +4311,32 @@ tracks/27/keys = {
 "update": 0,
 "values": [-0.000792657]
 }
+tracks/28/type = "method"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("Sounds/Running")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"play"
+}, {
+"args": [],
+"method": &"play"
+}, {
+"args": [],
+"method": &"play"
+}, {
+"args": [],
+"method": &"play"
+}, {
+"args": [],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_7ex3v"]
 resource_name = "RunWithLooseRope"
@@ -4691,7 +4721,7 @@ modification_stack = SubResource("SkeletonModificationStack2D_mejrv")
 position = Vector2(21.4286, 7.14285)
 rotation = 0.0101981
 scale = Vector2(0.895, 1)
-skew = -6.1512e-05
+skew = -6.24657e-05
 rest = Transform2D(0.999831, 0.0101967, -0.0101967, 0.999831, 21.4286, 7.14285)
 editor_settings/show_bone_gizmo = false
 
@@ -4714,7 +4744,7 @@ trail_enabled = true
 [node name="HeadBone2D" type="Bone2D" parent="ToRotate/Skeleton2D/TorsoBone2D"]
 position = Vector2(-58.8741, -469.949)
 rotation = 0.00236252
-scale = Vector2(0.999827, 0.999827)
+scale = Vector2(0.999829, 0.999829)
 rest = Transform2D(0.999827, 0.00236211, -0.00236211, 0.999827, -58.8741, -469.949)
 editor_settings/show_bone_gizmo = false
 
@@ -4738,8 +4768,8 @@ texture = ExtResource("3_bugpi")
 [node name="LegHighLBone2D" type="Bone2D" parent="ToRotate/Skeleton2D/TorsoBone2D"]
 position = Vector2(103.044, 168)
 rotation = -0.182932
-scale = Vector2(0.999854, 0.999852)
-skew = -0.000713348
+scale = Vector2(0.999853, 0.999852)
+skew = -0.000715256
 rest = Transform2D(0.999883, -0.0135671, 0.0136545, 0.999882, 103.044, 168)
 editor_settings/show_bone_gizmo = false
 
@@ -4754,7 +4784,7 @@ offset = Vector2(17.8972, 153.566)
 [node name="LegLowLBone2D" type="Bone2D" parent="ToRotate/Skeleton2D/TorsoBone2D/LegHighLBone2D"]
 position = Vector2(56.1836, 337.183)
 rotation = 0.617711
-scale = Vector2(0.999866, 0.999866)
+scale = Vector2(0.999864, 0.999864)
 rest = Transform2D(0.92629, 0.376756, -0.376756, 0.92629, 56.1836, 337.183)
 editor_settings/show_bone_gizmo = false
 
@@ -4798,8 +4828,8 @@ offset = Vector2(-5.77777, 187.033)
 [node name="LegLowRBone2D" type="Bone2D" parent="ToRotate/Skeleton2D/TorsoBone2D/LegHighRBone2D"]
 position = Vector2(-7.25516, 369.217)
 rotation = 0.579552
-scale = Vector2(0.98262, 1.00487)
-skew = -0.00142968
+scale = Vector2(0.982621, 1.00487)
+skew = -0.00143945
 rest = Transform2D(0.961144, 0.204307, -0.208935, 0.982922, -7.25516, 369.217)
 editor_settings/show_bone_gizmo = false
 
@@ -4841,7 +4871,7 @@ offset = Vector2(127.256, 117.892)
 [node name="ArmLowLBone2D" type="Bone2D" parent="ToRotate/Skeleton2D/TorsoBone2D/ArmHighLBone2D"]
 position = Vector2(239.555, 232.522)
 rotation = -0.590817
-scale = Vector2(0.999852, 0.999852)
+scale = Vector2(0.999853, 0.999853)
 rest = Transform2D(0.604847, -0.796325, 0.796325, 0.604847, 239.555, 232.522)
 editor_settings/show_bone_gizmo = false
 
@@ -4873,7 +4903,7 @@ texture = ExtResource("12_juueq")
 [node name="ArmHighRBone2D" type="Bone2D" parent="ToRotate/Skeleton2D/TorsoBone2D"]
 position = Vector2(-278.5, -432)
 rotation = -0.439383
-scale = Vector2(0.999853, 0.999853)
+scale = Vector2(0.999854, 0.999854)
 rest = Transform2D(0.905266, -0.424811, 0.424811, 0.905266, -278.5, -432)
 editor_settings/show_bone_gizmo = false
 
@@ -4885,7 +4915,7 @@ offset = Vector2(-93, 153)
 [node name="ArmLowRBone2D" type="Bone2D" parent="ToRotate/Skeleton2D/TorsoBone2D/ArmHighRBone2D"]
 position = Vector2(-176.546, 296.99)
 rotation = 0.594901
-scale = Vector2(0.999832, 0.999832)
+scale = Vector2(0.999831, 0.999831)
 rest = Transform2D(0.828989, 0.55925, -0.55925, 0.828989, -176.546, 296.99)
 editor_settings/show_bone_gizmo = false
 
@@ -4981,5 +5011,20 @@ stream = ExtResource("26_1o0dj")
 pitch_min = 0.7
 volume_db = 1.0
 
+[node name="Running" type="Node" parent="Sounds"]
+script = ExtResource("25_8rt6t")
+stream_variants = Array[AudioStream]([ExtResource("27_iarkn"), ExtResource("28_bl2mr"), ExtResource("29_gn8cl"), ExtResource("30_h7qqu")])
+pitch_min = 0.9
+pitch_max = 1.6
+volume_db = -16.0
+
+[node name="Jump" type="Node" parent="Sounds"]
+script = ExtResource("25_8rt6t")
+stream_variants = Array[AudioStream]([ExtResource("28_bl2mr"), ExtResource("29_gn8cl")])
+pitch_min = 0.4
+pitch_max = 0.8
+volume_db = -6.0
+
+[connection signal="on_jump" from="." to="Sounds/Jump" method="play"]
 [connection signal="body_exited" from="Feet" to="Feet" method="_on_collision_leave"]
 [connection signal="on_death" from="NinjaDamageable" to="." method="do_die"]
