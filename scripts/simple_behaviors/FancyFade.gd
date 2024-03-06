@@ -37,10 +37,7 @@ func _fade_impl(start_modulate: Color, end_modulate: Color, duration_seconds: fl
 	var original_on_complete := on_complete
 	var current_tween := DatastructUtils.Wrapper.new(null)
 	on_complete = func(_t: CustomTween):
-		print("maybe hiding fader %s X %s"%[current_tween, _tw])
-		if end_modulate.a <= 0.0 && current_tween.value == _tw: 
-			print("hiding fader")
-			self.hide()
+		if end_modulate.a <= 0.0 && current_tween.value == _tw: self.hide()
 		original_on_complete.call()
 		
 	self.modulate = start_modulate
