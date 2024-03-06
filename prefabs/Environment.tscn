@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://fhk26kw5alwx"]
+[gd_scene load_steps=31 format=3 uid="uid://fhk26kw5alwx"]
 
 [ext_resource type="Texture2D" uid="uid://xvvsx21l8ds4" path="res://sprites/background/background_far.png" id="1_qiq8p"]
 [ext_resource type="Texture2D" uid="uid://btdgyi6xcf72a" path="res://sprites/background/background_near.png" id="2_077wg"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cotbbmso7h1u4" path="res://prefabs/RespawnPoint.tscn" id="5_uagrb"]
 [ext_resource type="PackedScene" uid="uid://rnejjjy8kf3s" path="res://prefabs/Sign.tscn" id="7_0u5rg"]
 [ext_resource type="PackedScene" uid="uid://squ6nptt3mql" path="res://prefabs/MovingPlatform.tscn" id="7_eivbt"]
+[ext_resource type="FontFile" uid="uid://bldfnjlswltl4" path="res://fonts/veteran typewriter.ttf" id="9_8bk7x"]
 [ext_resource type="PackedScene" uid="uid://b5bg7q7a6p1if" path="res://prefabs/SoundtrackIntensityArea.tscn" id="9_qn1xa"]
 [ext_resource type="Script" path="res://scripts/stats/StatsSign.gd" id="9_vhcud"]
 
@@ -994,20 +995,38 @@ position = Vector2(9828, -6137)
 message = "
 THE END
 
-Ninja Ropecraft
+Ninja Ropemaster
 
 Programming, art, music: Jakub Hroník
 Sounds: Freesound.org"
 
 [node name="Label" parent="Areas/Area6/SignCredits/CanvasLayer/Bubble" index="1"]
+visible = false
 text = "
 THE END
 
-Ninja Ropecraft
+Ninja Ropemaster
 
 Programming, art, music: Jakub Hroník
 Sounds: Freesound.org"
 horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Areas/Area6/SignCredits/CanvasLayer/Bubble" index="2"]
+offset_left = -235.0
+offset_top = -126.0
+offset_right = 243.0
+offset_bottom = 113.0
+theme_override_fonts/normal_font = ExtResource("9_8bk7x")
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = "[center]
+THE END
+[font_size=14]  [/font_size]
+[font_size=40]Ninja Ropemaster[/font_size]
+[font_size=40]  [/font_size]
+[font_size=18]Programming, art, music: Jakub Hroník
+Sounds: Freesound.org[/font_size]
+[/center]"
 
 [node name="SignStats" parent="Areas/Area6" instance=ExtResource("7_0u5rg")]
 position = Vector2(9468, -6142)
