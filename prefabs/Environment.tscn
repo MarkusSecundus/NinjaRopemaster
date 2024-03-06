@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://fhk26kw5alwx"]
+[gd_scene load_steps=30 format=3 uid="uid://fhk26kw5alwx"]
 
 [ext_resource type="Texture2D" uid="uid://xvvsx21l8ds4" path="res://sprites/background/background_far.png" id="1_qiq8p"]
 [ext_resource type="Texture2D" uid="uid://btdgyi6xcf72a" path="res://sprites/background/background_near.png" id="2_077wg"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://rnejjjy8kf3s" path="res://prefabs/Sign.tscn" id="7_0u5rg"]
 [ext_resource type="PackedScene" uid="uid://squ6nptt3mql" path="res://prefabs/MovingPlatform.tscn" id="7_eivbt"]
 [ext_resource type="PackedScene" uid="uid://b5bg7q7a6p1if" path="res://prefabs/SoundtrackIntensityArea.tscn" id="9_qn1xa"]
+[ext_resource type="Script" path="res://scripts/stats/StatsSign.gd" id="9_vhcud"]
 
 [sub_resource type="Gradient" id="Gradient_g5uf0"]
 interpolation_mode = 1
@@ -357,6 +358,15 @@ message = "
          Now, descend into the depths
 
            'tis the only way forward"
+
+[node name="Sign4" parent="Areas/Area2" instance=ExtResource("7_0u5rg")]
+position = Vector2(6471, 1684)
+message = "
+
+             Be careful, solid ground 
+                        is just
+           a slippery, floating dream.
+"
 
 [node name="Area3" type="Node2D" parent="Areas"]
 
@@ -979,6 +989,48 @@ message = "
        Enjoy it best with your family,
             relatives and/or friends"
 
+[node name="SignCredits" parent="Areas/Area6" instance=ExtResource("7_0u5rg")]
+position = Vector2(9828, -6137)
+message = "
+THE END
+
+Ninja Ropecraft
+
+Programming, art, music: Jakub Hroník
+Sounds: Freesound.org"
+
+[node name="Label" parent="Areas/Area6/SignCredits/CanvasLayer/Bubble" index="1"]
+text = "
+THE END
+
+Ninja Ropecraft
+
+Programming, art, music: Jakub Hroník
+Sounds: Freesound.org"
+horizontal_alignment = 1
+
+[node name="SignStats" parent="Areas/Area6" instance=ExtResource("7_0u5rg")]
+position = Vector2(9468, -6142)
+message = "Stats...
+   Finish time: {0} s
+   Deaths: {1}
+   Rope shot hits: {3}
+   Rope shot misses: {4}
+   Rope jumps: {6}
+   Max velocity: {7} m/s 
+"
+
+[node name="StatsShowup" type="Node" parent="Areas/Area6/SignStats"]
+script = ExtResource("9_vhcud")
+_format = ""
+
+[node name="SignEnd" parent="Areas/Area6" instance=ExtResource("7_0u5rg")]
+position = Vector2(3457, -6137)
+message = "
+
+
+            Tip:  To exit, press Alt+F4"
+
 [node name="SoundtrackIntensities" type="Node2D" parent="."]
 visible = false
 
@@ -1047,3 +1099,4 @@ shape = SubResource("RectangleShape2D_nfrqh")
 [editable path="Areas/Area5/Platforms/MovingPlatform20"]
 [editable path="Areas/Area5/Platforms/MovingPlatform22"]
 [editable path="Areas/Area6/Checkpoint"]
+[editable path="Areas/Area6/SignCredits"]

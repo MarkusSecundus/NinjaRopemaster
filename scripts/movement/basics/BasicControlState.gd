@@ -113,8 +113,10 @@ func handle_jumping(jump_was_requested : bool)->void:
 		if jump_was_requested || (_last_jump_request_end > TimeUtils.seconds_elapsed && is_grounded()):
 			_last_jump_request_end = -INF
 			_jump_request_timestamp = TimeUtils.seconds_elapsed
+			StatsTracker.jump_count += 1
 			base.apply_impulse(jump_force*base.mass)
 			if !is_grounded():
+				StatsTracker.rope_jump_count += 1
 				handle_rope_drop()
 			#print("applying jump {0} - velocity is {1}".format([jump_force, base.linear_velocity]))
 	elif jump_was_requested:

@@ -57,6 +57,7 @@ func change_state(new_state: IControlState)->IControlState:
 
 func _physics_process(delta: float)->void:
 	if current_state: current_state.physics_process(delta)
+	StatsTracker._update_player_record_stats(self)
 		
 func _process(delta)->void:
 	if current_state: current_state.process(delta)

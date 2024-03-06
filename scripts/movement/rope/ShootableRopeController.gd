@@ -7,10 +7,10 @@ var max_segments :int= 30
 @export var shoot_force : float;
 
 
-@onready var _soundShooting : PlaySound = $"ShootSound";
-@onready var _soundOnDestroyed : PlaySound = $"DestroyedSound";
-@onready var _soundThrowSuccess : PlaySound = $ThrowSuccessSound;
-@onready var _soundThrowFail : PlaySound = $ThrowFailSound;
+@onready var _soundShooting : PlaySound = $"Sounds/ShootSound";
+@onready var _soundOnDestroyed : PlaySound = $"Sounds/DestroyedSound";
+@onready var _soundThrowSuccess : PlaySound = $Sounds/ThrowSuccessSound;
+@onready var _soundThrowFail : PlaySound = $Sounds/ThrowFailSound;
 
 
 signal on_shoot();
@@ -20,6 +20,7 @@ var _already_created := false
 func create_the_rope(where_to_place:Node2D, target_position:Vector2)->void:
 	if _already_created: return
 	_already_created = true
+	StatsTracker.ropes_shot_total += 1
 	var direction := (target_position - where_to_place.global_position).limit_length(1.0)
 	
 	self.where_to_place = where_to_place;

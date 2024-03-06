@@ -17,5 +17,6 @@ func _get_respawn_position()->Vector2: return _respawn_point.global_position if 
 
 func respawn()->void: 
 	print("respawning {0} -> {1}".format([_player.global_position, _get_respawn_position()]))
+	StatsTracker.deaths_count += 1
 	_player.global_position = _get_respawn_position()
 	if _damageable: _damageable.reset()
