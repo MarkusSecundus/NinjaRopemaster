@@ -40,6 +40,7 @@ max_speed = 700
 acceleration = 20.0
 jump_force = Vector2(0, -800)
 air_control_factor = 0.1
+jump_cooldown_seconds = 0.3
 jump_press_tolerance_seconds = 0.3
 climb_speed = 200.0
 
@@ -127,7 +128,7 @@ radius = 35.5
 height = 197.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xe0av"]
-size = Vector2(60, 16)
+size = Vector2(52, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aushh"]
 size = Vector2(88, 743)
@@ -5327,7 +5328,7 @@ collision_mask = 10
 script = ExtResource("19_43qge")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Feet"]
-position = Vector2(0, 98)
+position = Vector2(1, 95.5)
 shape = SubResource("RectangleShape2D_xe0av")
 
 [node name="FreefallDetector" type="Area2D" parent="."]

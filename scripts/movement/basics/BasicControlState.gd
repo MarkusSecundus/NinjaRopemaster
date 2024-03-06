@@ -6,6 +6,7 @@ extends PlayerController.IControlState
 @export var acceleration : float = 3
 @export var jump_force: Vector2 = Vector2(0,-600)
 @export var air_control_factor : float = 0.3
+@export var jump_cooldown_seconds : float = 0.3;
 
 @export var jump_press_tolerance_seconds : float = 0.3
 @export var climb_speed : float = 10.0;
@@ -109,6 +110,9 @@ func move_direction(direction: float)->void:
 var _jump_request_timestamp : float = -INF;
 var _last_jump_request_end : float = -INF
 func handle_jumping(jump_was_requested : bool)->void:
+	if TimeUtils.seconds_elapsed < _jump_request_timestamp + jump_cooldown_seconds:
+		return
+		
 	if is_grounded() || (_rope && _rope.is_frozen):
 		if jump_was_requested || (_last_jump_request_end > TimeUtils.seconds_elapsed && is_grounded()):
 			_last_jump_request_end = -INF
@@ -119,7 +123,6 @@ func handle_jumping(jump_was_requested : bool)->void:
 				StatsTracker.rope_jump_count += 1
 				handle_rope_drop()
 			base.on_jump.emit()
-			print("emitting on_jump(%d)"%[base.on_jump.get_connections().size()])
 			#print("applying jump {0} - velocity is {1}".format([jump_force, base.linear_velocity]))
 	elif jump_was_requested:
 		_last_jump_request_end = TimeUtils.seconds_elapsed + jump_press_tolerance_seconds
