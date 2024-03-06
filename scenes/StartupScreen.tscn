@@ -28,19 +28,21 @@ font_size = 32
 [node name="StartupScreen" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
-visible = false
 position = Vector2(1255, 517)
 scale = Vector2(0.258641, 0.258641)
 tile_set = ExtResource("1_8n38f")
 format = 2
-layer_0/tile_data = PackedInt32Array(131068, 65537, 2, 196604, 65537, 4, 196605, 131073, 4, 196606, 131073, 4, 131069, 131073, 2, 131070, 131073, 2, 131071, 131073, 2, 65536, 131073, 2, 65537, 131073, 2, 65538, 131073, 2, 65539, 131073, 2, 196607, 131073, 4, 131072, 327681, 3, 131073, 131073, 3, 131074, 131073, 3, 131075, 131073, 3, 131076, 131073, 3)
+layer_0/tile_data = PackedInt32Array(393209, 196609, 2, 393208, 131073, 2, 393207, 131073, 2, 393206, 65537, 2, 458744, 131073, 4, 458745, 196609, 4, 458743, 131073, 4, 458742, 65537, 4, 131073, 65537, 2, 131074, 131073, 2, 196609, 65537, 4, 196610, 131073, 4, 196611, 131073, 4, 196612, 131073, 4, 131075, 131073, 2, 131076, 131073, 2)
 
 [node name="Rope" parent="." instance=ExtResource("3_yjgby")]
-position = Vector2(956, 707)
+position = Vector2(1013, 756)
 create_on_start = true
 
+[node name="AnchorBody" parent="Rope" index="0"]
+position = Vector2(311, 1)
+
 [node name="EndPointMarker" parent="Rope" index="1"]
-position = Vector2(269, 529)
+position = Vector2(-803, 124)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1026, 845)
