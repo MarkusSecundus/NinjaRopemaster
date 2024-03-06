@@ -5023,7 +5023,7 @@ script = ExtResource("25_8rt6t")
 stream_variants = Array[AudioStream]([ExtResource("28_bl2mr"), ExtResource("29_gn8cl")])
 pitch_min = 0.4
 pitch_max = 0.8
-volume_db = -6.0
+volume_db = -12.0
 
 [connection signal="on_jump" from="." to="Sounds/Jump" method="play"]
 [connection signal="body_exited" from="Feet" to="Feet" method="_on_collision_leave"]
