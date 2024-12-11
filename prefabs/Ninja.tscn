@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://c6c42jh8kb2h"]
+[gd_scene load_steps=63 format=3 uid="uid://c6c42jh8kb2h"]
 
 [ext_resource type="Texture2D" uid="uid://bhq06r05uke4o" path="res://sprites/characters/ninja/torso.png" id="1_0lpve"]
 [ext_resource type="Script" path="res://scripts/movement/basics/PlayerController.gd" id="1_axc6r"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" path="res://scripts/util/CopyPosition.gd" id="18_3ejjp"]
 [ext_resource type="Script" path="res://scripts/movement/basics/GroundChecker.gd" id="19_43qge"]
 [ext_resource type="Script" path="res://scripts/damage_system/Damageable.gd" id="23_bcci4"]
+[ext_resource type="Texture2D" uid="uid://bx8e1r8lw0rak" path="res://sprites/characters/ninja/hook.png" id="23_m6dax"]
 [ext_resource type="Script" path="res://scripts/damage_system/respawning/PlayerRespawnable.gd" id="24_jxu6r"]
 [ext_resource type="Script" path="res://scripts/sound/PlaySound.gd" id="25_8rt6t"]
 [ext_resource type="AudioStream" uid="uid://bm7si10ekajfd" path="res://sounds/ninja/ninja-death-scream.ogg" id="26_1o0dj"]
@@ -5199,7 +5200,7 @@ offset = Vector2(8.00001, 111.47)
 position = Vector2(29.8762, 357.606)
 rotation = -0.66709
 scale = Vector2(1.01475, 1.05505)
-skew = -0.0113471
+skew = -0.0113473
 rest = Transform2D(0.877939, -0.494153, 0.539161, 0.915929, 29.8762, 357.607)
 editor_settings/show_bone_gizmo = false
 
@@ -5339,6 +5340,15 @@ coyotee_time = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FreefallDetector"]
 position = Vector2(1, 464.5)
 shape = SubResource("RectangleShape2D_aushh")
+
+[node name="AimVisualizer" type="Node2D" parent="."]
+
+[node name="RopeSprite" type="Sprite2D" parent="AimVisualizer"]
+z_index = 34
+position = Vector2(33, -1.90735e-06)
+rotation = 1.37128
+scale = Vector2(0.247, 0.247)
+texture = ExtResource("23_m6dax")
 
 [node name="JointHolder" type="Node2D" parent="."]
 

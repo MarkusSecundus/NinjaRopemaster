@@ -9,19 +9,19 @@ extends Node
 @export var impulse : Vector2
 
 func _ready()->void:
-	if false:
-		rope.end_point.global_position = ninja.global_position
-		rope.create_the_rope()
-		ninja._hand_joint.node_b = rope.last_segment.get_path()
-		ninja._animator.play("IdleWithRope")
-		ninja.apply_impulse(impulse)
+    if false:
+        rope.end_point.global_position = ninja.global_position
+        rope.create_the_rope()
+        ninja._hand_joint.node_b = rope.last_segment.get_path()
+        ninja._animator.play("IdleWithRope")
+        ninja.apply_impulse(impulse)
 
 
 func _input(event)->void:
-	if Input.is_key_pressed(KEY_SPACE):
-		_do_tranisition_scene()
+    if Input.is_action_pressed("Jump") or Input.is_action_pressed("Climb"):
+        _do_tranisition_scene()
 
 func _do_tranisition_scene()->void:
-	transition_fade.fade_in(func():
-		get_tree().change_scene_to_packed(next_scene)
-	);
+    transition_fade.fade_in(func():
+        get_tree().change_scene_to_packed(next_scene)
+    );
