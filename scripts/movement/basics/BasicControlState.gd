@@ -54,13 +54,24 @@ func process(_delta: float)->void:
     set_aim_direction()
     set_animation();
     
+func lerp_rotation2D(begin : float, end: float, t: float)->float:
+    begin = fmod(begin, 360.0)
+    end = fmod(end, 360.0)
+    if abs(end - begin) > abs(end - (begin + 360.0)):
+        begin -= 360
+    elif abs(end - begin) > abs(end - (begin - 360.0)):
+        begin += 360
+    print("{0} -> {1}".format([begin, end]))
+    return lerp(begin, end, t)
     
 var _was_joystick_used : bool = false
 func set_aim_direction()->void:
     var joystick_dir := Vector2(Input.get_axis("AimLeft", "AimRight"), Input.get_axis("AimUp", "AimDown"))
     if joystick_dir != Vector2.ZERO:
         _was_joystick_used = true
-        self.aim_direction = lerp(self.aim_direction.normalized(), joystick_dir, 0.3) 
+        var aim_rotation := atan2(self.aim_direction.y, self.aim_direction.x)
+        var joystick_rotation := atan2(joystick_dir.y, joystick_dir.x)
+        self.aim_direction = lerp(self.aim_direction, joystick_dir, 0.3) # Vector2(1, 0).rotated(lerp_rotation2D(aim_rotation, joystick_rotation, 0.3))
     elif (not _was_joystick_used) or (Input.get_last_mouse_velocity() != Vector2.ZERO):
         var mouse_position = base.get_global_mouse_position()
         self.aim_direction = mouse_position - base._hand.global_position
