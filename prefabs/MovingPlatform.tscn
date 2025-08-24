@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://squ6nptt3mql"]
 
 [ext_resource type="Texture2D" uid="uid://bitxyqsktsn62" path="res://sprites/env_spritesheet.png" id="1_2s4lj"]
-[ext_resource type="Script" path="res://scripts/simple_behaviors/MovingPlatform.gd" id="1_aybhq"]
+[ext_resource type="Script" uid="uid://cttpbjxstlh6s" path="res://scripts/simple_behaviors/MovingPlatform.gd" id="1_aybhq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wndf7"]
 friction = 2.0

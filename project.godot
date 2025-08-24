@@ -12,7 +12,7 @@ config_version=5
 
 config/name="4-1-Controller2D"
 run/main_scene="res://scenes/StartupScreen.tscn"
-config/features=PackedStringArray("4.3")
+config/features=PackedStringArray("4.4")
 config/icon="res://icon.png"
 
 [autoload]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://dk1ctt8lufi7j"]
 
 [ext_resource type="PackedScene" uid="uid://fhk26kw5alwx" path="res://prefabs/Environment.tscn" id="1"]
-[ext_resource type="Script" path="res://scripts/simple_behaviors/SmoothFollowPoint.gd" id="1_gttlc"]
-[ext_resource type="Script" path="res://scripts/simple_behaviors/FancyFade.gd" id="4_eexa3"]
+[ext_resource type="Script" uid="uid://sa6g754ee0by" path="res://scripts/simple_behaviors/SmoothFollowPoint.gd" id="1_gttlc"]
+[ext_resource type="Script" uid="uid://dvicx3sv17jax" path="res://scripts/simple_behaviors/FancyFade.gd" id="4_eexa3"]
 [ext_resource type="PackedScene" uid="uid://c6c42jh8kb2h" path="res://prefabs/Ninja.tscn" id="7_e07y7"]
 
 [sub_resource type="Gradient" id="Gradient_mmyi7"]
@@ -49,6 +49,9 @@ scale = Vector2(0.999928, 0.999928)
 
 [node name="ArmLowLBone2D" parent="PlayerWithCamera/Ninja/ToRotate/Skeleton2D/TorsoBone2D/ArmHighLBone2D" index="1"]
 scale = Vector2(0.99985, 0.99985)
+
+[node name="ArmHighRBone2D" parent="PlayerWithCamera/Ninja/ToRotate/Skeleton2D/TorsoBone2D" index="6"]
+scale = Vector2(0.999853, 0.999853)
 
 [node name="ArmLowRBone2D" parent="PlayerWithCamera/Ninja/ToRotate/Skeleton2D/TorsoBone2D/ArmHighRBone2D" index="1"]
 scale = Vector2(0.99983, 0.99983)

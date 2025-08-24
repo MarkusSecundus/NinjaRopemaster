@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b5bg7q7a6p1if"]
 
-[ext_resource type="Script" path="res://scripts/sound/SoundtrackIntensityArea.gd" id="1_lxfm1"]
+[ext_resource type="Script" uid="uid://kdrfgd2knke" path="res://scripts/sound/SoundtrackIntensityArea.gd" id="1_lxfm1"]
 
 [node name="SoundtrackIntensityArea" type="Area2D"]
 script = ExtResource("1_lxfm1")

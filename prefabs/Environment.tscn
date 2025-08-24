@@ -4,13 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://btdgyi6xcf72a" path="res://sprites/background/background_near.png" id="2_077wg"]
 [ext_resource type="TileSet" uid="uid://d37wiseuhlpj5" path="res://sprites/env_tileset.tres" id="3_15fmn"]
 [ext_resource type="PackedScene" uid="uid://cxo061fhw5nbl" path="res://prefabs/Spikes.tscn" id="4_ninb7"]
-[ext_resource type="Script" path="res://scripts/damage_system/damagers/AreaDamager.gd" id="5_8s24r"]
+[ext_resource type="Script" uid="uid://btr4y62q8mrrl" path="res://scripts/damage_system/damagers/AreaDamager.gd" id="5_8s24r"]
 [ext_resource type="PackedScene" uid="uid://cotbbmso7h1u4" path="res://prefabs/RespawnPoint.tscn" id="5_uagrb"]
 [ext_resource type="PackedScene" uid="uid://rnejjjy8kf3s" path="res://prefabs/Sign.tscn" id="7_0u5rg"]
 [ext_resource type="PackedScene" uid="uid://squ6nptt3mql" path="res://prefabs/MovingPlatform.tscn" id="7_eivbt"]
 [ext_resource type="FontFile" uid="uid://bldfnjlswltl4" path="res://fonts/veteran typewriter.ttf" id="9_8bk7x"]
 [ext_resource type="PackedScene" uid="uid://b5bg7q7a6p1if" path="res://prefabs/SoundtrackIntensityArea.tscn" id="9_qn1xa"]
-[ext_resource type="Script" path="res://scripts/stats/StatsSign.gd" id="9_vhcud"]
+[ext_resource type="Script" uid="uid://bbj8vjhp7t1q3" path="res://scripts/stats/StatsSign.gd" id="9_vhcud"]
 
 [sub_resource type="Gradient" id="Gradient_g5uf0"]
 interpolation_mode = 1

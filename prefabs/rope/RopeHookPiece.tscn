@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://heg7h5k5i46j"]
 
-[ext_resource type="Script" path="res://scripts/movement/rope/RopeHookController.gd" id="1_3msn5"]
+[ext_resource type="Script" uid="uid://bnw1nmvlgucbn" path="res://scripts/movement/rope/RopeHookController.gd" id="1_3msn5"]
 [ext_resource type="Texture2D" uid="uid://bx8e1r8lw0rak" path="res://sprites/characters/ninja/hook.png" id="1_uvnl5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ktsrk"]

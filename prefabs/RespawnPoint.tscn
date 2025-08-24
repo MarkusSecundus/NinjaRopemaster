@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cotbbmso7h1u4"]
 
-[ext_resource type="Script" path="res://scripts/damage_system/respawning/RespawnPoint.gd" id="1_7pww4"]
+[ext_resource type="Script" uid="uid://cv7q0ak4y38vv" path="res://scripts/damage_system/respawning/RespawnPoint.gd" id="1_7pww4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vp0gy"]
 size = Vector2(627, 922)

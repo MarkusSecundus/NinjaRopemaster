@@ -2,9 +2,9 @@
 
 [ext_resource type="TileSet" uid="uid://d37wiseuhlpj5" path="res://sprites/env_tileset.tres" id="1_8n38f"]
 [ext_resource type="FontFile" uid="uid://bldfnjlswltl4" path="res://fonts/veteran typewriter.ttf" id="1_28bfd"]
-[ext_resource type="Script" path="res://scripts/simple_behaviors/FancyFade.gd" id="2_b4dsr"]
+[ext_resource type="Script" uid="uid://dvicx3sv17jax" path="res://scripts/simple_behaviors/FancyFade.gd" id="2_b4dsr"]
 [ext_resource type="PackedScene" uid="uid://dv5h81qov6qq0" path="res://prefabs/rope/Rope.tscn" id="3_yjgby"]
-[ext_resource type="Script" path="res://scripts/oneshots/StartupScreenManager.gd" id="4_nykkl"]
+[ext_resource type="Script" uid="uid://m456kmai288" path="res://scripts/oneshots/StartupScreenManager.gd" id="4_nykkl"]
 [ext_resource type="PackedScene" uid="uid://dk1ctt8lufi7j" path="res://scenes/Scene.tscn" id="5_nr44f"]
 
 [sub_resource type="Gradient" id="Gradient_yq6jt"]

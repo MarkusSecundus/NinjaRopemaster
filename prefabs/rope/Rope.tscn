@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dv5h81qov6qq0"]
 
-[ext_resource type="Script" path="res://scripts/movement/rope/RopeController.gd" id="1_s5gg8"]
+[ext_resource type="Script" uid="uid://1p4jd1wku4ai" path="res://scripts/movement/rope/RopeController.gd" id="1_s5gg8"]
 [ext_resource type="PackedScene" uid="uid://ck4lhl14781ud" path="res://prefabs/rope/RopePiece.tscn" id="2_v5n7v"]
 [ext_resource type="PackedScene" uid="uid://heg7h5k5i46j" path="res://prefabs/rope/RopeHookPiece.tscn" id="3_ry4dc"]
 

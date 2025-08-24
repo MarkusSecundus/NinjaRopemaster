@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cnd0o8dg5nytd"]
 
-[ext_resource type="Script" path="res://scripts/sound/SoundManager.gd" id="1_dv25x"]
+[ext_resource type="Script" uid="uid://bjjwnvcm03eos" path="res://scripts/sound/SoundManager.gd" id="1_dv25x"]
 [ext_resource type="AudioStream" uid="uid://boap2j33tlssl" path="res://sounds/music/soundtrack-core.ogg" id="2_43qm6"]
-[ext_resource type="Script" path="res://scripts/sound/SoundtrackPart.gd" id="3_atyn0"]
+[ext_resource type="Script" uid="uid://b0ata5kuqqdho" path="res://scripts/sound/SoundtrackPart.gd" id="3_atyn0"]
 [ext_resource type="AudioStream" uid="uid://pte7nyq03ty3" path="res://sounds/music/soundtrack-drums.ogg" id="3_dptbj"]
 [ext_resource type="AudioStream" uid="uid://8qa2m60g1the" path="res://sounds/music/soundtrack-intense.ogg" id="4_hhi87"]
 

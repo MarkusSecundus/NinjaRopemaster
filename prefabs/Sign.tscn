@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://rnejjjy8kf3s"]
 
-[ext_resource type="Script" path="res://scripts/simple_behaviors/TextBubble.gd" id="1_p8utj"]
+[ext_resource type="Script" uid="uid://dhsi4dlrjvhkj" path="res://scripts/simple_behaviors/TextBubble.gd" id="1_p8utj"]
 [ext_resource type="Texture2D" uid="uid://bitxyqsktsn62" path="res://sprites/env_spritesheet.png" id="2_jjdis"]
 [ext_resource type="Texture2D" uid="uid://diye1mg8u6q1d" path="res://sprites/dialog-bubble.png" id="3_1t44h"]
 [ext_resource type="FontFile" uid="uid://bldfnjlswltl4" path="res://fonts/veteran typewriter.ttf" id="4_cgii3"]

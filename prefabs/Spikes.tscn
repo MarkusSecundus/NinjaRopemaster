@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cxo061fhw5nbl"]
 
-[ext_resource type="Script" path="res://scripts/damage_system/damagers/AreaDamager.gd" id="1_2joa8"]
+[ext_resource type="Script" uid="uid://btr4y62q8mrrl" path="res://scripts/damage_system/damagers/AreaDamager.gd" id="1_2joa8"]
 [ext_resource type="Texture2D" uid="uid://bitxyqsktsn62" path="res://sprites/env_spritesheet.png" id="1_506yv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ohrqb"]

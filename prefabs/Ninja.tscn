@@ -1,10 +1,10 @@
 [gd_scene load_steps=63 format=3 uid="uid://c6c42jh8kb2h"]
 
 [ext_resource type="Texture2D" uid="uid://bhq06r05uke4o" path="res://sprites/characters/ninja/torso.png" id="1_0lpve"]
-[ext_resource type="Script" path="res://scripts/movement/basics/PlayerController.gd" id="1_axc6r"]
-[ext_resource type="Script" path="res://scripts/movement/basics/BasicControlState.gd" id="2_0n3d5"]
+[ext_resource type="Script" uid="uid://3551f7hr564b" path="res://scripts/movement/basics/PlayerController.gd" id="1_axc6r"]
+[ext_resource type="Script" uid="uid://dx4gnr5yem1vi" path="res://scripts/movement/basics/BasicControlState.gd" id="2_0n3d5"]
 [ext_resource type="Texture2D" uid="uid://dqrhjqt8tf7wl" path="res://sprites/characters/ninja/head.png" id="2_nktre"]
-[ext_resource type="Script" path="res://scripts/movement/basics/ClimbingRopeControlState.gd" id="3_3d2qs"]
+[ext_resource type="Script" uid="uid://djt2k5jte6urv" path="res://scripts/movement/basics/ClimbingRopeControlState.gd" id="3_3d2qs"]
 [ext_resource type="Texture2D" uid="uid://de5upyi630bbl" path="res://sprites/characters/ninja/eyes.png" id="3_bugpi"]
 [ext_resource type="Texture2D" uid="uid://bv61gwgh38i2i" path="res://sprites/characters/ninja/legHigh_L.png" id="4_b0e85"]
 [ext_resource type="Texture2D" uid="uid://l83nfuvpiu5f" path="res://sprites/characters/ninja/legHigh_R.png" id="5_1jw8y"]
@@ -20,12 +20,12 @@
 [ext_resource type="Texture2D" uid="uid://cyu1n1ab82spy" path="res://sprites/characters/ninja/armLow_R.png" id="15_42844"]
 [ext_resource type="Texture2D" uid="uid://c1ejmkb3xwixc" path="res://sprites/characters/ninja/hand_R.png" id="16_gfqd3"]
 [ext_resource type="Texture2D" uid="uid://cakekvvh3yrig" path="res://sprites/characters/ninja/handThumb_R.png" id="16_o3d40"]
-[ext_resource type="Script" path="res://scripts/util/CopyPosition.gd" id="18_3ejjp"]
-[ext_resource type="Script" path="res://scripts/movement/basics/GroundChecker.gd" id="19_43qge"]
-[ext_resource type="Script" path="res://scripts/damage_system/Damageable.gd" id="23_bcci4"]
+[ext_resource type="Script" uid="uid://1b6haar8y2t3" path="res://scripts/util/CopyPosition.gd" id="18_3ejjp"]
+[ext_resource type="Script" uid="uid://id8mnlb7yrnj" path="res://scripts/movement/basics/GroundChecker.gd" id="19_43qge"]
+[ext_resource type="Script" uid="uid://hmqk74s7ca1i" path="res://scripts/damage_system/Damageable.gd" id="23_bcci4"]
 [ext_resource type="Texture2D" uid="uid://bx8e1r8lw0rak" path="res://sprites/characters/ninja/hook.png" id="23_m6dax"]
-[ext_resource type="Script" path="res://scripts/damage_system/respawning/PlayerRespawnable.gd" id="24_jxu6r"]
-[ext_resource type="Script" path="res://scripts/sound/PlaySound.gd" id="25_8rt6t"]
+[ext_resource type="Script" uid="uid://b0oe02vni445k" path="res://scripts/damage_system/respawning/PlayerRespawnable.gd" id="24_jxu6r"]
+[ext_resource type="Script" uid="uid://bymsueargorsq" path="res://scripts/sound/PlaySound.gd" id="25_8rt6t"]
 [ext_resource type="AudioStream" uid="uid://bm7si10ekajfd" path="res://sounds/ninja/ninja-death-scream.ogg" id="26_1o0dj"]
 [ext_resource type="AudioStream" uid="uid://cjagyup8ko3no" path="res://sounds/ninja/run-01.ogg" id="27_iarkn"]
 [ext_resource type="AudioStream" uid="uid://bl03h8u8a5dk2" path="res://sounds/ninja/run-02.ogg" id="28_bl2mr"]
@@ -5036,20 +5036,20 @@ tracks/27/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1rj2o"]
 _data = {
-"ClimbingRope": SubResource("Animation_u0s8v"),
-"Die": SubResource("Animation_7c4el"),
-"Die_2": SubResource("Animation_qb5ed"),
-"Falling": SubResource("Animation_5dou2"),
-"FallingWithRope": SubResource("Animation_orb22"),
-"Idle": SubResource("Animation_p4yn5"),
-"IdleWithRope": SubResource("Animation_orw2f"),
-"Jump": SubResource("Animation_e2cq8"),
-"JumpWithRope": SubResource("Animation_oh4p1"),
-"MenuPose": SubResource("Animation_p0l25"),
-"RESET": SubResource("Animation_anwr5"),
-"Rest": SubResource("Animation_11xyd"),
-"Run": SubResource("Animation_0jj2t"),
-"RunWithRope": SubResource("Animation_7ex3v")
+&"ClimbingRope": SubResource("Animation_u0s8v"),
+&"Die": SubResource("Animation_7c4el"),
+&"Die_2": SubResource("Animation_qb5ed"),
+&"Falling": SubResource("Animation_5dou2"),
+&"FallingWithRope": SubResource("Animation_orb22"),
+&"Idle": SubResource("Animation_p4yn5"),
+&"IdleWithRope": SubResource("Animation_orw2f"),
+&"Jump": SubResource("Animation_e2cq8"),
+&"JumpWithRope": SubResource("Animation_oh4p1"),
+&"MenuPose": SubResource("Animation_p0l25"),
+&"RESET": SubResource("Animation_anwr5"),
+&"Rest": SubResource("Animation_11xyd"),
+&"Run": SubResource("Animation_0jj2t"),
+&"RunWithRope": SubResource("Animation_7ex3v")
 }
 
 [node name="Ninja" type="RigidBody2D"]
