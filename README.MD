@@ -6,3 +6,5 @@ Thrid-party assets used:
  - https://freesound.org/people/YehawSnail/sounds/683587/
  - https://freesound.org/people/unfa/sounds/610998/
  - https://freesound.org/people/sturmankin/sounds/273393/
+
+> _For everything else, the attached MIT License applies._
