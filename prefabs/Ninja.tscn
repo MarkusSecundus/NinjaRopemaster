@@ -41,8 +41,6 @@ max_speed = 700
 acceleration = 20.0
 jump_force = Vector2(0, -800)
 air_control_factor = 0.1
-jump_cooldown_seconds = 0.3
-jump_press_tolerance_seconds = 0.3
 climb_speed = 200.0
 
 [sub_resource type="Resource" id="Resource_5k71e"]
@@ -100,6 +98,15 @@ modifications/3 = SubResource("SkeletonModification2DTwoBoneIK_hfj3o")
 modifications/4 = SubResource("SkeletonModification2DLookAt_cbnu6")
 modifications/5 = SubResource("SkeletonModification2DLookAt_hof80")
 
+[sub_resource type="Gradient" id="Gradient_72vyy"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.711985, 2.43542e-05, 0.148938, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qaymn"]
+gradient = SubResource("Gradient_72vyy")
+width = 10
+height = 20
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sliwd"]
 particle_flag_disable_z = true
 angle_min = -206.7
@@ -114,15 +121,6 @@ angular_velocity_max = 527.53
 radial_velocity_min = 54.46
 radial_velocity_max = 366.35
 gravity = Vector3(0, 900, 0)
-
-[sub_resource type="Gradient" id="Gradient_72vyy"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.711985, 2.43542e-05, 0.148938, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_qaymn"]
-gradient = SubResource("Gradient_72vyy")
-width = 10
-height = 20
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_87cap"]
 radius = 35.5
@@ -5077,7 +5075,7 @@ modification_stack = SubResource("SkeletonModificationStack2D_mejrv")
 position = Vector2(21.4286, 7.14285)
 rotation = 0.0101981
 scale = Vector2(0.895, 1)
-skew = -6.24657e-05
+skew = -6.246567e-05
 rest = Transform2D(0.999831, 0.0101967, -0.0101967, 0.999831, 21.4286, 7.14285)
 editor_settings/show_bone_gizmo = false
 
@@ -5091,11 +5089,11 @@ offset = Vector2(-77, -162)
 position = Vector2(-22.5198, -106.919)
 emitting = false
 amount = 15
-process_material = SubResource("ParticleProcessMaterial_sliwd")
 texture = SubResource("GradientTexture2D_qaymn")
 one_shot = true
 explosiveness = 0.58
 trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_sliwd")
 
 [node name="HeadBone2D" type="Bone2D" parent="ToRotate/Skeleton2D/TorsoBone2D"]
 position = Vector2(-58.8741, -469.949)
@@ -5114,6 +5112,9 @@ offset = Vector2(-12.7325, -233.561)
 position = Vector2(30.3937, -246.505)
 rotation = 0.00429041
 rest = Transform2D(0.999991, 0.0042904, -0.0042904, 0.999991, 30.3937, -246.505)
+auto_calculate_length_and_angle = false
+length = 1.0
+bone_angle = 0.0
 editor_settings/show_bone_gizmo = false
 
 [node name="Eyes" type="Sprite2D" parent="ToRotate/Skeleton2D/TorsoBone2D/HeadBone2D/EyesBone2D"]
@@ -5125,7 +5126,7 @@ texture = ExtResource("3_bugpi")
 position = Vector2(103.044, 168)
 rotation = -0.182932
 scale = Vector2(0.999852, 0.999852)
-skew = -0.000715256
+skew = -0.00071525574
 rest = Transform2D(0.999883, -0.0135671, 0.0136545, 0.999882, 103.044, 168)
 editor_settings/show_bone_gizmo = false
 
@@ -5156,8 +5157,11 @@ offset = Vector2(14.499, 132.428)
 position = Vector2(29.079, 343.851)
 rotation = -0.574037
 scale = Vector2(0.999849, 0.999838)
-skew = 4.94719e-05
+skew = 4.9471855e-05
 rest = Transform2D(0.870799, -0.491665, 0.491593, 0.870845, 29.0804, 343.851)
+auto_calculate_length_and_angle = false
+length = 1.0
+bone_angle = 0.0
 editor_settings/show_bone_gizmo = false
 
 [node name="FootL" type="Sprite2D" parent="ToRotate/Skeleton2D/TorsoBone2D/LegHighLBone2D/LegLowLBone2D/FootLBone2D"]
@@ -5185,7 +5189,7 @@ offset = Vector2(-5.77777, 187.033)
 position = Vector2(-7.25516, 369.217)
 rotation = 0.579552
 scale = Vector2(0.98262, 1.00487)
-skew = -0.00145411
+skew = -0.0014541149
 rest = Transform2D(0.961144, 0.204307, -0.208935, 0.982922, -7.25516, 369.217)
 editor_settings/show_bone_gizmo = false
 
@@ -5200,8 +5204,11 @@ offset = Vector2(8.00001, 111.47)
 position = Vector2(29.8762, 357.606)
 rotation = -0.66709
 scale = Vector2(1.01475, 1.05505)
-skew = -0.0113473
+skew = -0.011347294
 rest = Transform2D(0.877939, -0.494153, 0.539161, 0.915929, 29.8762, 357.607)
+auto_calculate_length_and_angle = false
+length = 1.0
+bone_angle = 0.0
 editor_settings/show_bone_gizmo = false
 
 [node name="FootR" type="Sprite2D" parent="ToRotate/Skeleton2D/TorsoBone2D/LegHighRBone2D/LegLowRBone2D/FootRBone2D"]
@@ -5227,7 +5234,7 @@ offset = Vector2(127.256, 117.892)
 [node name="ArmLowLBone2D" type="Bone2D" parent="ToRotate/Skeleton2D/TorsoBone2D/ArmHighLBone2D"]
 position = Vector2(239.555, 232.522)
 rotation = -0.590817
-scale = Vector2(0.999853, 0.999853)
+scale = Vector2(0.99985296, 0.99985296)
 rest = Transform2D(0.604847, -0.796325, 0.796325, 0.604847, 239.555, 232.522)
 editor_settings/show_bone_gizmo = false
 
@@ -5242,6 +5249,9 @@ position = Vector2(-74.3096, 249.628)
 rotation = 0.147199
 scale = Vector2(0.999997, 0.999997)
 rest = Transform2D(0.989186, 0.146668, -0.146668, 0.989186, -74.3096, 249.628)
+auto_calculate_length_and_angle = false
+length = 1.0
+bone_angle = 0.0
 editor_settings/show_bone_gizmo = false
 
 [node name="HandL" type="Sprite2D" parent="ToRotate/Skeleton2D/TorsoBone2D/ArmHighLBone2D/ArmLowLBone2D/HandLBone2D"]
@@ -5259,7 +5269,7 @@ texture = ExtResource("12_juueq")
 [node name="ArmHighRBone2D" type="Bone2D" parent="ToRotate/Skeleton2D/TorsoBone2D"]
 position = Vector2(-278.5, -432)
 rotation = -0.439383
-scale = Vector2(0.999853, 0.999853)
+scale = Vector2(0.99985284, 0.99985284)
 rest = Transform2D(0.905266, -0.424811, 0.424811, 0.905266, -278.5, -432)
 editor_settings/show_bone_gizmo = false
 
@@ -5284,6 +5294,9 @@ offset = Vector2(55.4397, 105.876)
 position = Vector2(144.634, 235.08)
 rotation = -0.000792657
 rest = Transform2D(1, -0.000792657, 0.000792657, 1, 144.634, 235.08)
+auto_calculate_length_and_angle = false
+length = 1.0
+bone_angle = 0.0
 editor_settings/show_bone_gizmo = false
 
 [node name="HandR" type="Sprite2D" parent="ToRotate/Skeleton2D/TorsoBone2D/ArmHighRBone2D/ArmLowRBone2D/HandRBone2D"]
@@ -5357,7 +5370,7 @@ node_a = NodePath("../..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_1rj2o")
+&"": SubResource("AnimationLibrary_1rj2o")
 }
 autoplay = "Idle"
 

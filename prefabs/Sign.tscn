@@ -13,9 +13,9 @@ region = Rect2(512, 0, 256, 257)
 radius = 110.018
 
 [sub_resource type="LabelSettings" id="LabelSettings_b3lb3"]
-line_spacing = 9.33
+line_spacing = 0.0
 font = ExtResource("4_cgii3")
-font_size = 22
+font_size = 20
 
 [node name="Sign" type="Area2D"]
 script = ExtResource("1_p8utj")
@@ -31,7 +31,6 @@ position = Vector2(-4, 7)
 shape = SubResource("CircleShape2D_lnt4a")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Bubble" type="Node2D" parent="CanvasLayer"]
 position = Vector2(898, 205)
@@ -49,8 +48,9 @@ offset_bottom = 96.0
 text = "Ye, who trespasses in this barren wasteland,
 be forewarned - there is no treasure to be found here"
 label_settings = SubResource("LabelSettings_b3lb3")
+autowrap_mode = 2
 clip_text = true
-text_overrun_behavior = 3
+visible_characters_behavior = 2
 
 [connection signal="body_entered" from="." to="." method="_on_body_enter"]
 [connection signal="body_exited" from="." to="." method="_on_body_exit"]
