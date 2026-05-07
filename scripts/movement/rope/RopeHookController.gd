@@ -26,4 +26,3 @@ func _on_hitting_target(target: Node)->void:
 		
 	$Joint.node_b = body.get_path()
 	on_hit.emit()
-

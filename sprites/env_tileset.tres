@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://d37wiseuhlpj5"]
+[gd_resource type="TileSet" format=3 uid="uid://d37wiseuhlpj5"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_l2h5m"]
 load_path = "res://.godot/imported/env_spritesheet.png-3040185a61c26c26aff62a236a0eebc6.ctex"
