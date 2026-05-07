@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dk1ctt8lufi7j"]
+[gd_scene format=3 uid="uid://dk1ctt8lufi7j"]
 
 [ext_resource type="Script" uid="uid://sa6g754ee0by" path="res://scripts/simple_behaviors/SmoothFollowPoint.gd" id="1_gttlc"]
 [ext_resource type="PackedScene" uid="uid://4yph7dslp8a4" path="res://prefabs/Environment2.tscn" id="1_plqpu"]
 [ext_resource type="Script" uid="uid://dvicx3sv17jax" path="res://scripts/simple_behaviors/FancyFade.gd" id="4_eexa3"]
 [ext_resource type="PackedScene" uid="uid://fhk26kw5alwx" path="res://prefabs/Environment.tscn" id="5_i2t4f"]
+[ext_resource type="Texture2D" uid="uid://dqrhjqt8tf7wl" path="res://sprites/characters/ninja/head.png" id="6_d35k2"]
 [ext_resource type="PackedScene" uid="uid://c6c42jh8kb2h" path="res://prefabs/Ninja.tscn" id="7_e07y7"]
 
 [sub_resource type="Gradient" id="Gradient_mmyi7"]
@@ -14,15 +15,18 @@ colors = PackedColorArray(0, 0, 0, 1)
 gradient = SubResource("Gradient_mmyi7")
 fill_from = Vector2(1, 0)
 
-[node name="Scene" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_5kwoq"]
+radius = 30.0
 
-[node name="Environment2" parent="." instance=ExtResource("1_plqpu")]
+[node name="Scene" type="Node2D" unique_id=1322665536]
+
+[node name="Environment2" parent="." unique_id=535285723 instance=ExtResource("1_plqpu")]
 visible = false
 
-[node name="PlayerWithCamera" type="Node2D" parent="."]
+[node name="PlayerWithCamera" type="Node2D" parent="." unique_id=1443907280]
 position = Vector2(328, 1221)
 
-[node name="Camera2D" type="Camera2D" parent="PlayerWithCamera" node_paths=PackedStringArray("to_follow")]
+[node name="Camera2D" type="Camera2D" parent="PlayerWithCamera" unique_id=466232052 node_paths=PackedStringArray("to_follow")]
 position = Vector2(-1, -499)
 process_callback = 0
 position_smoothing_enabled = true
@@ -31,7 +35,7 @@ to_follow = NodePath("../Ninja/ToRotate/CameraPoint")
 speed = 10.0
 distance_scaling = 1.1
 
-[node name="Ninja" parent="PlayerWithCamera" instance=ExtResource("7_e07y7")]
+[node name="Ninja" parent="PlayerWithCamera" unique_id=378047362 instance=ExtResource("7_e07y7")]
 
 [node name="LegHighLBone2D" parent="PlayerWithCamera/Ninja/ToRotate/Skeleton2D/TorsoBone2D" index="3"]
 scale = Vector2(0.99986607, 0.999867)
@@ -58,11 +62,14 @@ scale = Vector2(0.99985003, 0.99985003)
 scale = Vector2(0.9998529, 0.9998529)
 
 [node name="ArmLowRBone2D" parent="PlayerWithCamera/Ninja/ToRotate/Skeleton2D/TorsoBone2D/ArmHighRBone2D" index="1"]
-scale = Vector2(0.99983007, 0.99983007)
+scale = Vector2(0.99983, 0.99983)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="AnimationPlayer" parent="PlayerWithCamera/Ninja" index="6"]
+autoplay = &"Idle"
 
-[node name="BlackFader" type="Sprite2D" parent="CanvasLayer"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=360790186]
+
+[node name="BlackFader" type="Sprite2D" parent="CanvasLayer" unique_id=1331436098]
 visible = false
 position = Vector2(923, 910)
 scale = Vector2(1000, 1000)
@@ -70,6 +77,20 @@ texture = SubResource("GradientTexture2D_sl1vd")
 script = ExtResource("4_eexa3")
 action_on_start = 2
 
-[node name="Environment" parent="." instance=ExtResource("5_i2t4f")]
+[node name="Environment" parent="." unique_id=158578388 instance=ExtResource("5_i2t4f")]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=72492357]
+position = Vector2(809, 713)
+collision_layer = 255
+collision_mask = 255
+mass = 95.268
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=1453908185]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_5kwoq")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=1515709545]
+scale = Vector2(0.14470142, 0.12755163)
+texture = ExtResource("6_d35k2")
 
 [editable path="PlayerWithCamera/Ninja"]

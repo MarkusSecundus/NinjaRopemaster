@@ -203,7 +203,7 @@ func handle_rope_climb(delta:float)->void:
 		_last_rope_climb_timestamp = TimeUtils.seconds_elapsed
 		var distance_climbed = climb_speed*delta
 		if _rope.progress_the_climb(distance_climbed, 2):
-			if _rope.is_frozen: base.global_position = _rope.get_climb_point()
+			if _rope.is_attached_to_fixed_body: base.global_position = _rope.get_climb_point()
 			else: _rope.set_climb_point(base.global_position)
 			
 			base._hand_joint.node_b = _rope.last_body.get_path()

@@ -51,6 +51,8 @@ func _on_shot_finished_callback():
 
 var is_frozen: bool:
 	get: return hook_segment && hook_segment.is_frozen
+var is_attached_to_fixed_body:bool:
+	get: return hook_segment && hook_segment.is_attached_to_fixed_body
 var is_finished : bool = false;
 var where_to_place : Node2D;
 var last_body : RigidBody2D
